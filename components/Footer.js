@@ -1,10 +1,12 @@
 import React from 'react'
-import Layout from '../components/LayoutMaster'
 
 const Footer = () => {
-return (
- 
+  return (
+    <div>
+      <h1>Footer</h1>
+    </div>
 
-};
+  )
+}
 
 export default Footer

@@ -9,11 +9,13 @@ export default function Home () {
         <header className="container-fluid hero">
           <div className="row">
             <div className="container">
+              <div className="row">
               <div className="col-12">
                { /*Hero.*/} 
               </div>
             </div>
           </div>
+         </div>
         </header>
 
         { /*beneficios*/}
