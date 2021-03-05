@@ -1,4 +1,12 @@
 @import 'variables';
 @import 'mixins';
 @import 'utils';
+
+@import './pages/landing/benefits';
+@import './pages/landing/hero';
+@import './pages/landing/how-fuctions';
+@import './pages/landing/planes';
+
+@import './pages/create';
+@import './pages/login';
 @import './components/navbar'; 
