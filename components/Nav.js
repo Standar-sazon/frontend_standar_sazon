@@ -1,10 +1,10 @@
-import { Alert } from 'bootstrap';
 import React from 'react'
 import { Form,Container, Navbar, Nav, Button,} from 'react-bootstrap';
+import Layout from '../components/LayoutMaster'
 
 
 
-const NavBarWeb = () => {
+const Nav = () => {
   return (
     <Navbar expand= "xxl" className= "navBarColor">
       <Container>
@@ -31,5 +31,5 @@ const NavBarWeb = () => {
   )
 }
 
-export default NavBarWeb
+export default Nav
 

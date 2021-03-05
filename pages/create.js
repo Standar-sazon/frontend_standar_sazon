@@ -4,14 +4,14 @@ import Layout from '../components/LayoutMaster'
 export default function create (){
   return (
     <Layout>
-    <div class="container-fluid section-create-account">
-      <div class="row">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-4">
+    <div className="container-fluid section-create-account">
+      <div className="row">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-4">
               {/*content*/}
             </div>
-            <div class="col-12 col-md-8">
+            <div className="col-12 col-md-8">
               {/*content*/}
             </div>
           </div>
