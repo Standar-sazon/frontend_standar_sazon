@@ -1,0 +1,31 @@
+.all-footer{
+    background-color: $dark-green;
+    display: flex;
+    justify-content: space-evenly;
+    color: $white;
+    padding: 80px;
+    font-family: $font-family;
+
+
+}
+.container-footer {
+    display: flex;
+    padding-top: 30px;
+    }
+
+        ul {
+            list-style: none;
+            flex-direction: column;
+        }
+
+    .privacidad {
+        display: flex;
+        align-content: center;
+        background-color: $dark-green;
+        flex-direction: column;
+        padding-left: 600px;
+        color: $white;
+        font-family:$font-family;
+    }
+
+    
