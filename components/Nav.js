@@ -1,5 +1,5 @@
 import React from 'react'
-import LOGO from '../public/img/Logo Divided.svg'
+import LOGO from '../public/img/logo.svg'
 
 export default function Nav () {
   return (
