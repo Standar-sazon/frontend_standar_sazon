@@ -1,5 +1,8 @@
 import React from 'react'
 import Layout from '../components/LayoutMaster'
+import Benefits from '../components/Benefits'
+import Dish from '../components/Benefits-image'
+import ImageBack from '../components/Benefits-bkg'
 
 export default function Home () {
   return (
@@ -20,12 +23,11 @@ export default function Home () {
       {/* beneficios */}
       <div className='container-fluid section-benefits'>
         <div className='row'>
+          <ImageBack />
           <div className='container'>
             <div className='row'>
-              <div className='col-12 col-md-6' />
-              {/* contenido */}
-              <div className='col-12 col-md-6' />
-              {/* contenido */}
+              <div class='col-12 col-md-6'><Dish /></div>
+              <div class='col-12 col-md-6'><Benefits /></div>
             </div>
           </div>
         </div>
