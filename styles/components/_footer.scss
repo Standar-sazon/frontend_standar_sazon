@@ -1,31 +1,62 @@
 .all-footer{
     background-color: $dark-green;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     color: $white;
-    padding: 80px;
-    font-family: $font-family;
+    padding: 60px;
+    font-size:  $size-footerlinks-mobile;
 
+    img{
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    @include desktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
 }
 .container-footer {
     display: flex;
     padding-top: 30px;
     }
-
         ul {
             list-style: none;
             flex-direction: column;
+            padding-right: 20px;
+            text-align: center;
+
+            @include desktop {
+                text-align: left;
+            }
+        
+
+
+
+            a {
+                color: $white;
+            }
         }
 
-    .privacidad {
-        display: flex;
-        align-content: center;
-        background-color: $dark-green;
-        flex-direction: column;
-        padding-left: 600px;
-        color: $white;
-        font-family:$font-family;
+    .item-info{
+       padding-left: 40px;
+       text-align: center;
+
+       @include desktop {
+        text-align: left;
     }
 
-    
+    }    
+
+    .privacidad {             
+        background-color: $dark-green;
+        flex-direction: column;
+        color: $white;
+        text-align: center;
+
+
+        
+    }
+ 

@@ -1,5 +1,7 @@
 import React from 'react'
 import Layout from '../components/LayoutMaster'
+import { Card } from 'react-bootstrap'
+import BENEFICIOS from '../public/palomita.svg'
 
 export default function Home () {
   return (
@@ -61,16 +63,59 @@ export default function Home () {
           <div className='container'>
             <div className='row'>
               <div className='col-12 col-md-6'>
-                {/* card.prices */}
+                <Card className='card-beneficios1'>
+                  <div className='d-flex justify-content-between alig-items-center'>
+                    <div>
+                      <h1>Básico</h1>
+                      <h2>Free</h2>
+                    </div>
+                    <p className='color-subtittle'>Free</p>
+                  </div>
+                  <p className='margin-plan'>/Sin Limite de tiempo</p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Creación de receta con base de datos
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    + de mil ingredientes
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Indicadores administrativos preestablecidos
+                  </p>
+                  <button className='card-button'>Únete</button>
+                </Card>
               </div>
               <div className='col-12 col-md-6'>
-                {/* card.prices */}
+                <Card className='card-beneficios2'>
+                  <div className='d-flex justify-content-between alig-items-center'>
+                    <div>
+                      <h1>Premiun</h1>
+                      <h2>$340</h2>
+                    </div>
+                    <p className='color-subtittle'>$340</p>
+                  </div>
+                  <p className='margin-plan'>/Mensual</p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Descarga de recetas en formato PDF
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Indicadores administrativos preestablecidos
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Creación de ingredientes propios
+                  </p>
+                  <button className='card-button'>Únete</button>
+                </Card>
               </div>
             </div>
           </div>
         </div>
       </div>
     </Layout>
-
   )
 }

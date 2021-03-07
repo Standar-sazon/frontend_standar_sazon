@@ -5,11 +5,11 @@ const Footer = () => {
   return (
     <footer>
       <div className='all-footer'>
-        <img class='images-footer-1' src={LOGO} alt='LOGO' />
+        <img className='images-footer-1' src={LOGO} alt='LOGO' />
         <nav>
           <ul className='container-footer'>
             <li><a href=''>Beneficios</a></li>
-            <li><a href=''>¿Cómo funciona?</a></li>
+            <li className='my-2'><a href=''>¿Cómo funciona?</a></li>
             <li><a href=''>Planes</a></li>
           </ul>
         </nav>
