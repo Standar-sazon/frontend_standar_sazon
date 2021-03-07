@@ -9,6 +9,7 @@
 // <small>  caption
 
 body {
+  font-family: $font-family;
   font-size: $size-cardbenefits-mobile;
   @include tablet {
       font-size: $size-cardbenefits-desktop;
