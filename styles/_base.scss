@@ -39,14 +39,6 @@ small {
 
 button {
   font-size: $size-button-mobile;
-  background-color: $dark-mode;
-    border-radius: 25px;
-    border: none;
-    color: $white;
-    width: 150px;
-    justify-content: center;
-    padding: 10px;
-    margin: 0 auto;
   @include tablet {
       font-size: $size-button-desktop;
   }
