@@ -66,7 +66,7 @@ export default function Home () {
             <div className='row'>
               <div className='col-12 col-md-6'>
                 <Card className='card-prices-1'>
-                  <div className='d-flex justify-content-between alig-items-center'>
+                  <div className='d-flex justify-content-between align-items-center'>
                     <div>
                       <h1>Básico</h1>
                       <h2>Free</h2>
@@ -91,7 +91,7 @@ export default function Home () {
               </div>
               <div className='col-12 col-md-6'>
                 <Card className='card-prices-2'>
-                  <div className='d-flex justify-content-between alig-items-center'>
+                  <div className='d-flex justify-content-between align-items-center'>
                     <div>
                       <h1>Premiun</h1>
                       <h2>$340</h2>
