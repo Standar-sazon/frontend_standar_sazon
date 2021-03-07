@@ -28,8 +28,8 @@ export default function Home () {
           <ImageBack />
           <div className='container'>
             <div className='row'>
-              <div class='col-12 col-md-6'><Dish /></div>
-              <div class='col-12 col-md-6'><Benefits /></div>
+              <div className='col-12 col-md-6'><Dish /></div>
+              <div className='col-12 col-md-6'><Benefits /></div>
             </div>
           </div>
         </div>

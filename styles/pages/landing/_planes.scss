@@ -28,6 +28,17 @@
             color: $white-opacity;
             font-size: 30px;
         } 
+
+        button{
+            background-color: $dark-mode;
+    border-radius: 25px;
+    border: none;
+    color: $white;
+    width: 150px;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 auto;
+        }
     }
         
    
@@ -56,6 +67,16 @@
 
         img{
             padding-right: 10px;
+        }
+        button{
+            background-color: $dark-mode;
+    border-radius: 25px;
+    border: none;
+    color: $white;
+    width: 150px;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 auto;
         }
 
     }
