@@ -65,7 +65,7 @@ export default function Home () {
           <div className='container'>
             <div className='row'>
               <div className='col-12 col-md-6'>
-                <Card className='card-beneficios1'>
+                <Card className='card-prices-1'>
                   <div className='d-flex justify-content-between alig-items-center'>
                     <div>
                       <h1>Básico</h1>
@@ -90,7 +90,7 @@ export default function Home () {
                 </Card>
               </div>
               <div className='col-12 col-md-6'>
-                <Card className='card-beneficios2'>
+                <Card className='card-proces-2'>
                   <div className='d-flex justify-content-between alig-items-center'>
                     <div>
                       <h1>Premiun</h1>
