@@ -90,7 +90,7 @@ export default function Home () {
                 </Card>
               </div>
               <div className='col-12 col-md-6'>
-                <Card className='card-proces-2'>
+                <Card className='card-prices-2'>
                   <div className='d-flex justify-content-between alig-items-center'>
                     <div>
                       <h1>Premiun</h1>
@@ -111,7 +111,7 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Creación de ingredientes propios
                   </p>
-                  <button className='card-button'>Únete</button>
+                  <button className='card-button'>Contrata</button>
                 </Card>
               </div>
             </div>

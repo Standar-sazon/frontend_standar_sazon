@@ -3,7 +3,7 @@ import LOGO from '../public/logo.svg'
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className='footer'>
       <div className='all-footer'>
         <img className='images-footer-1' src={LOGO} alt='LOGO' />
         <nav>
