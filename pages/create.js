@@ -6,7 +6,7 @@ import Form from '../components/Create-form.js'
 export default function create () {
   return (
     <Layout>
-      <div className='container-fluid section-create-account'>
+      <div className='container-fluid create-background'>
         <div className='row'>
           <div className='container'>
             <div className='row'>

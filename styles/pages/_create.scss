@@ -1,4 +1,15 @@
-
+.create-background {
+  background-image: url('../../public/backgrouncreate.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+  @include desktop  {
+    background-image: url('../../public/backgrouncreate.png');
+  }
+    @include tablet  {
+    background-image: url('../../public/backgrouncreate.png');
+  }    
+}
 
 .create-card-wrapper{
   height: 40vh;
@@ -77,6 +88,10 @@
       flex-direction: row;
       padding: 0 30px;
       height: 37.5rem;
+      align-items: center;
+      flex-flow: wrap;
+      justify-content: center;
+      padding: 140px 30px;
     }
     .divider-left, .divider-right{
       width: 80%;
@@ -92,7 +107,7 @@
           width: 90%;
         }  
         @include desktop{
-          width: 80%;
+          width: 90%;
         }  
         label{
           color: $white;
@@ -119,14 +134,14 @@
       background-color: $dark-mode;
       border: none;
       border-radius: 25px;
-      padding: 5px 20px;
+      padding: 10px 20px;
       font-size: $size-footerlinks-mobile;
       font-weight: $bold;
-      margin: 10px 0px 60px 0px;
+      margin: 20px 0px 20px 0px;
       &:hover{
         color: $dark-mode;
         background-color: $light-green;
-        transition: 0.3s ease;
+        transition: 0.5s ease;
         font-weight: $bold;
       }
     }
