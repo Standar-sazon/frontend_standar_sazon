@@ -1,0 +1,41 @@
+import React from 'react'
+
+const createForm = () => {
+  return (
+    <div className='create-form-wrapper'>
+      <div className='form-group'>
+        <div class='divider-left'>
+          <div class='form-input'>
+            <label for=''>Nombre*</label>
+            <input type='text' placeholder='Escribe tu(s) nombre(s)' />
+          </div>
+          <div class='form-input'>
+            <label for=''>Apellidos*</label>
+            <input type='text' placeholder='Escribe tu(s) apellido(s)' />
+          </div>
+          <div class='form-input'>
+            <label for=''>Email*</label>
+            <input type='email' placeholder='Correo electronico' />
+          </div>
+        </div>
+        <div class='divider-right'>
+          <div class='form-input'>
+            <label for=''>Ciudad*</label>
+            <input type='text' placeholder='¿De donde eres?' />
+          </div>
+          <div class='form-input'>
+            <label for=''>Contraseña*</label>
+            <input type='password' placeholder='Escribe tu contraseña' />
+          </div>
+          <div class='form-input'>
+            <label for=''>Confirmar contraseña*</label>
+            <input type='password' placeholder='Confirma tu contraseña' />
+          </div>
+        </div>
+      </div>
+      {/* <button>Crear cuenta</button> */}
+    </div>
+  )
+}
+
+export default createForm

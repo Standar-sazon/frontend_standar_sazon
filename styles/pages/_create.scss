@@ -1,0 +1,137 @@
+
+
+.create-card-wrapper{
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  @include tablet{
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .card-group{
+    width: 90%;
+    height: 90%;
+    background-color: $orange-opacity;
+    border-radius: .5rem .5rem 0rem 0rem;
+    backdrop-filter: blur(1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include tablet{
+      border-radius: 1.5rem 0rem 0rem 1.5rem;
+      background-color: $green-opacity;
+      height: 37.5rem;
+    }
+    h1{
+      color: $white;
+      font-size: 36px;
+      font-weight: $medium;
+      width: 70%;
+      @include tablet{
+        font-size: 42px;
+        width: 90%;
+        padding: 0 40px;
+      }
+      @include desktop{
+        font-size: 48px;
+      }
+    }
+    h2{
+      color: $white;
+      font-size: 30px;
+      font-weight: $regular;
+      width: 70%;
+      @include tablet{
+        width: 80%;
+        padding: 0 30px;
+      }
+    }
+  }
+}
+
+.create-form-wrapper{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  @include tablet{
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .form-group {
+    width: 90%;
+    height: 90%;
+    background-color: $orange-opacity;
+    border-radius: 0rem 0rem .5rem .5rem;
+    backdrop-filter: blur(1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include tablet{
+      border-radius: 0rem 1.5rem 1.5rem .0rem;
+      flex-direction: row;
+      padding: 0 30px;
+      height: 37.5rem;
+    }
+    .divider-left, .divider-right{
+      width: 80%;
+      @include tablet{
+        width: 50%;
+      }
+      .form-input{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0.75rem 0;
+        @include tablet{
+          width: 90%;
+        }  
+        @include desktop{
+          width: 80%;
+        }  
+        label{
+          color: $white;
+          font-size: $size-inputstitle-mobile;
+          font-weight: $medium;
+          @include tablet{
+            font-size: $size-inputstitle-desktop; 
+          }
+        }
+        input{
+          height: 2rem;
+          padding: 0 .75rem;
+          border-radius: .5rem;
+          border: none;
+          font-size: $size-inputsplaceholder-mobile;
+          @include tablet{
+            font-size: $size-inputsplaceholder-desktop;
+          }
+        }
+      }
+    }
+    .create-button{
+      color: $white;
+      background-color: $dark-mode;
+      border: none;
+      border-radius: 25px;
+      padding: 5px 20px;
+      font-size: $size-footerlinks-mobile;
+      font-weight: $bold;
+      margin: 10px 0px 60px 0px;
+      &:hover{
+        color: $dark-mode;
+        background-color: $light-green;
+        transition: 0.3s ease;
+        font-weight: $bold;
+      }
+    }
+    @include tablet{
+      margin: 0;
+    }
+  }
+}
