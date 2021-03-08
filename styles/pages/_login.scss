@@ -1,0 +1,34 @@
+.section-login {
+    background-image: url('../../public/bgloginmovil.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $white;
+
+}
+
+.access-card{
+    background-color: $orange-opacity;
+    border-radius: 8px;
+    max-width: 350px;
+    max-height: 560px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 30px;
+    margin: 50px auto 20px auto;
+
+    input{
+        border-radius: 10px;
+    }
+
+    button{
+        background-color: $dark-mode;
+        border-radius: 25px;
+        border: none;
+        color: $white;
+        width: 150px;
+        justify-content: center;
+        padding: 10px;
+        margin: 0 auto;
+    }
+    }
