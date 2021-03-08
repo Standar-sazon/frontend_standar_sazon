@@ -3,20 +3,27 @@
 .CardHow {
   background-color: $dark-green;
   color: $white;
-  width: 250px;
-  height: 500px;
-  border: 0;
+  width: 285px;
+  height: 520px;
+  border: 0px;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
+
 }
 
 .description{
-  border: 4px solid $light-green;
-  padding: 10px;
+  border: 2px solid $light-green;
+  padding: 5px;
   border-radius: 30px 0 30px 30px;
   background-color: $light-green;
-  height: 240px;
-  margin: 5px;
+  height: 290px;
+  width: 277px;
+  margin: 2px;
+  margin-right: 16px;
+  margin-block-end: -9px;
+  margin-left: 2px;
+  position: relative;
+  top: -20px;
 }
 
 .step {
@@ -35,7 +42,7 @@
 .cardText{
   font-style: $font-family;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 10px;
   margin-left: 10px;
 }
 .font-sizes{

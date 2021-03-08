@@ -15,10 +15,15 @@
     background-color: $dark-mode;
     color: $white;
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 300%;
+    width: 50px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
   }
   
   .message {
     margin-right: auto;
+    font-size: 22px;
   }
 }

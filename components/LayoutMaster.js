@@ -1,10 +1,10 @@
 
 import Head from 'next/head'
 import React from 'react'
-import Nav from './Nav'
-import Footer from './Footer'
+//* import Nav from './Nav'
+// import Footer from './Footer'*//
 
-export default function LayoutMaster({ children }) {
+export default function LayoutMaster ({ children }) {
   return (
     <>
       <Head>
