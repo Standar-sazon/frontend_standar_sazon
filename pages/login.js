@@ -4,26 +4,29 @@ import Layout from '../components/LayoutMaster'
 export default function login () {
   return (
     <Layout>
-      <div class='container-fluid section-login'>
-        <div class='row'>
-          <div class='container'>
-            <div class='row'>
-              <div class='col-12 col-md-4'>
+      <div className='container-fluid section-login'>
+        <div className='row'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-12 col-md-4'>
                 {/* content */}
+                <div className='access-card' />
               </div>
-              <div class='col-12 col-md-8'>
+              <div className='col-12 col-md-8'>
                 {/* content */}
-                <div className='access-card'>
-                  <h2>Inicia
-                    sesión
-                  </h2>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo distinctio nihil doloribus sed esse perferendis, officiis cum sequi amet repellendus facilis quisquam optio minus vitae.</p>
-                  <div className='d-flex justify-content-between align-items-center'>
-                    <p>Correo</p>
-                    <input class='enter-email' type='text' placeholder='example@mail.com' name='' id='' />
-                    <p>Contraseña</p>
-                    <input class='enter-email' type='text' placeholder='example@mail.com' name='' id='' />
-                    <button class='boton-gratis'>Inicia sesión</button>
+                <div className='access-card-1'>
+                  <div className='text-login'>
+                    <p>Inicia
+                      sesión
+                    </p>
+                    <p>y escala tus menús</p>
+                  </div>
+                  <div>
+                    <p>Email*</p>
+                    <input type='text' placeholder='Escribe tu correo' name='' id='' />
+                    <p>Contraseña*</p>
+                    <input type='text' placeholder='Escribe tu contraseña' name='' id='' />
+                    <button>Inicia sesión</button>
                   </div>
                 </div>
               </div>

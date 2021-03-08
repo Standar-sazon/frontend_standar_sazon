@@ -4,31 +4,51 @@
     background-size: cover;
     color: $white;
 
+    @include desktop  {
+        background-image: url('../../public/bglogindesktop.png');
+        }
+        @include tablet  {
+            background-image: url('../../public/bglogindesktop.png');
+            }
+        
+
 }
 
-.access-card{
+.access-card-1{
     background-color: $orange-opacity;
     border-radius: 8px;
-    max-width: 350px;
-    max-height: 560px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 25px;
-    padding-right: 30px;
+    width: 360px;
+    height: 550px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin: 50px auto 20px auto;
 
-    input{
-        border-radius: 10px;
+    .text-login{
+        font-size: 30px;
     }
 
-    button{
-        background-color: $dark-mode;
-        border-radius: 25px;
-        border: none;
-        color: $white;
-        width: 150px;
-        justify-content: center;
-        padding: 10px;
-        margin: 0 auto;
-    }
+
+       
+
+        input{
+            border-radius: 3px;
+            font-size: $size-inputsplaceholder-mobile;
+            color: $soft-grey;
+            width: 250px;
+            margin: 0 auto 10px 0;
+            border: none;
+        }
+
+        button{
+            background-color: $dark-mode;
+            border-radius: 25px;
+            border: none;
+            color: $white;
+            width: 150px;
+            justify-content: center;
+            padding: 10px;
+            margin: 50px 0 auto 0;
+        }
     }
