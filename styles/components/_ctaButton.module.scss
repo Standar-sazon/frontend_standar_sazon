@@ -1,0 +1,24 @@
+@import '../variables';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark-green;
+  border-radius: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 8px 5px;
+
+  .iconWrapper {
+    margin-right: auto;
+    background-color: $dark-mode;
+    color: $white;
+    padding: 10px;
+    border-radius: 50%;
+  }
+  
+  .message {
+    margin-right: auto;
+  }
+}
