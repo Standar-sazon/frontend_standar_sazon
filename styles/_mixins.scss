@@ -9,3 +9,9 @@
       @content;
   }
 }
+
+@mixin movil () {
+  @media screen and (min-width: 320px){
+      @content;
+  }
+}

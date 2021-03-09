@@ -1,9 +1,13 @@
 import React from 'react'
 import Layout from '../components/LayoutMaster'
-import HERO from '../public/img/heroimage.jpg'
 import LOGO_MOBILE from '../public/img/logo_hero_m.png'
 import ARROW from '../public/img/arrow.svg'
 import LOGO_DESKTOP from '../public/img/logo_hero_desk.png'
+import { Card } from 'react-bootstrap'
+import BENEFICIOS from '../public/palomita.svg'
+import Benefits from '../components/Benefits'
+import Dish from '../components/Benefits-image'
+import ImageBack from '../components/Benefits-bkg'
 
 export default function Home () {
   return (
@@ -29,12 +33,11 @@ export default function Home () {
       {/* beneficios */}
       <div className='container-fluid section-benefits'>
         <div className='row'>
+          <ImageBack />
           <div className='container'>
             <div className='row'>
-              <div className='col-12 col-md-6' />
-              {/* contenido */}
-              <div className='col-12 col-md-6' />
-              {/* contenido */}
+              <div className='col-12 col-md-6'><Dish /></div>
+              <div className='col-12 col-md-6'><Benefits /></div>
             </div>
           </div>
         </div>
@@ -70,16 +73,59 @@ export default function Home () {
           <div className='container'>
             <div className='row'>
               <div className='col-12 col-md-6'>
-                {/* card.prices */}
+                <Card className='card-prices-1'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+                      <h1>Básico</h1>
+                      <h2>Free</h2>
+                    </div>
+                    <p className='color-subtittle'>Free</p>
+                  </div>
+                  <p className='margin-plan'>/Sin Limite de tiempo</p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Creación de receta con base de datos
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    + de mil ingredientes
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Indicadores administrativos preestablecidos
+                  </p>
+                  <button className='card-button'>Únete</button>
+                </Card>
               </div>
               <div className='col-12 col-md-6'>
-                {/* card.prices */}
+                <Card className='card-prices-2'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+                      <h1>Premiun</h1>
+                      <h2>$340</h2>
+                    </div>
+                    <p className='color-subtittle'>$340</p>
+                  </div>
+                  <p className='margin-plan'>/Mensual</p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Descarga de recetas en formato PDF
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Indicadores administrativos preestablecidos
+                  </p>
+                  <p>
+                    <img className='' src={BENEFICIOS} alt='approved' />
+                    Creación de ingredientes propios
+                  </p>
+                  <button className='card-button'>Contrata</button>
+                </Card>
               </div>
             </div>
           </div>
         </div>
       </div>
     </Layout>
-
   )
 }
