@@ -13,7 +13,7 @@ import Benefits from '../components/Benefits'
 import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
 
-export default function Home() {
+export default function Home () {
   return (
     <Layout>
 
@@ -40,9 +40,9 @@ export default function Home() {
           <ImageBack />
           <div className='container'>
             <div className='row'>
-              <div className='col-12 col-md-6' /><Dish />
+              <div className='col-12 col-md-6'><Dish /></div>
+              <div className='col-12 col-md-6'><Benefits /></div>
             </div>
-            <div className='col-12 col-md-6' /><Benefits />
           </div>
         </div>
       </div>
