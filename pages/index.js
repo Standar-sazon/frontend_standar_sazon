@@ -13,7 +13,7 @@ import Benefits from '../components/Benefits'
 import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
 
-export default function Home () {
+export default function Home() {
   return (
     <Layout>
 
@@ -48,7 +48,7 @@ export default function Home () {
       </div>
 
       {/* como.funciona. */}
-      <div gitclassName='container-fluid section-how-function'>
+      <div className='container-fluid section-how-function'>
         <div className='row'>
           <div className='col-12 col-lg-6 offset-lg-6 how-it-works'>
             <h1 className='font border'>¿Cómo funciona?</h1>
