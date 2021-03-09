@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const CtaButton = ({ icon, message }) => (
-  <div className='container'>
+  <div className='containerButton'>
     <span className='iconWrapper'>
       <FontAwesomeIcon icon={icon} />
     </span>

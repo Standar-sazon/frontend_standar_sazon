@@ -7,7 +7,7 @@ const CardHow = ({ children, backgroundSrc, title, step, content, subContent }) 
 
   return (
     <div className='card cardHow'>
-      <div>
+      <div className='opacity-card-how'>
         <img
           src={backgroundSrc}
           layout='fill'

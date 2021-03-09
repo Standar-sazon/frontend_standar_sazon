@@ -5,7 +5,7 @@ import CardHow from '../components/CardHow'
 import { ContentCard1, ContentCard2, ContentCard3, ContentCard4 } from '../components/ContentCards'
 import CtaButton from '../components/CtaButton'
 
-export default function Home() {
+export default function Home () {
   return (
     <Layout>
 
@@ -39,11 +39,11 @@ export default function Home() {
       <div className='container-fluid section-how-function'>
         <div className='row'>
           <div className='col-12 col-lg-6 offset-lg-6 how-it-works'>
-            <h1 className='font border'>¿Cómo funciona?</h1>
+            <h1 className='font border-down'>¿Cómo funciona?</h1>
           </div>
         </div>
         <div className='row'>
-          <div className='col-12 col-md-6 col-lg-3 d-flex justify-items-start'>
+          <div className='col-12 col-md-6 col-xl-3 d-flex justify-items-start'>
             <CardHow
               backgroundSrc='/images/images-card/Card_1.svg'
               title='Elige el tipo de receta'
@@ -53,7 +53,7 @@ export default function Home() {
               <ContentCard1 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_2.svg'
               title='Elige tus ingredientes'
@@ -64,7 +64,7 @@ export default function Home() {
               <ContentCard2 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_3.svg'
               title='Ingresa los pesos'
@@ -74,7 +74,7 @@ export default function Home() {
               <ContentCard3 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_4.svg'
               title='Elige tus porciones'
