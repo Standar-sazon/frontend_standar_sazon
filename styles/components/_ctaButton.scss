@@ -1,0 +1,28 @@
+
+.containerButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark-green;
+  border-radius: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 8px 5px;
+
+  .iconWrapper {
+    margin-right: auto;
+    background-color: $dark-mode;
+    color: $white;
+    padding: 10px;
+    border-radius: 300%;
+    width: 50px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .message {
+    margin-right: auto;
+    font-size: 22px;
+  }
+}

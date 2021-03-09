@@ -1,3 +1,17 @@
 @import 'variables';
 @import 'mixins';
 @import 'base';
+@import 'utils';
+
+@import './pages/landing/benefits';
+@import './pages/landing/hero';
+@import './pages/landing/howFuctions';
+@import './pages/landing/planes';
+
+@import './pages/create';
+@import './pages/login';
+
+@import './components/navbar'; 
+@import './components/footer';
+@import './components/cardHow';
+@import './components/ctaButton';

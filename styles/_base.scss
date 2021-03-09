@@ -1,0 +1,45 @@
+// <h1> - titulo
+
+// <h2> - titulo
+
+// <h3> - subtitulo
+
+// <p> body
+
+// <small>  caption
+
+body {
+  font-family: $font-family;
+  font-size: $size-cardbenefits-mobile;
+  @include tablet {
+      font-size: $size-cardbenefits-desktop;
+  }
+}
+
+h1, h2 {
+  font-size: $size-title-mobile;
+  @include tablet {
+      font-size: $size-title-desktop;
+  }
+}
+
+h3 {
+  font-size: $size-subtitle-mobile;
+  @include tablet {
+      font-size: $size-subtitle-desktop;
+  }
+}
+
+small {
+  font-size: $size-caption-mobile;
+  @include tablet {
+      font-size: $size-caption-desktop;
+  }
+}
+
+button {
+  font-size: $size-button-mobile;
+  @include tablet {
+      font-size: $size-button-desktop;
+  }
+}
