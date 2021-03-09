@@ -1,14 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
-import styles from '../styles/components/_ctaButton.module.scss'
-
 const CtaButton = ({ icon, message }) => (
-  <div className={styles.container}>
-    <span className={styles.iconWrapper}>
+  <div className='container'>
+    <span className='iconWrapper'>
       <FontAwesomeIcon icon={icon} />
     </span>
-    <span className={styles.message}>{message}</span>
+    <span className='message'>{message}</span>
   </div>
 )
 

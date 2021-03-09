@@ -5,7 +5,7 @@ import CardHow from '../components/CardHow'
 import { ContentCard1, ContentCard2, ContentCard3, ContentCard4 } from '../components/ContentCards'
 import CtaButton from '../components/CtaButton'
 
-export default function Home () {
+export default function Home() {
   return (
     <Layout>
 
@@ -39,8 +39,7 @@ export default function Home () {
       <div className='container-fluid section-how-function'>
         <div className='row'>
           <div className='col-12 col-lg-6 offset-lg-6 how-it-works'>
-            <p className='font'>¿Cómo funciona?</p>
-            <p>----</p>
+            <h1 className='font border'>¿Cómo funciona?</h1>
           </div>
         </div>
         <div className='row'>

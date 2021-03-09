@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../styles/components/_cardHow.module.scss'
 
 const CardHow = ({ children, backgroundSrc, title, step, content, subContent }) => {
   const subContentElement = subContent
@@ -7,12 +6,12 @@ const CardHow = ({ children, backgroundSrc, title, step, content, subContent }) 
     : null
 
   return (
-    <div className={`card ${styles.CardHow}`}>
+    <div className='card cardHow'>
       <div>
         <img
           src={backgroundSrc}
           layout='fill'
-          className={`card-img ${styles.image}`}
+          className='card-img image'
           alt='Card steps in image'
         />
       </div>
@@ -22,9 +21,9 @@ const CardHow = ({ children, backgroundSrc, title, step, content, subContent }) 
           {children}
         </div>
       </div>
-      <div className={`card-body ${styles.description}`}>
-        <div className={styles.step}>{step}</div>
-        <p className={styles.cardText}>{content}</p>
+      <div className='card-body description'>
+        <div className='step'>{step}</div>
+        <p className='cardText'>{content}</p>
         {subContentElement}
       </div>
     </div>
