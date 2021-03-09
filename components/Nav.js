@@ -1,17 +1,27 @@
 import React from 'react'
-import LOGO from '../public/img/logo.svg'
+import { Button, Navbar, Form, Nav } from 'react-bootstrap'
+import Logo from '../public/logo.svg'
 
-export default function Nav () {
+const navBar = () => {
   return (
-    <nav className='menu_nav'>
-      <img src={LOGO} alt='logo' className='img_logo' />
-      <div className='menu'>
-        <a href=''>Beneficios</a>
-        <a href=''>Cómo funciona</a>
-        <a href=''>Planes</a>
-        <a href=''>Crear cuenta</a>
-      </div>
-      <button className='btn-singin'>Iniciar sesión</button>
-    </nav>
+    <div>
+      <Navbar className='nav-style d-md-flex px-4-lg' expand='lg'>
+        <img src={Logo} alt='logo' />
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='link-style m-auto'>
+            <Nav.Link href='#beneficios'>Beneficios</Nav.Link>
+            <Nav.Link href='#como-funciona'>¿Cómo funciona?</Nav.Link>
+            <Nav.Link href='#planes'>Planes</Nav.Link>
+            <Nav.Link className='link-account' href='#crear-cuenta'>Crear cuenta</Nav.Link>
+          </Nav>
+          <Form inline>
+            <Button>Iniciar Sesión</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
   )
 }
+
+export default navBar
