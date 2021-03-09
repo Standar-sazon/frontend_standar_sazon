@@ -1,18 +1,20 @@
 import React from 'react'
 import Layout from '../components/LayoutMaster'
+import CardHeaderLogin from '../components/Login-header'
+import FormLogin from '../components/Login-form'
 
 export default function login () {
   return (
     <Layout>
-      <div class='container-fluid section-login'>
-        <div class='row'>
-          <div class='container'>
-            <div class='row'>
-              <div class='col-12 col-md-4'>
-                {/* content */}
+      <div className='container-fluid section-login'>
+        <div className='row'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-12 col-md-4 p-0'>
+                <CardHeaderLogin />
               </div>
-              <div class='col-12 col-md-8'>
-                {/* content */}
+              <div className='col-12 col-md-8 p-0'>
+                <FormLogin />
               </div>
             </div>
           </div>
