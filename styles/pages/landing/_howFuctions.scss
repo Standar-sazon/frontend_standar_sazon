@@ -1,0 +1,28 @@
+
+.section-how-function {
+  background: linear-gradient(90deg, $dark-opacity 30%, $orange 30%);
+  color: $white;
+
+  .how-it-works {
+    margin-top: 10px;
+  }
+  
+  .font{
+    font-size: 40px;
+    font-family: $font-family;
+    font-weight: 600;
+    margin-bottom: 70px;
+  }
+  
+  .border-down{
+    border-bottom: 5px solid white;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    margin-right: 190px;
+    margin-left: 190px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
