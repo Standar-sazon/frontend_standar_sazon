@@ -1,0 +1,35 @@
+p {
+    color: $white;
+}
+
+.buttonorange{
+    background-color: $orange;
+    border-radius: 25px;
+    border: none;
+    color: $white;
+    width: 150px;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px auto;
+}
+
+.buttongreen{
+    background-color: $dark-green;
+    border-radius: 25px;
+    border: none;
+    color: $white;
+    width: 150px;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px auto;
+}
+
+.card-table{
+    width: 900px;
+    height: 500px;
+    background-color: $orange-opacity;
+}
+
+.tittleResume{
+    margin: 20px auto;
+}
