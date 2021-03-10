@@ -4,16 +4,16 @@ import Layout from '../components/LayoutMaster'
 import CardHow from '../components/CardHow'
 import { ContentCard1, ContentCard2, ContentCard3, ContentCard4 } from '../components/ContentCards'
 import CtaButton from '../components/CtaButton'
-import LOGO_MOBILE from '../public/img/logo_hero_m.png'
+import LOGO_MOBILE from '../public/img/logomobile.svg'
 import ARROW from '../public/img/arrow.svg'
-import LOGO_DESKTOP from '../public/img/logo_hero_desk.png'
+import LOGO_DESKTOP from '../public/img/logodesktop.svg'
 import { Card } from 'react-bootstrap'
 import BENEFICIOS from '../public/palomita.svg'
 import Benefits from '../components/Benefits'
 import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
 
-export default function Home () {
+export default function Home() {
   return (
     <Layout>
 
@@ -55,7 +55,7 @@ export default function Home () {
           </div>
         </div>
         <div className='row'>
-          <div className='col-12 col-md-6 col-lg-3 d-flex justify-items-start'>
+          <div className='col-12 col-md-6 col-xl-3 d-flex justify-items-start'>
             <CardHow
               backgroundSrc='/images/images-card/Card_1.svg'
               title='Elige el tipo de receta'
@@ -65,7 +65,7 @@ export default function Home () {
               <ContentCard1 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_2.svg'
               title='Elige tus ingredientes'
@@ -76,7 +76,7 @@ export default function Home () {
               <ContentCard2 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_3.svg'
               title='Ingresa los pesos'
@@ -86,7 +86,7 @@ export default function Home () {
               <ContentCard3 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_4.svg'
               title='Elige tus porciones'
