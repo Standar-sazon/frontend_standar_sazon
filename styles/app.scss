@@ -10,6 +10,12 @@
 
 @import './pages/create';
 @import './pages/login';
+@import './pages/recipes/list-recipes';
+@import './pages/recipes/create/form-init';
+@import './pages/recipes/create/ingredients';
+@import './pages/recipes/create/resume';
+@import './pages/recipes/create/utencils';
+@import './pages/recipes/detail/recipes-detail';
 
 @import './components/navbar'; 
 @import './components/footer';

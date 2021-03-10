@@ -16,16 +16,12 @@ export default function LayoutUser ({ children }) {
       <NavUser />
       <div className='container-fluid'>
         <div className='row'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-12 col-md-3 p-0'>
-                <SideBar />
-              </div>
-              <div className='col-12 col-md-9'>
-                {/* Contenido */}
-                {children}
-              </div>
-            </div>
+          <div className='col-12 col-md-3 p-0'>
+            <SideBar />
+          </div>
+          <div className='col-12 col-md-9'>
+            {/* Contenido */}
+            {children}
           </div>
         </div>
       </div>
