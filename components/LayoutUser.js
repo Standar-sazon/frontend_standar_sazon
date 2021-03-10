@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import NavUser from './NavUser'
+import SideBar from '../components/Side-bar'
 
 export default function LayoutUser ({ children }) {
   return (
@@ -13,7 +14,17 @@ export default function LayoutUser ({ children }) {
         <scrip src='https://kit.fontawesome.com/1f42bf96bf.js' crossOrigin='anonymous' />
       </Head>
       <NavUser />
-      {children}
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-12 col-md-3 p-0'>
+            <SideBar />
+          </div>
+          <div className='col-12 col-md-9'>
+            {/* Contenido */}
+            {children}
+          </div>
+        </div>
+      </div>
     </>
   )
 }

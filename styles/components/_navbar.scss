@@ -27,6 +27,12 @@
     border-bottom: none;
     margin: 0 20px;
   }
+  img{
+    width: 24px;
+    @include desktop{
+      display: none;
+    }
+  }
 }
 .link-account{
   font-size: $size-sideslider-mobile;
