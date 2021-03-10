@@ -13,7 +13,7 @@ import Benefits from '../components/Benefits'
 import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
 
-export default function Home () {
+export default function Home() {
   return (
     <Layout>
 
