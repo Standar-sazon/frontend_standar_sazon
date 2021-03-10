@@ -55,7 +55,7 @@ export default function Home() {
           </div>
         </div>
         <div className='row'>
-          <div className='col-12 col-md-6 col-lg-3 d-flex justify-items-start'>
+          <div className='col-12 col-md-6 col-xl-3 d-flex justify-items-start'>
             <CardHow
               backgroundSrc='/images/images-card/Card_1.svg'
               title='Elige el tipo de receta'
@@ -65,7 +65,7 @@ export default function Home() {
               <ContentCard1 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_2.svg'
               title='Elige tus ingredientes'
@@ -76,7 +76,7 @@ export default function Home() {
               <ContentCard2 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_3.svg'
               title='Ingresa los pesos'
@@ -86,7 +86,7 @@ export default function Home() {
               <ContentCard3 />
             </CardHow>
           </div>
-          <div className='col-12 col-md-6 col-lg-3'>
+          <div className='col-12 col-md-6 col-xl-3'>
             <CardHow
               backgroundSrc='/images/images-card/Card_4.svg'
               title='Elige tus porciones'
