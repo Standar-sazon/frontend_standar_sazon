@@ -1,4 +1,4 @@
-import LayoutUser from '../../../components/LayoutUser'
+import LayoutUser from '../../components/LayoutUser'
 import React from 'react'
 
 const Ingredients = () => {
