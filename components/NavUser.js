@@ -23,10 +23,10 @@ const navProfile = () => {
                 <p className='account-footer'>Tipo de cuenta</p>
               </span>
             </div>
-            <Nav.Link href='#Recetas'>Mis recetas <span className='nav-icon'><img src={Saved} alt='' /></span> </Nav.Link>
-            <Nav.Link href='#Agregar'>Crear receta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
-            <Nav.Link href='#Subreceta'>Crear subreceta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
-            <Nav.Link href='#Glosario'>Glosario <span className='nav-icon'><img src={Book} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='#Recetas'>Mis recetas <span className='nav-icon'><img src={Saved} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='#Agregar'>Crear receta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='#Subreceta'>Crear subreceta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='#Glosario'>Glosario <span className='nav-icon'><img src={Book} alt='' /></span> </Nav.Link>
           </Nav>
           <Form inline>
             <Button variant='outline-dark'>Cerrar sesión</Button>

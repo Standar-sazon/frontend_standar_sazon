@@ -24,14 +24,11 @@
     border-bottom: none;
   }
   @include desktop{
-    border-bottom: none;
-    margin: 0 20px;
+    border-bottom: 2px solid $orange;
+    margin: 10px 0;
   }
   img{
     width: 24px;
-    @include desktop{
-      display: none;
-    }
   }
 }
 .link-account{
