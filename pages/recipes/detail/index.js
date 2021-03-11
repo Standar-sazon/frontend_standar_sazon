@@ -1,10 +1,25 @@
 import LayoutUser from '../../../components/LayoutUser'
+import Detail from '../../../components/Accordion'
 import React from 'react'
 
 const RecipeDetail = () => {
   return (
     <LayoutUser>
-      <h1>Deatalle de receta</h1>
+      <div class='header-detail'>
+        <div class='header-detail-section'>
+          <h4>Nombre de la receta</h4>
+          <p>Receta</p>
+        </div>
+        <div class='header-detail-section middle-section'>
+          <h4>Categoria</h4>
+          <p>Categoria del platillo</p>
+        </div>
+        <div class='header-detail-section'>
+          <h4>Tipo de receta</h4>
+          <p>Standard</p>
+        </div>
+      </div>
+      <Detail />
     </LayoutUser>
   )
 }

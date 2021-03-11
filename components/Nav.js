@@ -15,7 +15,7 @@ const navBar = () => {
             <Nav.Link href='#planes'>Planes</Nav.Link>
             <Nav.Link className='link-account' href='#crear-cuenta'>Crear cuenta</Nav.Link>
           </Nav>
-          <Form inline>
+          <Form className='form-nav' inline>
             <Button>Iniciar Sesión</Button>
           </Form>
         </Navbar.Collapse>

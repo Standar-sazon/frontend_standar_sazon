@@ -25,13 +25,10 @@
   }
   @include desktop{
     border-bottom: none;
-    margin: 0 20px;
+    margin: 10px 0;
   }
   img{
     width: 24px;
-    @include desktop{
-      display: none;
-    }
   }
 }
 .link-account{
@@ -45,7 +42,7 @@
   }
 }
 
-Form{
+.form-nav{
   display: flex;
   justify-content: center;
   .btn-primary{
