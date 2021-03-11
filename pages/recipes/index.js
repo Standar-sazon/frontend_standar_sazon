@@ -5,12 +5,17 @@ import CardRecipeView from '../../components/CardRecipeView'
 const Recipes = () => {
   return (
     <LayoutUser>
-      <h1>Lista de recipes</h1>
-      <CardRecipeView>
-        backgroundSrc= ''
-        title:'Alitas Clásicas'
-      </CardRecipeView>
-
+      <div className='row'>
+        <div className="col-12 col-md-3 col-xl-3 d-flex justify-items-start'">
+          <CardRecipeView />
+        </div>
+        <div className='col-12 col-md-3 col-xl-3'>
+          <CardRecipeView />
+        </div>
+        <div className='col-12 col-md-3 col-xl-3'>
+          <CardRecipeView />
+        </div>
+      </div>
     </LayoutUser>
   )
 }
