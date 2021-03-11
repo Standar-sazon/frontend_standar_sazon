@@ -12,7 +12,6 @@ const Utencilios = () => {
         <button className='buttonorange'>Olla express</button>
       </div>
       <div>
-        <button className='buttongreen'>Sarten</button>
         <p>Escribe tus instrucciones</p>
         <Card className='card-table'>
           <div className='form-input'>
@@ -20,7 +19,7 @@ const Utencilios = () => {
           </div>
           <Table borderless className='tittleResume'>
             <td>Paso 1</td>
-            <button>Delete</button>
+            <button className='deletebutton'>X</button>
           </Table>
         </Card>
       </div>

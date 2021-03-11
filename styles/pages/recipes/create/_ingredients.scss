@@ -21,4 +21,43 @@
 
 }
 
+.deletebutton{
+    background-color: $dark-green;
+    border-radius: 50%;
+    color: $white;
+    border: none;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0.75rem 0;
+    @include tablet{
+      width: 90%;
+    }  
+    @include desktop{
+      width: 90%;
+    }  
+    label{
+      color: $white;
+      font-size: $size-inputstitle-mobile;
+      font-weight: $medium;
+      @include tablet{
+        font-size: $size-inputstitle-desktop; 
+      }
+    }
+    input{
+      height: 2.75rem;
+      padding: 0 .75rem;
+      border-radius: .5rem;
+      border: none;
+      font-size: $size-inputsplaceholder-mobile;
+      @include tablet{
+        font-size: $size-inputsplaceholder-desktop;
+      }
+    }
+  }
+
+
 

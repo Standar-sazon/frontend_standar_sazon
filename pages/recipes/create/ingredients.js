@@ -59,7 +59,7 @@ const Ingredients = () => {
         <td>Costo unitario</td>
         <td>U. M.</td>
         <td>Importe</td>
-        <button>Delete</button>
+        <button className='deletebutton'>X</button>
       </Table>
       <div className='row justify-content-center'>
         <div className='col-12 col-lg-4'>

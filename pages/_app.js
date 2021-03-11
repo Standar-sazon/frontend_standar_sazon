@@ -4,7 +4,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '../styles/app.scss'
 
 config.autoAddCss = false
-function MyApp({ Component, pageProps }) {
+function MyApp ({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
