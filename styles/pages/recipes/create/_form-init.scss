@@ -1,0 +1,141 @@
+.create-form-init{
+    background-color: $dark-green;
+    color: $white;
+    width: 375px;
+    height: 620px;
+    border-radius: 40px 10px 10px 40px;
+    margin-top: 3rem;
+    font-weight: $medium;
+    @include desktop{
+        width: 630px;
+        height: 620px;
+           }
+
+    
+    .input1 {    
+    @include desktop{
+    position: relative;
+    right:10rem;
+    top: 3rem;
+    }
+    }
+
+    .input2{    
+    @include desktop{
+        position: relative;
+        left:10rem;
+        bottom:5.2rem;
+        }
+    }
+        
+    .input3{    
+        @include desktop{
+        position: relative;
+        right:10rem;
+        bottom: 3.50rem;
+        }
+    }        
+
+
+    .from-data{
+    padding-top: 4rem;
+
+    }
+
+    .first-data{
+        position:absolute;
+        top:8rem;
+        @include desktop{
+        position:absolute;
+        bottom:30rem;
+        }
+        @include tablet{
+            position:relative;
+            top:3rem;
+            }
+
+    }
+
+    
+
+    .input{
+        width: 250px;
+        height: 32px;
+        font-size: $size-inputsplaceholder-mobile;
+        border-radius: 5px;
+        color: $medium-grey;
+
+    }
+
+    .next-button{
+        width: 200px;
+        height: 40px;
+        border-radius: 50px;
+        background-color: $orange;
+        color: $white;
+        font-size: size-button-mobile;
+        font-weight: $bold;
+        position: absolute;
+        left: 6.5rem;
+        bottom: 1.5rem;
+        @include tablet{
+            bottom: 3.5rem;   
+        }
+        @include desktop{
+            left: 12rem;
+            width: 300px;
+            height: 50px;
+            position: absolute;
+            bottom:5rem;   
+        }    
+
+    }
+
+    .arrowblack{
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 17rem;
+        top: 38.2rem;
+        @include desktop{
+            width: 42px;
+            height: 42px;
+            left: 27.8rem;
+            top: 35.9rem;  
+
+        }
+    }
+
+    .arrowgray{
+        position: absolute;
+        left: 18.8rem;
+        top: 20.7rem;
+        
+        @include tablet{
+            position: absolute;
+            left: 18.8rem;
+            top: 22.5rem;
+        }
+
+        @include desktop{
+            position: absolute;
+            left: 13.9rem;
+            top: 6.5rem;
+            }
+    }
+
+    .classific-text{
+        width: 200px;
+        height: 40px;
+        font-size: $size-inputstitle-mobile;
+        margin-top: 5px;
+        @include desktop{
+            width: 255px;
+            position: absolute;
+            bottom: -11rem;
+        }
+    }
+
+
+    
+}
