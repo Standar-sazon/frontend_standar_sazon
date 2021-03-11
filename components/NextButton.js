@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const NextButton = ({ icon, message }) => (
-  <div className='insideButton'>
+  <button className='insideButton'>
     <span className='textButton'>{message}</span>
     <span className='iconButton'>
       <FontAwesomeIcon icon={icon} />
     </span>
-  </div>
+  </button>
 )
 
 NextButton.defaultProps = {
