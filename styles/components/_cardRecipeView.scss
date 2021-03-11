@@ -63,13 +63,16 @@
 
   .containerButtonRecipeView{
     display: flex;
-    align-items: left;
-    justify-content: left;
+    align-items: end;
+    justify-content: end;
     background-color: $orange;
-    border-radius: 30px;
-    margin-top: -20px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-top: -50px;
     margin-bottom: 50px;
-    padding: 3px 3px;
+    margin-left: 90px;
+    margin-right: 60px;
+    padding: 4px 3px;
   } 
     .iconWrapperRecipe {
       margin-right: auto;
