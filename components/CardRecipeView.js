@@ -31,7 +31,7 @@ const CardRecipeView = ({ title, icon, category, time, entry, price }) => {
                 </li>
               </ul>
               <div className='containerButtonRecipeView'>
-                <li className='iconWrapperRecipe'>
+                <li className='iconWrapperRecipe textButton'>
                   <FontAwesomeIcon icon={icon} /> Cocinar
                 </li>
               </div>

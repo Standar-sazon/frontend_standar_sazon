@@ -26,7 +26,7 @@
 
   .title{
     $font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 30px;
     margin-top: 30px;
     display: flex;
@@ -72,6 +72,7 @@
     margin-bottom: 50px;
     margin-left: 135px;
     padding: 4px 3px;
+    padding-right: 7px;
   } 
     .iconWrapperRecipe {
       margin-right: auto;
@@ -85,8 +86,10 @@
       justify-content: left;
     }
     .textButton{
-      text-align: end;
       $font-family: 'Montserrat', sans-serif;
       $size-subtitle-desktop: 1rem;
+      text-align: center;
+      
+
     }
 }
