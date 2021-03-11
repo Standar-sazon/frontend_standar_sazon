@@ -28,7 +28,7 @@ const navProfile = () => {
             <Nav.Link className='d-lg-none' href='#Subreceta'>Crear subreceta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
             <Nav.Link className='d-lg-none' href='#Glosario'>Glosario <span className='nav-icon'><img src={Book} alt='' /></span> </Nav.Link>
           </Nav>
-          <Form inline>
+          <Form className='form-nav' inline>
             <Button variant='outline-dark'>Cerrar sesión</Button>
           </Form>
         </Navbar.Collapse>
