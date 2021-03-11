@@ -5,14 +5,23 @@ import CardRecipeView from '../../components/CardRecipeView'
 const Recipes = () => {
   return (
     <LayoutUser>
-      <div className='row'>
-        <div className="col-12 col-md-3 col-xl-3 d-flex justify-items-start'">
+      <div className='container-cards-recipes'>
+        <div className='d-flex justify-content-center'>
+          <h2> carrusel</h2>
+        </div>
+        <div className='d-flex justify-content-between mt-3'>
+          <CardRecipeView />
+          <CardRecipeView />
           <CardRecipeView />
         </div>
-        <div className='col-12 col-md-3 col-xl-3'>
+        <div className='d-flex justify-content-between mt-3'>
+          <CardRecipeView />
+          <CardRecipeView />
           <CardRecipeView />
         </div>
-        <div className='col-12 col-md-3 col-xl-3'>
+        <div className='d-flex justify-content-between mt-3'>
+          <CardRecipeView />
+          <CardRecipeView />
           <CardRecipeView />
         </div>
       </div>
