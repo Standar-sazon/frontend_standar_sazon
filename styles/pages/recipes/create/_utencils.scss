@@ -1,3 +1,4 @@
+
 p {
     color: $white;
 }
@@ -28,18 +29,17 @@ p {
     width: 900px;
     height: 500px;
     background-color: $orange-opacity;
+    margin-left: 20px;
 }
 
-.tittleResume{
-    margin: 20px auto;
-    width: 90%;
-}
+
 
 .deletebutton{
     background-color: $dark-green;
     border-radius: 50%;
     color: $white;
     border: none;
+   
 }
 
 .form-input{
@@ -73,3 +73,11 @@ p {
       }
     }
   }
+
+  .plusbutton{
+    background-color: $white;
+    color: $dark-mode;
+    border-radius: 50%;
+    border: none;
+    margin: 10px;
+}

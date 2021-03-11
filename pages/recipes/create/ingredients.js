@@ -26,13 +26,13 @@ const Ingredients = () => {
             </div>
             <div className='d-flex flex-column'>
               <p>Importe</p>
-              <p>$</p>
+              <p>$ 9</p>
             </div>
             <div className='d-flex flex-column'>
               <p>Unidad de M</p>
               <p>- </p>
             </div>
-            <button className='plusbutton'>+</button>
+            <button className='plusbutton'><span>+</span></button>
           </div>
         </div>
       </form>
@@ -55,13 +55,13 @@ const Ingredients = () => {
             </div>
             <div className='d-flex flex-column'>
               <p>Importe</p>
-              <p>$</p>
+              <p>$ 11</p>
             </div>
             <div className='d-flex flex-column'>
               <p>Unidad de M</p>
               <p>- </p>
             </div>
-            <button className='plusbutton d-flex justify-content-between align-items-center'>+</button>
+            <button className='plusbutton'><span>+</span></button>
           </div>
         </div>
       </form>

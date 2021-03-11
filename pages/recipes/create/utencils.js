@@ -2,7 +2,6 @@ import LayoutUser from '../../../components/LayoutUser'
 import React from 'react'
 import NextButton from '../../../components/NextButton'
 import Table from 'react-bootstrap/Table'
-import { Card } from 'react-bootstrap'
 
 const Utencilios = () => {
   return (
@@ -13,15 +12,23 @@ const Utencilios = () => {
       </div>
       <div>
         <p>Escribe tus instrucciones</p>
-        <Card className='card-table'>
-          <div className='form-input'>
-            <input type='text' placeholder='Pasos a seguir' name='' id='' />
+
+        <form className=''>
+          <div className='card-table'>
+            <div className='form-input'>
+              <input type='text' placeholder='Pasos a seguir' name='' id='' />
+              <div className='d-flex justify-content-around'>
+                <button className='plusbutton'>+</button>
+              </div>
+            </div>
+            <div className='tittleResume'>
+              <Table borderless>
+                <td>Paso 1</td>
+                <button className='deletebutton'>X</button>
+              </Table>
+            </div>
           </div>
-          <Table borderless className='tittleResume'>
-            <td>Paso 1</td>
-            <button className='deletebutton'>X</button>
-          </Table>
-        </Card>
+        </form>
       </div>
       <div className='row justify-content-center'>
         <div className='col-12 col-lg-4'>
