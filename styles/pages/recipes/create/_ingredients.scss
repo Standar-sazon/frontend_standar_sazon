@@ -1,0 +1,47 @@
+.section-add-ingredients{
+    padding: 1.5rem;
+
+    
+    .tittleTable {
+        color: $white;
+        margin-top: 30px;
+    }
+    
+    .tittleResume{
+        color: $white;
+        background-color: $orange-opacity;
+        border-radius: 30px;
+        height: 30px;
+    
+    }
+    
+    .deletebutton{
+        background-color: $dark-green;
+        border-radius: 50%;
+        color: $white;
+        border: none;
+    }
+    
+      .importStyle{
+          flex-direction: column;
+          padding-right: 100px;
+    
+      }
+    
+      .plusbutton{
+          background-color: $white;
+          color: $dark-mode;
+          border-radius: 50%;
+          border: none;
+          margin: 10px;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+    
+
+}
+
+
