@@ -1,10 +1,8 @@
 import React from 'react'
-import image from '../public/imagesRecipeView/Card_image_1.svg'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faDollarSign, faIndustry } from '@fortawesome/free-solid-svg-icons'
 
-const CardRecipeView = ({ title, icon, category, time, entry, price }) => {
+const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc }) => {
   return (
     <container>
       <row className='row row-cols-1 row-cols-md-3 g-4'>
@@ -12,7 +10,7 @@ const CardRecipeView = ({ title, icon, category, time, entry, price }) => {
           <div className='card  cardRecipeView'>
             <div className='image'>
               <img
-                src={image}
+                src={backgroundSrc}
                 layout='fill'
                 className='card-img image'
                 alt='Card steps in image'
@@ -31,8 +29,8 @@ const CardRecipeView = ({ title, icon, category, time, entry, price }) => {
                 </li>
               </ul>
               <div className='containerButtonRecipeView'>
-                <li className='iconWrapperRecipe textButton'>
-                  <FontAwesomeIcon icon={icon} /> Cocinar
+                <li className='iconWrapperRecipe text-align-left'>
+                  <FontAwesomeIcon icon={icon} />   Cocinar
                 </li>
               </div>
             </div>
@@ -50,5 +48,6 @@ CardRecipeView.defaultProps = {
   entry: 'Entradas',
   time: '1/2 hr',
   price: '150.00'
+
 }
 export default CardRecipeView
