@@ -3,7 +3,7 @@ import React from 'react'
 const UtensilsIngredient = () => {
   return (
     <div>
-      <div class='carousel-header'>
+      <div className='carousel-header'>
         <h3>Utensilios de preparación</h3>
       </div>
       <span>componente utensilios</span>

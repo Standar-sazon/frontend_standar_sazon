@@ -1,16 +1,31 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
 import CardIngredient from '../components/Ingredient-card'
+import Arrow from '../public/arrow_right.svg'
+import ArrowLeft from '../public/arrow_left.svg'
 
-export default class Responsive extends Component {
+export default class PreviousNextMethods extends Component {
+  constructor (props) {
+    super(props)
+    this.next = this.next.bind(this)
+    this.previous = this.previous.bind(this)
+  }
+
+  next () {
+    this.slider.slickNext()
+  }
+
+  previous () {
+    this.slider.slickPrev()
+  }
+
   render () {
     const settings = {
-      dots: true,
+      dots: false,
       infinite: false,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 4,
-      initialSlide: 0,
+      slidesToScroll: 1,
       responsive: [
         {
           breakpoint: 1024,
@@ -39,36 +54,40 @@ export default class Responsive extends Component {
       ]
     }
     return (
-      <div>
-        <div class='carousel-header'>
-          <h3>Ingredientes</h3>
+      <div className='carousel-wrapper'>
+        <div className='carousel-header'>
+          <h3>Ingredientes para esta receta</h3>
         </div>
-        <Slider {...settings}>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-          <div>
-            <CardIngredient />
-          </div>
-        </Slider>
+        <div class='carousel-body'>
+          <Slider ref={c => (this.slider = c)} {...settings}>
+            <div key={1}>
+              <CardIngredient />
+            </div>
+            <div key={2}>
+              <CardIngredient />
+            </div>
+            <div key={3}>
+              <CardIngredient />
+            </div>
+            <div key={4}>
+              <CardIngredient />
+            </div>
+            <div key={5}>
+              <CardIngredient />
+            </div>
+            <div key={6}>
+              <CardIngredient />
+            </div>
+          </Slider>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <button className='button-navigator' onClick={this.previous}>
+            <img src={ArrowLeft} alt='' />
+          </button>
+          <button className='button-navigator' onClick={this.next}>
+            <img src={Arrow} alt='' />
+          </button>
+        </div>
         <div class='carousel-footer'>
           <div class='card-item'>
             <h5>Porción</h5>

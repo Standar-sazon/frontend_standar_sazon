@@ -1,9 +1,11 @@
 .inner-scroll{
-  display: flex;
-  flex-direction: column;
-  height: 88vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  @include tablet{
+    display: flex;
+    flex-direction: column;
+    height: 88vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
   .header-detail{
     width: 100%;
     height: 240px;
@@ -95,5 +97,8 @@
   
   .presentation-wrapper{
     background-color: $light-green;
+    img{
+      box-shadow: inset 0 0 0 20px $dark-green;
+    }
   }
 }
