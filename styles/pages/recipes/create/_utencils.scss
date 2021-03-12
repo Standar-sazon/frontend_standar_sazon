@@ -6,7 +6,15 @@
     color: $white;
   }
   
+.form-input{
+  padding: 1rem;
 
+  input{
+
+margin-left: 50px;
+  }
+
+}
  
   .card-table{
     width: 900px;
@@ -14,10 +22,6 @@
     background-color: $orange-opacity;
 }
 
-.form-input{
-  padding: 1rem;
-  margin-left: 15px;
-}
 
 .deletebutton{
     background-color: $dark-green;
@@ -38,13 +42,11 @@
     margin-top: 10px;
 }
 
-.tittleResume{
-  background-color: $orange-opacity;
-  border-radius: 20px;
-  margin-left: 30px;
-  width: 50rem;  
 
-
+.labelUtencils{
+  padding: 1rem;
 }
   
 }
+
+
