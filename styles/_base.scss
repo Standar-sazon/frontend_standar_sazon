@@ -69,6 +69,7 @@ button {
     border-radius: .5rem;
     border: none;
     font-size: $size-inputsplaceholder-mobile;
+    margin-left: 0!important;
     @include tablet{
       font-size: $size-inputsplaceholder-desktop;
     }
