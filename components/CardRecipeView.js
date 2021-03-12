@@ -29,8 +29,8 @@ const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc }) 
                 </li>
               </ul>
               <div className='containerButtonRecipeView'>
-                <li className='iconWrapperRecipe text-align-left'>
-                  <FontAwesomeIcon icon={icon} />   Cocinar
+                <li className='iconWrapperRecipe justify-content-left'>
+                  <FontAwesomeIcon icon={icon} />Cocinar
                 </li>
               </div>
             </div>

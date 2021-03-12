@@ -1,6 +1,7 @@
 import LayoutUser from '../../components/LayoutUser'
 import React from 'react'
 import CardRecipeView from '../../components/CardRecipeView'
+import Carrusel from '../../components/carrusel'
 
 const Recipes = () => {
   return (
@@ -8,7 +9,7 @@ const Recipes = () => {
       <div className='container-cards-recipes'>
         <div className='row' />
         <div className='col-12-md-4 d-flex justify-content-center'>
-          <h2> carrusel</h2>
+          <Carrusel />
         </div>
         <div className='col-12-md-4 d-flex justify-content-between mt-3'>
           <CardRecipeView
