@@ -1,32 +1,26 @@
 .section-add-ingredients{
     padding: 1.5rem;
+    color: $white;
 
-    
+    form{
+        margin-left: 40px;
+    }
+  
     .tittleTable {
         color: $white;
         margin-top: 30px;
-    }
-    
-    .tittleResume{
-        color: $white;
-        background-color: $orange-opacity;
-        border-radius: 30px;
-        height: 30px;
+        display: flex;
+        justify-content: center;
     
     }
-    
-    .deletebutton{
-        background-color: $dark-green;
-        border-radius: 50%;
-        color: $white;
-        border: none;
+
+    .resumeIngredientSteps{
+        display: flex;
+        justify-content: space-between;
+         td{
+             margin-left: 20px;
+         }
     }
-    
-      .importStyle{
-          flex-direction: column;
-          padding-right: 100px;
-    
-      }
     
       .plusbutton{
           background-color: $white;
@@ -41,7 +35,11 @@
           align-items: center;
       }
     
-
+      .importStyle{
+        flex-direction: column;
+        padding-right: 105px;
+  
+    }
 }
 
 

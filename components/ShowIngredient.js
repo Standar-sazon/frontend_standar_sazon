@@ -13,7 +13,10 @@ const ShowIngredient = () => {
         <td>Costo unitario</td>
         <td>U. M.</td>
         <td>Importe</td>
-        <button className='deletebutton d-flex '>X</button>
+        <div>
+          <button className='deletebutton'>X</button>
+        </div>
+
       </Table>
     </div>
   )

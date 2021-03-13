@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome//free-solid-svg-icons'
 
 const CtaButton = ({ icon, message }) => (
   <div className='containerButton'>

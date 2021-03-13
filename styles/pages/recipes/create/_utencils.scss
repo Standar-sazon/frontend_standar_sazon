@@ -1,83 +1,44 @@
+.allUtencils{
+  padding: 1.5rem;
 
-p {
+  p{
+    margin-top: 10px;
     color: $white;
-}
+    margin-left: 40px;
+  }
 
-.buttonorange{
-    background-color: $orange;
-    border-radius: 25px;
-    border: none;
-    color: $white;
-    width: 150px;
-    justify-content: center;
-    padding: 10px;
-    margin: 5px auto;
-}
 
-.buttongreen{
-    background-color: $dark-green;
-    border-radius: 25px;
-    border: none;
-    color: $white;
-    width: 150px;
-    justify-content: center;
-    padding: 10px;
-    margin: 5px auto;
-}
-
-.card-table{
+.inputStep{
+width: 850px;
+margin-top: 20px;
+  }
+ 
+  .card-table{
     width: 900px;
     height: 500px;
     background-color: $orange-opacity;
-    margin-left: 20px;
+    padding: 15px;
+    
 }
 
 
-
-.deletebutton{
-    background-color: $dark-green;
-    border-radius: 50%;
-    color: $white;
-    border: none;
-   
-}
-
-.form-input{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0.75rem 0;
-    @include tablet{
-      width: 90%;
-    }  
-    @include desktop{
-      width: 90%;
-    }  
-    label{
-      color: $white;
-      font-size: $size-inputstitle-mobile;
-      font-weight: $medium;
-      @include tablet{
-        font-size: $size-inputstitle-desktop; 
-      }
-    }
-    input{
-      height: 2.75rem;
-      padding: 0 .75rem;
-      border-radius: .5rem;
-      border: none;
-      margin-left: 20px;
-      font-size: $size-inputsplaceholder-mobile;
-      @include tablet{
-        font-size: $size-inputsplaceholder-desktop;
-      }
-    }
-  }
 
   .plusbutton{
     background-color: $white;
     color: $dark-mode;
     border-radius: 50%;
     border: none;
-    margin: 10px;
+    margin-top: 30px;
+    margin-left: 20px;
+    height: 25px;
+    width: 25px;
 }
+
+
+.labelUtencils{
+  padding: 1rem;
+}
+  
+}
+
+
