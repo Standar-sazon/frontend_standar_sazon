@@ -53,7 +53,7 @@ export default function SubRecipesCarousel ({ children }) {
       <div className='carousel-header'>
         <h3>Recetas complementarias</h3>
       </div>
-      <div class='carousel-body'>
+      <div className='carousel-body'>
         <Slider ref={costumerSlider} {...settings}>
           <div key={1}>
             <CardIngredient />

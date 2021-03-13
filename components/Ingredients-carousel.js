@@ -52,7 +52,7 @@ export default function IngredientsCarousel ({ children }) {
       <div className='carousel-header'>
         <h3>Ingredientes para esta receta</h3>
       </div>
-      <div class='carousel-body'>
+      <div className='carousel-body'>
         <Slider ref={costumerSlider} {...settings}>
           <div key={1}>
             <CardIngredient />
@@ -82,10 +82,10 @@ export default function IngredientsCarousel ({ children }) {
           <img src={Arrow} alt='' />
         </button>
       </div>
-      <div class='carousel-footer'>
-        <div class='card-item'>
+      <div className='carousel-footer'>
+        <div className='card-item'>
           <h5>Porción</h5>
-          <div class='pricer'>
+          <div className='pricer'>
             <p>#</p><p>piezas</p>
           </div>
         </div>
