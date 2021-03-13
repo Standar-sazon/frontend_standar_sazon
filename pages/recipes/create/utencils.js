@@ -12,10 +12,10 @@ const Utencilios = () => {
         <p>Utensilios</p>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
           <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
+          <UtencilsButtons message='Olla' color='green' />
+          <UtencilsButtons message='Cuchillo' color='orange' />
+          <UtencilsButtons message='Budinera' color='green' />
+          <UtencilsButtons message='Tabla' color='orange' />
         </div>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
           <UtencilsButtons message='Sarten' color='orange' />
