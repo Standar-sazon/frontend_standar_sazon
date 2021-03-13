@@ -18,25 +18,18 @@ const Utencilios = () => {
           <UtencilsButtons message='Tabla' color='orange' />
         </div>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
+          <UtencilsButtons message='Licuadora' color='orange' />
+          <UtencilsButtons message='Freidora' color='green' />
+          <UtencilsButtons message='Pala' color='orange' />
+          <UtencilsButtons message='Soplete' color='green' />
+          <UtencilsButtons message='Cucharón' color='orange' />
         </div>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
-        </div>
-        <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Sarten' color='green' />
-          <UtencilsButtons message='Sarten' color='orange' />
+          <UtencilsButtons message='Atomizador' color='orange' />
+          <UtencilsButtons message='Bowl' color='green' />
+          <UtencilsButtons message='Rallador' color='orange' />
+          <UtencilsButtons message='Espatula' color='green' />
+          <UtencilsButtons message='Colador' color='orange' />
         </div>
         <div>
           <AddUtencil />
