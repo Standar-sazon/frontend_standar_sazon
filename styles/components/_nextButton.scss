@@ -1,31 +1,30 @@
-.insideButton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $orange;
-    border-radius: 30px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 8px 5px;
-    border: none;
-  
-    .iconButton {
-      margin-right: auto;
-      background-color: $dark-mode;
-      color: $white;
-      padding: 10px;
-      border-radius: 300%;
-      width: 50px;
-      height: 42px;
-      display: flex;
-      justify-content: center;
-    }
-    
-    .textButton {
-      margin-left: 1.5rem;
-      font-size: 22px;
-      color: $white;
-      padding-right: 120px;
-      
-    }
+.createButton{
+  background-color: $orange;
+  padding: 6px 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  border-radius: 30px;
+  border: 1px solid $dark-mode;
+  margin-top: 80px;
+  align-items: center;
+  border: none;
+  color: $white;
+
+
+  p{
+    margin: 0;
+    width: 100%;
   }
+
+  .createIconButton{
+    background-color: $dark-mode;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

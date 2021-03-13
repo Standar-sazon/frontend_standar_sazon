@@ -1,6 +1,7 @@
 import LayoutUser from '../../../components/LayoutUser'
 import React from 'react'
 import Logo from '../../../public/img/logo.svg'
+import NextButton from '../../../components/NextButton'
 
 const Resume = () => {
   return (
@@ -118,6 +119,11 @@ const Resume = () => {
             </div>
             <p className='unit-measurement green'>$89.10</p>
           </div>
+        </div>
+      </div>
+      <div className='d-flex justify-content-center text-align-center'>
+        <div className='col-12 col-lg-4'>
+          <NextButton message='Crear Receta' />
         </div>
       </div>
 

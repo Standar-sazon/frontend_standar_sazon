@@ -51,6 +51,9 @@ button {
   margin: 0.75rem 0;
   @include tablet{
     width: 90%;
+    select{
+      width: 100%;
+    }
   }  
   @include desktop{
     width: 90%;
