@@ -1,7 +1,7 @@
 import LayoutUser from '../../components/LayoutUser'
 import React from 'react'
 import CardRecipeView from '../../components/CardRecipeView'
-import Carrusel from '../../components/carrusel'
+import Carrusel from '../../components/Carrusel'
 
 const Recipes = () => {
   return (
