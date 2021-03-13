@@ -19,7 +19,7 @@ export default function LayoutUser ({ children }) {
           <div className='col-12 col-md-3 p-0'>
             <SideBar />
           </div>
-          <div className='col-12 col-md-9'>
+          <div className='col-12 col-md-9 inner-scroll'>
             {/* Contenido */}
             {children}
           </div>

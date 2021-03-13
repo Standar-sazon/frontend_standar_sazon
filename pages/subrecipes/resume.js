@@ -4,7 +4,7 @@ import Logo from '../../public/img/logo.svg'
 
 const Resume = () => {
   return (
-    <LayoutUser className='inner-scroll'>
+    <LayoutUser>
       <from className='resume-data inline-block d-flex'>
         <div className='kgs-number d-flex text-left form-input'>
           <lable className='inp-letters'>Peso de la preparación:</lable>
