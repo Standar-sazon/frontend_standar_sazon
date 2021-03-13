@@ -16,6 +16,9 @@
 @import './pages/recipes/create/resume';
 @import './pages/recipes/create/utencils';
 @import './pages/recipes/detail/recipes-detail';
+@import './pages/recipes/detail/ingredients-carousel';
+@import './pages/recipes/detail/subrecipes-carousel';
+
 
 @import './components/navbar'; 
 @import './components/footer';
@@ -28,4 +31,7 @@
 @import './components/utencilsButton';
 @import './components/tablestps';
 @import './components/addUtencil';
-@import './components/showIngredients'
+@import './components/showIngredients';
+@import './components/cardRecipeView';
+@import './components/nextButton';
+@import './components/recipe-views'
