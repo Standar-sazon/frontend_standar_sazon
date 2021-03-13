@@ -65,15 +65,41 @@ const Ingredients = () => {
             </div>
           </div>
         </form>
-        <Table borderless className='tittleTable'>
-          <td>Ingrediente</td>
-          <td>Peso Bruto</td>
-          <td>Peso neto</td>
-          <td>Costo unitario</td>
-          <td>U. M.</td>
-          <td>Importe</td>
-        </Table>
-        <ShowIngredient />
+        <div>
+          <Table borderless className='tittleTable'>
+            <td>Ingrediente</td>
+            <td>Peso Bruto</td>
+            <td>Peso neto</td>
+            <td>Costo unitario</td>
+            <td>U. M.</td>
+            <td>Importe</td>
+          </Table>
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+        <div>
+          <ShowIngredient />
+        </div>
+
         <div className='importStyle d-flex justify-content-between align-items-end'>
           <p>Importe</p>
           <p href=''>$ 45</p>
