@@ -12,7 +12,7 @@ const Resume = () => {
           <input className='inp-summar' type='number' placeholder='Peso' />
         </div>
         <div className='data-time d-flex text-left form-input'>
-          <lable className='inp-letters letters'>Tamaño de la porciòn:</lable>
+          <lable className='inp-letters letters letters2'>Tamaño de la porciòn:</lable>
           <lable className='inp-letters'>(Kgs)</lable>
           <input className='inp-summary time' type='number' placeholder='Tiempo'/>  
         </div>
