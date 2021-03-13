@@ -35,7 +35,7 @@ export default function Home () {
       </header>
 
       {/* beneficios */}
-      <div className='container-fluid section-benefits'>
+      <div id='section-benefits' className='container-fluid section-benefits'>
         <div className='row'>
           <ImageBack />
           <div className='container'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { Button, Navbar, Form, Nav } from 'react-bootstrap'
 import LogoUser from '../public/logounited.svg'
 import ProfilePic from '../public/userpic.png'
@@ -7,6 +8,7 @@ import Add from '../public/addicon.svg'
 import Saved from '../public/rectetasicon.svg'
 
 const navProfile = () => {
+  const router = useRouter()
   return (
     <div>
       <Navbar className='nav-style d-md-flex px-4-lg' expand='lg'>
@@ -29,7 +31,13 @@ const navProfile = () => {
             <Nav.Link className='d-lg-none' href='#Glosario'>Glosario <span className='nav-icon'><img src={Book} alt='' /></span> </Nav.Link>
           </Nav>
           <Form className='form-nav' inline>
-            <Button variant='outline-dark'>Cerrar sesión</Button>
+            <Button
+              variant='outline-dark' onClick={() => {
+                localStorage.removeItem('token')
+                router.push('/login')
+              }}
+            >Cerrar sesión
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
