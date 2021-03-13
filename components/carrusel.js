@@ -14,27 +14,27 @@ const CarruselCategories = () => {
   return (
     <span className='container-carrusel-categories'>
       <Slider {...settings}>
-        <span className='text-carrusel-categories container-carrusel-text container-color-entradas'>
+        <button className='button-carrusel-categories red'>
           <span href='#'>Entradas</span>
-        </span>
-        <span className='text-carrusel-categories container-carrusel-text container-color-sopas'>
+        </button>
+        <button className='button-carrusel-categories orange'>
           <span href='#'>Sopas</span>
-        </span>
-        <span className='text-carrusel-categories container-carrusel-text container-color-bebida'>
+        </button>
+        <button className='button-carrusel-categories yellow'>
           <span href='#'>Bebidas</span>
-        </span>
-        <span className='text-carrusel-categories container-carrusel-text container-color-postres'>
+        </button>
+        <button className='button-carrusel-categories green'>
           <span href='#'>Postres</span>
-        </span>
-        <span className='text-carrusel-categories container-carrusel-text container-color-p.fuerte'>
+        </button>
+        <button className='button-carrusel-categories red'>
           <span href='#'>Plato fuerte</span>
-        </span>
-        <span className='text-carrusel-categories container-carrusel-text container-color-salsas'>
+        </button>
+        <button className='button-carrusel-categories orange'>
           <span href='#'>Salsas</span>
-        </span>
-        <span className='text-carrusel-categories container-carrusel-text'>
+        </button>
+        <button className='button-carrusel-categories yellow'>
           <span href='#'>Complementos</span>
-        </span>
+        </button>
       </Slider>
     </span>
   )

@@ -63,7 +63,6 @@
 
   .containerButtonRecipeView{
     display: flex;
-    align-items: flex-end;
     justify-content: flex-end;
     background-color: $orange;
     border-top-left-radius: 30px;
@@ -85,9 +84,10 @@
       display: flex;
       justify-content: left;
     }
-    .textButton{
+    .h3{
       $font-family: 'Montserrat', sans-serif;
       $size-subtitle-desktop: 1rem;
-      text-align: left;
+      font-size: 15px;
+      margin-left: 20px;
     }
 }
