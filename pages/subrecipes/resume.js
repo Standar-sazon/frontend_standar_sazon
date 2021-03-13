@@ -1,6 +1,7 @@
 import LayoutUser from '../../components/LayoutUser'
 import React from 'react'
 import Logo from '../../public/img/logo.svg'
+import NextButton from '../../components/NextButton'
 
 const Resume = () => {
   return (
@@ -14,7 +15,7 @@ const Resume = () => {
         <div className='data-time d-flex text-left form-input'>
           <lable className='inp-letters letters letters2'>Tamaño de la porciòn:</lable>
           <lable className='inp-letters'>(Kgs)</lable>
-          <input className='inp-summary time' type='number' placeholder='Tiempo'/>  
+          <input className='inp-summary time' type='number' placeholder='Tiempo' />
         </div>
         <div className='data-temperature d-flex text-left form-input'>
           <lable className='inp-letters'>Tiempo de cocciòn:</lable>
@@ -78,7 +79,11 @@ const Resume = () => {
           </div>
         </div>
       </div>
-
+      <div className='d-flex justify-content-center text-align-center'>
+        <div className='col-12 col-lg-4'>
+          <NextButton message='Crear Subreceta' />
+        </div>
+      </div>
     </LayoutUser>
   )
 }
