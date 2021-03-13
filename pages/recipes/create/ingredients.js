@@ -17,7 +17,7 @@ const Ingredients = () => {
                 <input type='text' placeholder='Ingrediente' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
-                <label for=''>Pesoneto</label>
+                <label for=''>Peso neto</label>
                 <input type='text' placeholder='Peso neto' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
@@ -67,12 +67,14 @@ const Ingredients = () => {
         </form>
         <div>
           <Table borderless className='tittleTable'>
-            <td>Ingrediente</td>
-            <td>Peso Bruto</td>
-            <td>Peso neto</td>
-            <td>Costo unitario</td>
-            <td>U. M.</td>
-            <td>Importe</td>
+            <div className='resumeIngredientSteps'>
+              <td>Ingrediente</td>
+              <td>Peso Bruto</td>
+              <td>Peso neto</td>
+              <td>Costo unitario</td>
+              <td>U. M.</td>
+              <td>Importe</td>
+            </div>
           </Table>
         </div>
         <div>

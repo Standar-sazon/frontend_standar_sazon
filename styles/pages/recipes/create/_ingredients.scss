@@ -13,6 +13,14 @@
         justify-content: center;
     
     }
+
+    .resumeIngredientSteps{
+        display: flex;
+        justify-content: space-between;
+         td{
+             margin-left: 20px;
+         }
+    }
     
       .plusbutton{
           background-color: $white;
