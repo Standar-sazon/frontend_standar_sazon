@@ -1,5 +1,3 @@
- *{
-    font-family: $font-family;
  
  .resume-data{
      background-color: $light-green;
@@ -30,6 +28,7 @@
      .inp-letters{
          font-size: $size-inputstitle-desktop;
          font-weight: $bold;
+         color: $white;
      }
 
      .letters{
@@ -74,14 +73,17 @@
      .main-title-resume{
         font-size: $size-subtitle-desktop;
         font-weight: $extra-bold;
+        color: white;
     }
     .technical-concepts{
         font-size: $size-recipedetailsubtitle-desktop;
         font-weight: $bold;
+        color: $white;
     }
     .unit-measurement{
         font-size: $size-inputsplaceholder-desktop;
         font-weight: $extra-bold;
+        color: $white;
     }
     .green{
         color: $light-green;
@@ -112,17 +114,19 @@
         .main-title-resume{
            font-size: $size-subtitle-desktop;
            font-weight: $extra-bold;
+           color:$white
         }
         .technical-concepts{
             font-size: $size-recipedetailsubtitle-desktop;
             font-weight: $bold;
+            color: $white;
         }
         .unit-measurement{
             font-size: $size-inputsplaceholder-desktop;
             font-weight: $extra-bold;
         }
         .technical-concepts{
-            font-size: $size-recipedetailsubtitle-desktop;
+            
             font-weight: $bold;
         }
         .unit-measurement{
@@ -133,9 +137,14 @@
             color: $light-green;
             font-size: 1.5rem;
         }
+        .unit{
+            color: $orange;
+            font-size:1.5rem;
+        }
         .orange{
             color:$orange;
         }
+        
         .totals-resume{
             font-size: $size-inputsplaceholder-desktop;
             font-weight: $extra-bold;
@@ -150,8 +159,9 @@
         .logo{
             margin-bottom: 3rem;
         }
-
+        
 
  }
-}
+ 
+
  
