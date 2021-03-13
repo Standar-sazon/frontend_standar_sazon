@@ -1,9 +1,9 @@
-import LayoutUser from '../../../components/LayoutUser'
+import LayoutUser from '../../components/LayoutUser'
 import React from 'react'
-import NextButton from '../../../components/NextButton'
-import UtencilsButtons from '../../../components/UtencilsButton'
-import TableStepsRecipe from '../../../components/TableStepsRecipe'
-import AddUtencil from '../../../components/AddUtencil'
+import NextButton from '../../components/NextButton'
+import UtencilsButtons from '../../components/UtencilsButton'
+import TableStepsRecipe from '../../components/TableStepsRecipe'
+import AddUtencil from '../../components/AddUtencil'
 
 const Utencilios = () => {
   return (
