@@ -3,6 +3,7 @@ import React from 'react'
 import NextButton from '../../../components/NextButton'
 import UtencilsButtons from '../../../components/UtencilsButton'
 import TableStepsRecipe from '../../../components/TableStepsRecipe'
+import AddUtencil from '../../../components/AddUtencil'
 
 const Utencilios = () => {
   return (
@@ -36,6 +37,9 @@ const Utencilios = () => {
           <UtencilsButtons message='Sarten' color='orange' />
           <UtencilsButtons message='Sarten' color='green' />
           <UtencilsButtons message='Sarten' color='orange' />
+        </div>
+        <div>
+          <AddUtencil />
         </div>
         <div>
           <p>Escribe tus instrucciones</p>
