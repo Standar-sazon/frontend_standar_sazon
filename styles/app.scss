@@ -16,6 +16,8 @@
 @import './pages/recipes/create/resume';
 @import './pages/recipes/create/utencils';
 @import './pages/recipes/detail/recipes-detail';
+@import './pages/recipes/detail/ingredients-carousel';
+@import './pages/recipes/detail/subrecipes-carousel';
 
 @import './components/navbar'; 
 @import './components/footer';
@@ -24,4 +26,5 @@
 @import './components/ctaButton';
 @import './components/dashboard';
 @import './components/sidebar-dashboard';
-@import './components/nextButton'
+@import './components/nextButton';
+@import './components/recipe-views';
