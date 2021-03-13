@@ -45,19 +45,23 @@ const Utencilios = () => {
           <p>Escribe tus instrucciones</p>
           <form className='card-table'>
             <div>
-              <div className='form-input'>
-                <input type='textbox' placeholder='Pasos a seguir' name='' id='' />
-                <div className='d-flex justify-content-around'>
-                  <button className='plusbutton'>+</button>
+              <div>
+                <div className='form-input d-flex flex-row'>
+                  <input className='inputStep' type='textbox' placeholder='Pasos a seguir' name='' id='' />
+                  <div className=''>
+                    <button className='plusbutton'>+</button>
+                  </div>
                 </div>
                 <div>
-                  <TableStepsRecipe message='Paso1' />
-                </div>
-                <div>
-                  <TableStepsRecipe message='Paso2' />
-                </div>
-                <div>
-                  <TableStepsRecipe message='Paso 3' />
+                  <div>
+                    <TableStepsRecipe message='Paso1' />
+                  </div>
+                  <div>
+                    <TableStepsRecipe message='Paso2' />
+                  </div>
+                  <div>
+                    <TableStepsRecipe message='Paso 3' />
+                  </div>
                 </div>
               </div>
             </div>

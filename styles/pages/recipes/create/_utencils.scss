@@ -4,16 +4,17 @@
   p{
     margin-top: 10px;
     color: $white;
+    margin-left: 40px;
   }
-  
-.form-input{
-  padding: 1rem;
 
-  input{
+
+  .inputStep{
 margin-left: 50px;
+width: 850px;
+margin-top: 20px;
   }
 
-}
+
  
   .card-table{
     width: 900px;
@@ -23,25 +24,14 @@ margin-left: 50px;
 }
 
 
-.deletebutton{
-    background-color: $dark-green;
-    border-radius: 50%;
-    color: $white;
-    border: none;
-    margin-top: 10px;   
-    margin-right: -25px;   
-    height: 30px;
-    width: 30px;
-   
-}
-
 
   .plusbutton{
     background-color: $white;
     color: $dark-mode;
     border-radius: 50%;
     border: none;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-left: 20px;
     height: 25px;
     width: 25px;
 }

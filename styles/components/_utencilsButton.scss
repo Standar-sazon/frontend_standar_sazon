@@ -24,8 +24,13 @@
 }
 
 .checkmark {
-  height: 15px;
-  width: 15px;
-  border-radius: 500px;
-  background-color: #eee;
+    width: 1em;
+    height: 1rem;
+    background-color:$white;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    
   }
+  .checkmark:checked {
+    background-color: $dark-mode;
+}

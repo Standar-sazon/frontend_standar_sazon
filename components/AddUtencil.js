@@ -1,11 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PLUS from '../public/img/plusicon.svg'
+import React from 'react'
 
-const AddUtencil = ({ icon, message }) => (
+const AddUtencil = () => (
   <button className='AddButtonUtencil'>
     <span className='textButton'>Agregar utensilio</span>
-    <span className='iconButton'>
-      <FontAwesomeIcon icon={icon} />
-    </span>
+    <img src={PLUS} alt='' />
   </button>
 )
 
