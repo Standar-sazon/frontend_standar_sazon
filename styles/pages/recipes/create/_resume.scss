@@ -2,11 +2,11 @@
     font-family: $font-family;
  
  .resume-data{
-     width: 613px;
      background-color: $light-green;
      border-radius: 8px;
      margin-top: 2rem;
      margin-left: 2rem;
+     padding: 1rem;
 
      .kgs-number{
          margin-bottom: 1.5rem;
@@ -38,11 +38,11 @@
      }
      
      .inp-summary{
-         width: 8.5rem;
          border-radius: 5px;
          border:0px;
          font-size: $size-inputsplaceholder-desktop;
      }
+     
  }
  .summary{
      margin-left: 2rem;
@@ -99,6 +99,7 @@
         padding-left: 1rem;
         padding-top: 1rem;
         padding-right: 1rem;
+        justify-content:center ;
 
         .technical{
             justify-content: space-between;   

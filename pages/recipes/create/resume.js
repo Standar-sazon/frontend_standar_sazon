@@ -6,15 +6,15 @@ const Resume = () => {
   return (
     <LayoutUser>
       <from className='resume-data d-flex'>
-        <div className='kgs-number d-flex flex-column text-left'>
+        <div className='kgs-number d-flex flex-column text-left form-input'>
           <p className='inp-letters'>Peso de la preparación:</p>
           <p className='inp-letters'>(kgs)</p>
-          <input className='inp-summary' type='number' placeholder='Peso' />
+          <input className='inp-summar' type='number' placeholder='Peso' />
           <p className='inp-letters letters'>Número de porciones:</p>
           <p className='inp-letters'>(Unidades)</p>
           <input className='inp-summary' type='number' placeholder='# de porciones' />
         </div>
-        <div className='data-time d-flex flex-column text-left'>
+        <div className='data-time d-flex flex-column text-left form-input'>
           <p className='inp-letters'>Tiempo de preparación:</p>
           <p className='inp-letters'>(Munutos)</p>
           <input className='inp-summary' type='number' placeholder='Tiempo' />
@@ -22,14 +22,14 @@ const Resume = () => {
           <p className='inp-letters'>(Unidades)</p>
           <input className='inp-summary' type='number' placeholder='Cocción' />
         </div>
-        <div className='data-temperature d-flex flex-column text-left'>
+        <div className='data-temperature d-flex flex-column text-left form-input'>
           <p className='inp-letters'>Temperatura de servicio:</p>
           <p className='inp-letters'>(ºC)</p>
           <input className='inp-summary' type='number' placeholder='Grados' />
         </div>
       </from>
 
-      <div className='summary d-flex'>
+      <div className='summary d-flex justify-content-center'>
         <div className='technical-section'>
           <div className='technical d-flex'>
             <div>
@@ -68,8 +68,8 @@ const Resume = () => {
           </div>
         </div>
 
-        <div className='admin-section'>
-          <div className='technical d-flex'>
+        <div className='admin-section justify-content-center'>
+          <div className='technical d-flex '>
             <div>
               <p className='title-resume'>Resumen</p>
               <p className='main-title-resume'>Administrativo</p>
