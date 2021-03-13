@@ -130,12 +130,13 @@ const Recipes = () => {
               backgroundSrc='/imagesRecipeView/CardImage17.svg'
             />
           </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto' />
-          <CardRecipeView
-            title='Daikiri'
-            price='150.00'
-            backgroundSrc='/imagesRecipeView/CardImage19.svg'
-          />
+          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto' >
+            <CardRecipeView
+              title='Daikiri'
+              price='150.00'
+              backgroundSrc='/imagesRecipeView/CardImage19.svg'
+            />
+          </div>
         </div>
       </div>
     </LayoutUser>
