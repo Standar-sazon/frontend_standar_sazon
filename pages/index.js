@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import Layout from '../components/LayoutMaster'
 import CardHow from '../components/CardHow'
@@ -14,6 +15,7 @@ import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
 
 export default function Home () {
+  const router = useRouter()
   return (
     <Layout>
 
@@ -25,7 +27,7 @@ export default function Home () {
                 <img src={LOGO_MOBILE} alt='logo' className='d-md-none logo-mobile' />
                 <img src={LOGO_DESKTOP} alt='logo' className='d-none d-md-block logo-desktop' />
                 <div className='wrapper-btn'>
-                  <button className='btn_hero'>Crea tu cuenta ya!!</button>
+                  <button className='btn_hero' onClick={() => router.push('/create')}>Crea tu cuenta ya!!</button>
                   <img src={ARROW} alt='arrow' className='arrow_button' />
                 </div>
               </div>
@@ -34,8 +36,8 @@ export default function Home () {
         </div>
       </header>
 
-      {/* beneficios */}
-      <div className='container-fluid section-benefits'>
+      {/* beneficios */}s
+      <div id='section-benefits' className='container-fluid section-benefits'>
         <div className='row'>
           <ImageBack />
           <div className='container'>
@@ -48,7 +50,7 @@ export default function Home () {
       </div>
 
       {/* como.funciona. */}
-      <div className='container-fluid section-how-function'>
+      <div id='section-how-works' className='container-fluid section-how-function'>
         <div className='row'>
           <div className='col-12 col-lg-6 offset-lg-6 how-it-works'>
             <h1 className='font border-down'>¿Cómo funciona?</h1>
@@ -104,7 +106,7 @@ export default function Home () {
         </div>
       </div>
       {/* planes */}
-      <div className='container-fluid section-planes'>
+      <div className='container-fluid section-planes' id='section-plans'>
         <div className='row'>
           <div className='container'>
             <div className='row'>
@@ -130,7 +132,7 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Indicadores administrativos preestablecidos
                   </p>
-                  <button className='card-button'>Únete</button>
+                  <button className='card-button' onClick={() => router.push('/create')}>Únete</button>
                 </Card>
               </div>
               <div className='col-12 col-md-6'>
@@ -155,7 +157,7 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Creación de ingredientes propios
                   </p>
-                  <button className='card-button'>Contrata</button>
+                  <button className='card-button' onClick={() => router.push('/create')}>Contrata</button>
                 </Card>
               </div>
             </div>
