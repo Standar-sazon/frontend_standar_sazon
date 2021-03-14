@@ -12,8 +12,10 @@ import BENEFICIOS from '../public/palomita.svg'
 import Benefits from '../components/Benefits'
 import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
+import { useRouter } from 'next/router'
 
 export default function Home () {
+  const router = useRouter()
   return (
     <Layout>
 
@@ -25,7 +27,7 @@ export default function Home () {
                 <img src={LOGO_MOBILE} alt='logo' className='d-md-none logo-mobile' />
                 <img src={LOGO_DESKTOP} alt='logo' className='d-none d-md-block logo-desktop' />
                 <div className='wrapper-btn'>
-                  <button className='btn_hero'>Crea tu cuenta ya!!</button>
+                  <button onClick={() => router.push('/create')} className='btn_hero'>Crea tu cuenta ya!!</button>
                   <img src={ARROW} alt='arrow' className='arrow_button' />
                 </div>
               </div>
@@ -99,7 +101,7 @@ export default function Home () {
         </div>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-4'>
-            <CtaButton message='Comienza tu prueba gratuita.' />
+            <CtaButton onClick={() => router.push('/create')} message='Comienza tu prueba gratuita.' />
           </div>
         </div>
       </div>
@@ -130,7 +132,7 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Indicadores administrativos preestablecidos
                   </p>
-                  <button className='card-button'>Únete</button>
+                  <button onClick={() => router.push('/create')} className='card-button'>Únete</button>
                 </Card>
               </div>
               <div className='col-12 col-md-6'>
@@ -155,7 +157,7 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Creación de ingredientes propios
                   </p>
-                  <button className='card-button'>Contrata</button>
+                  <button onClick={() => router.push('/create')} className='card-button'>Contrata</button>
                 </Card>
               </div>
             </div>
