@@ -1,10 +1,10 @@
 import { URL_BASE } from './config'
 
-function createRecipe (objectRecipes) {
+function createRecipe(objectRecipen) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'POST',
-    body: JSON.stringify(objectRecipes),
+    body: JSON.stringify(objectRecipen),
     headers: {
       'content-Type': 'application/json'
     },
@@ -13,39 +13,43 @@ function createRecipe (objectRecipes) {
   return window.fetch(URL, options)
 }
 
-function recipeRequest (objectRecipes) {
+function recipeRequest(token) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'GET',
-    body: JSON.stringify(objectRecipes),
+    body: JSON.stringify(token),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+
     },
     mode: 'cors'
   }
   return window.fetch(URL, options)
 }
 
-function recipeUpdate (objectRecipes) {
+function recipeUpdate(id, objectRecipes, token) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'PATCH',
-    body: JSON.stringify(objectRecipes),
+    body: JSON.stringify(id, token, objectRecipes),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
   return window.fetch(URL, options)
 }
 
-function deleteRecipe (objectRecipes) {
+function deleteRecipe(id, token) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'DELET',
-    body: JSON.stringify(objectRecipes),
+    body: JSON.stringify(id),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }

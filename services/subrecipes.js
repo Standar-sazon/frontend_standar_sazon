@@ -1,6 +1,6 @@
 import { URL_BASE } from './config'
 
-function createSubrecipe(objectSubrecipes) {
+function createSubrecipe (objectSubrecipes) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'POST',
@@ -13,39 +13,42 @@ function createSubrecipe(objectSubrecipes) {
   return window.fetch(URL, options)
 }
 
-function SubRecipeRequest(objectSubrecipes) {
+function SubRecipeRequest (token) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'GET',
-    body: JSON.stringify(objectSubrecipes),
+    body: JSON.stringify(token),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
   return window.fetch(URL, options)
 }
 
-function SubRecipeUpdate(objectSubrecipes) {
+function SubRecipeUpdate (id, objectSubrecipes, token) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'PATCH',
-    body: JSON.stringify(objectSubrecipes),
+    body: JSON.stringify(id, objectSubrecipes, token),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
   return window.fetch(URL, options)
 }
 
-function deleteSubrecipe(objectSubrecipes) {
+function deleteSubrecipe (id, token) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'DELET',
-    body: JSON.stringify(objectSubrecipes),
+    body: JSON.stringify(id, token),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
