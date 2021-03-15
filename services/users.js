@@ -39,7 +39,7 @@ function update (objectUser) {
     },
     mode: 'cors'
   }
-  return window.fetch(URL, options)
+  return fetch(URL, options)
 }
 
 // Solicitud de usuario//
@@ -53,7 +53,7 @@ function userRequest (objectUser) {
     },
     mode: 'cors'
   }
-  return window.fetch(URL, options)
+  return fetch(URL, options)
 }
 
 export {

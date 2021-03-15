@@ -1,6 +1,6 @@
 import { URL_BASE } from './config'
 
-function createRecipe(objectRecipes) {
+function createRecipe (objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'POST',
@@ -13,7 +13,7 @@ function createRecipe(objectRecipes) {
   return window.fetch(URL, options)
 }
 
-function recipeRequest(objectRecipes) {
+function recipeRequest (objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'GET',
@@ -26,7 +26,7 @@ function recipeRequest(objectRecipes) {
   return window.fetch(URL, options)
 }
 
-function recipeUpdate(objectRecipes) {
+function recipeUpdate (objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'PATCH',
@@ -39,7 +39,7 @@ function recipeUpdate(objectRecipes) {
   return window.fetch(URL, options)
 }
 
-function deleteRecipe(objectRecipes) {
+function deleteRecipe (objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'DELET',
