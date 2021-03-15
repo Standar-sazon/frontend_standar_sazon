@@ -76,6 +76,15 @@ button {
     @include tablet{
       font-size: $size-inputsplaceholder-desktop;
     }
+    &:focus {
+      outline: none;
+    }
+    &.error {
+      border: 1px red solid;
+      &::placeholder {
+        color: red;
+      }
+    }
   }
 }
 
