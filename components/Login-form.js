@@ -9,7 +9,6 @@ const schema = yup.object().shape({
   email: yup.string().email('El email no es valido').required('El campo es requerido'),
   password: yup.string().required('El campo es requerido').min(8, 'El numero de caracteres debe ser mayor a 8')
 })
-3
 const loginForm = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -14,28 +14,29 @@ const schema = yup.object().shape({
   cityform: yup.string().required('El campo es requerido')
 })
 
-const createForm = () => {
+export default function App () {
   const router = useRouter()
-  const [loading, setCreate] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onBlur',
     reValidateMode: 'onChange'
   })
   const onSubmit = async (dataForm) => {
-    setCreate(true)
+    setLoading(true)
     console.log('Enviando al server...')
     console.log(dataForm)
     const response = await create(dataForm)
     const responseJSON = await response.json()
     console.log(responseJSON)
     if (!responseJSON.success) {
-      setError('Falta información')
-      setCreate(true)
+      setError('Credenciales Invalidas')
+      setLoading(true)
       return
     }
-    setCreate(true)
-    router.push('/login')
+    setLoading(true)
+    router.push('/recipes')
     localStorage.setItem('token', responseJSON.data.token)
   }
   const errorClassName = errors.nameform ? 'error' : null
@@ -55,13 +56,13 @@ const createForm = () => {
           </div>
           <div className='form-input'>
             <label for=''>Apellidos*</label>
-            <input name='lastnameform' ref={register} type='text' placeholder='Escribe tu(s) apellido(s)' className={errorClasslastName} id='' />
+            <input name='lastNameform' ref={register} type='text' placeholder='Escribe tu(s) apellido(s)' className={errorClasslastName} id='' />
             <p>{errors.lastNameform?.message}</p>
           </div>
           <div className='form-input'>
             <label for=''>Email*</label>
             <input name='emailform' ref={register} type='email' placeholder='Correo electronico' className={errorClassEmail} id='' />
-            <p>{errors.email?.message}</p>
+            <p>{errors.emailform?.message}</p>
           </div>
         </div>
         <div className='divider-right'>
@@ -85,5 +86,3 @@ const createForm = () => {
     </div>
   )
 }
-
-export default createForm

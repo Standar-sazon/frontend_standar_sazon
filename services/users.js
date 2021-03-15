@@ -1,15 +1,15 @@
-import { URL_BASE, URL_BASE_LOCAL } from './config'
+import { URL_BASE } from './config'
 
 // login
 /**
  *
  * @param {Object} objectCredentials Objecto que recibe email y password
  */
-function login (dataCredential) {
+function login (objectCredential) {
   const URL = `${URL_BASE}auth/login`
   const options = {
     method: 'POST',
-    body: JSON.stringify(dataCredential),
+    body: JSON.stringify(objectCredential),
     headers: {
       'Content-Type': 'application/json'
     },
