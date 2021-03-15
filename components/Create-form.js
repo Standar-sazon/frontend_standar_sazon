@@ -36,7 +36,7 @@ export default function App () {
       return
     }
     setLoading(true)
-    router.push('/recipes')
+    router.push('/login')
     localStorage.setItem('token', responseJSON.data.token)
   }
   const errorClassName = errors.nameform ? 'error' : null
