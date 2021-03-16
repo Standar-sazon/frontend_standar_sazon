@@ -1,16 +1,23 @@
 import React from 'react'
-import LOGO from '../public/logo.svg'
+import Logo from '../public/logo.svg'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
     <footer className='footer'>
       <div className='all-footer'>
-        <img className='images-footer-1' src={LOGO} alt='LOGO' />
+        <Link href='/' passHref>
+          <a href=''>
+            <img src={Logo} alt='logo' />
+          </a>
+        </Link>
         <nav>
           <ul className='container-footer'>
-            <li><a href='#section-benefits'>Beneficios</a></li>
-            <li className='my-2'><a href='#section-how-works'>¿Cómo funciona?</a></li>
-            <li><a href='#section-plans'>Planes</a></li>
+
+            <li><a href='#beneficios'>Beneficios</a></li>
+            <li className='my-2'><a href='#como-funciona'>¿Cómo funciona?</a></li>
+            <li><a href='#planes'>Planes</a></li>
+
           </ul>
         </nav>
         <div className='item-info'>

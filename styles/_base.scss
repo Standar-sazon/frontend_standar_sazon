@@ -112,8 +112,14 @@ input[type="number"]::-webkit-outer-spin-button,
     transition: 0.5s ease;
     font-weight: $bold;
   }
-} 
+}  
 
-html {
+.container{
+  width: 100%;
+}
+
+.html {
   scroll-behavior: smooth;
 }
+ 
+
