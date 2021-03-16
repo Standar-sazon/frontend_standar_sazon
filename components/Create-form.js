@@ -1,6 +1,8 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
 const createForm = () => {
+  const router = useRouter()
   return (
     <div className='create-form-wrapper'>
       <div className='form-group'>
@@ -32,7 +34,7 @@ const createForm = () => {
             <input type='password' placeholder='Confirma tu contraseña' name='' id='' />
           </div>
         </div>
-        <button className='create-button'>Crear cuenta</button>
+        <button className='create-button' onClick={() => router.push('/login')}>Crear cuenta</button>
       </div>
     </div>
   )

@@ -13,9 +13,11 @@ const Footer = () => {
         </Link>
         <nav>
           <ul className='container-footer'>
+
             <li><a href='#beneficios'>Beneficios</a></li>
             <li className='my-2'><a href='#como-funciona'>¿Cómo funciona?</a></li>
             <li><a href='#planes'>Planes</a></li>
+
           </ul>
         </nav>
         <div className='item-info'>

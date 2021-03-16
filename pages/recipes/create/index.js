@@ -1,5 +1,6 @@
 import LayoutUser from '../../../components/LayoutUser'
 import React from 'react'
+import NextButton from '../../../components/NextButton'
 
 const Create = () => {
   return (
@@ -30,6 +31,11 @@ const Create = () => {
             <input className='input' type='date' placeholder='Captura la fecha' name='' id='' />
           </div>
           <p className='classific-text text-center mt-3'>*Elige entre nuestras categorías, la que más se ajunte al platillo que deseas preparar.</p>
+        </div>
+        <div className='d-flex justify-content-center text-align-center'>
+          <div className='col-12 col-lg-4'>
+            <NextButton message='Siguiente' />
+          </div>
         </div>
       </form>
     </LayoutUser>
