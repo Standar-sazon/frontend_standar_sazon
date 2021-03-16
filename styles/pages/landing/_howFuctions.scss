@@ -1,28 +1,121 @@
-
-.section-how-function {
-  background: linear-gradient(90deg, $dark-opacity 30%, $orange 30%);
-  color: $white;
-
-  .how-it-works {
-    margin-top: 10px;
+.section-howto{
+  background-color: $orange;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  @include tablet{
+    background-color: $dark-mode;
+  }
+  .flag-orange{
+    background-color: $orange;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    display: none;
+    @include tablet {
+      height: 100%;
+      width: 70%;
+      transform: rotate(0deg);
+      margin-left: 30%;
+      display: block;
+    }
+    @include desktop{
+      height: 100vh;
+      display: block;
+    }
   }
   
-  .font{
-    font-size: 40px;
-    font-family: $font-family;
-    font-weight: 400;
-    margin-bottom: 70px;
-    text-align: center; 
+  .how-to-title{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    @include tablet{
+      align-items: flex-end;
+    }
+    .how-title-conatiner{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 15px;
+      @include tablet{
+        margin-right: 1000px;
+        height: 20vh;
+        margin: 0;
+      }
+      @include desktop{
+        margin-right: 220px;
+      }
+      h2{
+        margin-top: 1rem;
+        color: $white;
+        font-size: $size-title-mobile;
+        font-weight: $medium;
+        text-align: center;
+        margin-bottom: 15px;
+        @include tablet {
+          margin-top: 2rem;
+          font-size: 1.5rem;
+        }
+        @include desktop {
+          margin-top: 3rem;
+          font-size: $size-title-desktop;
+        }
+      }
+    }
   }
   
-  .border-down{
-    border-bottom: 5px solid white;
-    padding-bottom: 50px;
-    padding-top: 50px;
-    margin-right: 190px;
-    margin-left: 90px
-    
+  .how-to-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    @include tablet {
+      height: 60vh;
+      flex-direction: row;
+      justify-content: space-around;
+      img{
+        width: 50%;
+      }
+    }
+  }
+
+  .green-call-to-action{
+    display: none;
+    @include tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 20vh;
+      position: relative;
+      button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px;
+        background-color: $dark-green;
+        border-radius: 25px;
+        border: none;
+        img{
+          width: 32px;
+          margin-right: 10px;
+        }
+        p{
+          margin: 0;
+          color: $white;
+          font-size: 1.125rem;
+          font-weight: $bold;
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
-
-

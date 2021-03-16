@@ -1,9 +1,6 @@
 import React from 'react'
-
+import Link from 'next/link'
 import Layout from '../components/LayoutMaster'
-import CardHow from '../components/CardHow'
-import { ContentCard1, ContentCard2, ContentCard3, ContentCard4 } from '../components/ContentCards'
-import CtaButton from '../components/CtaButton'
 import LOGO_MOBILE from '../public/img/logomobile.svg'
 import ARROW from '../public/img/arrow.svg'
 import LOGO_DESKTOP from '../public/img/logodesktop.svg'
@@ -12,6 +9,11 @@ import BENEFICIOS from '../public/palomita.svg'
 import Benefits from '../components/Benefits'
 import Dish from '../components/Benefits-image'
 import ImageBack from '../components/Benefits-bkg'
+import ImageBackOrange from '../components/HowToBkg'
+import HowToRight from '../components/HowItWork'
+import HowToLeft from '../components/HowItWorkLeft'
+import LineaBlanca from '../public/linewhite.svg'
+import ArrowButton from '../public/dark-arrow.svg'
 
 export default function Home () {
   return (
@@ -24,10 +26,12 @@ export default function Home () {
               <div className='col-12'>
                 <img src={LOGO_MOBILE} alt='logo' className='d-md-none logo-mobile' />
                 <img src={LOGO_DESKTOP} alt='logo' className='d-none d-md-block logo-desktop' />
-                <div className='wrapper-btn'>
-                  <button className='btn_hero'>Crea tu cuenta ya!!</button>
-                  <img src={ARROW} alt='arrow' className='arrow_button' />
-                </div>
+                <Link href='/create'>
+                  <div className='wrapper-btn'>
+                    <button className='btn_hero'>¡Crea tu cuenta ya!</button>
+                    <img src={ARROW} alt='arrow' className='arrow_button' />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -35,7 +39,7 @@ export default function Home () {
       </header>
 
       {/* beneficios */}
-      <div className='container-fluid section-benefits'>
+      <div id='beneficios' className='container-fluid section-benefits'>
         <div className='row'>
           <ImageBack />
           <div className='container'>
@@ -48,63 +52,31 @@ export default function Home () {
       </div>
 
       {/* como.funciona. */}
-      <div className='container-fluid section-how-function'>
+      <div id='como-funciona' className='container-fluid section-howto'>
         <div className='row'>
-          <div className='col-12 col-lg-6 offset-lg-6 how-it-works'>
-            <h1 className='font border-down'>¿Cómo funciona?</h1>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-12 col-md-6 col-xl-3 d-flex justify-items-start'>
-            <CardHow
-              backgroundSrc='/images/images-card/Card_1.svg'
-              title='Elige el tipo de receta'
-              step={1}
-              content='Selecciona de nuestras categorías el tipo de receta que mejor se ajuste a tu platillo.'
-            >
-              <ContentCard1 />
-            </CardHow>
-          </div>
-          <div className='col-12 col-md-6 col-xl-3'>
-            <CardHow
-              backgroundSrc='/images/images-card/Card_2.svg'
-              title='Elige tus ingredientes'
-              step={2}
-              content='Selecciona de nuestra lista de ingredientes* o agrega lo que necesites.'
-              subContent='* Los precios de los productos están basados en la región centro (CDMX)'
-            >
-              <ContentCard2 />
-            </CardHow>
-          </div>
-          <div className='col-12 col-md-6 col-xl-3'>
-            <CardHow
-              backgroundSrc='/images/images-card/Card_3.svg'
-              title='Ingresa los pesos'
-              step={3}
-              content='Ingresa el peso neto y el peso bruto de tus ingredientes, para que podamos calcularlos por ti.'
-            >
-              <ContentCard3 />
-            </CardHow>
-          </div>
-          <div className='col-12 col-md-6 col-xl-3'>
-            <CardHow
-              backgroundSrc='/images/images-card/Card_4.svg'
-              title='Elige tus porciones'
-              step={4}
-              content='Ingresa la cantidad de porciones que requiere tu platillo y te diremos exactamente lo que necesitas comprar.'
-            >
-              <ContentCard4 />
-            </CardHow>
-          </div>
-        </div>
-        <div className='row justify-content-center'>
-          <div className='col-12 col-lg-4'>
-            <CtaButton message='Comienza tu prueba gratuita.' />
+          <ImageBackOrange />
+          <div className='container d-flex'>
+            <div className='row'>
+              <div className='how-to-title'>
+                <div class='how-title-conatiner'>
+                  <h2>¿Cómo funciona?</h2>
+                  <img src={LineaBlanca} alt='Linea' />
+                </div>
+              </div>
+              <div className='col-12 col-md-6 p-0'><HowToLeft /></div>
+              <div className='col-12 col-md-6 p-0'><HowToRight /></div>
+              <div class='green-call-to-action'>
+                <Link href='/create'>
+                  <button><img src={ArrowButton} alt='' /><p>Comienza tu prueba gratuita.</p> </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
       {/* planes */}
-      <div className='container-fluid section-planes'>
+      <div id='planes' className='container-fluid section-planes'>
         <div className='row'>
           <div className='container'>
             <div className='row'>
@@ -130,7 +102,9 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Indicadores administrativos preestablecidos
                   </p>
-                  <button className='card-button'>Únete</button>
+                  <Link href='/create'>
+                    <button className='card-button'>Únete</button>
+                  </Link>
                 </Card>
               </div>
               <div className='col-12 col-md-6'>
@@ -155,7 +129,9 @@ export default function Home () {
                     <img className='' src={BENEFICIOS} alt='approved' />
                     Creación de ingredientes propios
                   </p>
-                  <button className='card-button'>Contrata</button>
+                  <Link href='/create'>
+                    <button className='card-button'>Contrata</button>
+                  </Link>
                 </Card>
               </div>
             </div>

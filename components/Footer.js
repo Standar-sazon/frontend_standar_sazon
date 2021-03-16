@@ -1,32 +1,24 @@
 import React from 'react'
-import LOGO from '../public/logo.svg'
 
-const Footer = () => {
+const footer = () => {
   return (
-    <footer className='footer'>
-      <div className='all-footer'>
-        <img className='images-footer-1' src={LOGO} alt='LOGO' />
-        <nav>
-          <ul className='container-footer'>
-            <li><a href=''>Beneficios</a></li>
-            <li className='my-2'><a href=''>¿Cómo funciona?</a></li>
-            <li><a href=''>Planes</a></li>
-          </ul>
-        </nav>
-        <div className='item-info'>
-          <p>Información</p>
-          <p>+ 52 55 6474 5613</p>
-          <p>dmgs.mx@gmail.com</p>
-        </div>
-
-      </div>
-      <div className='privacidad'>
-        <p>© 2021 Standar & Sazón </p>
-        <p>Aviso de privacidad</p>
-      </div>
-    </footer>
-
+    <div class='container-fluid bg-dark'>
+      <ul class='nav flex-column justify-content-center'>
+        <li class='nav-item'>
+          <a class='nav-link' href='#'>Beneficios</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#'>¿Cómo funciona?</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#'>Planes</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#'>Disabled</a>
+        </li>
+      </ul>
+    </div>
   )
 }
 
-export default Footer
+export default footer
