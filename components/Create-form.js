@@ -6,12 +6,12 @@ import * as yup from 'yup'
 import { create } from '../services/users'
 
 const schema = yup.object().shape({
-  nameform: yup.string().required('El email no es valido').required('El campo es requerido'),
-  lastNameform: yup.string().required('El campo es requerido'),
-  emailform: yup.string().email('El email no es valido'),
-  passwordform: yup.string().required('El campo es requerido').min(8, 'El número de caracteres debe de ser mayor a 8'),
+  name: yup.string().required('El email no es valido').required('El campo es requerido'),
+  lastName: yup.string().required('El campo es requerido'),
+  email: yup.string().email('El email no es valido'),
+  password: yup.string().required('El campo es requerido').min(8, 'El número de caracteres debe de ser mayor a 8'),
   confirmPasswordform: yup.string().required('El campo es requerido'),
-  cityform: yup.string().required('El campo es requerido')
+  location: yup.string().required('El campo es requerido')
 })
 
 export default function App () {
@@ -37,13 +37,12 @@ export default function App () {
     }
     setLoading(true)
     router.push('/login')
-    localStorage.setItem('token', responseJSON.data.token)
   }
-  const errorClassName = errors.nameform ? 'error' : null
-  const errorClasslastName = errors.lastNameform ? 'error' : null
+  const errorClassName = errors.name ? 'error' : null
+  const errorClasslastName = errors.lastName ? 'error' : null
   const errorClassEmail = errors.email ? 'error' : null
   const errorClassPassword = errors.password ? 'error' : null
-  const errorClassCity = errors.cityform ? 'error' : null
+  const errorClassCity = errors.location ? 'error' : null
 
   return (
     <div className='create-form-wrapper'>
@@ -51,29 +50,29 @@ export default function App () {
         <div className='divider-left'>
           <div className='form-input'>
             <label for=''>Nombre*</label>
-            <input name='nameform' ref={register} type='text' placeholder='Escribe tu(s) nombre(s)' className={errorClassName} id='' />
-            <p>{errors.nameform?.message}</p>
+            <input name='name' ref={register} type='text' placeholder='Escribe tu(s) nombre(s)' className={errorClassName} id='' />
+            <p>{errors.name?.message}</p>
           </div>
           <div className='form-input'>
             <label for=''>Apellidos*</label>
-            <input name='lastNameform' ref={register} type='text' placeholder='Escribe tu(s) apellido(s)' className={errorClasslastName} id='' />
-            <p>{errors.lastNameform?.message}</p>
+            <input name='lastName' ref={register} type='text' placeholder='Escribe tu(s) apellido(s)' className={errorClasslastName} id='' />
+            <p>{errors.lastName?.message}</p>
           </div>
           <div className='form-input'>
             <label for=''>Email*</label>
-            <input name='emailform' ref={register} type='email' placeholder='Correo electronico' className={errorClassEmail} id='' />
-            <p>{errors.emailform?.message}</p>
+            <input name='email' ref={register} type='email' placeholder='Correo electronico' className={errorClassEmail} id='' />
+            <p>{errors.email?.message}</p>
           </div>
         </div>
         <div className='divider-right'>
           <div className='form-input'>
             <label for=''>Ciudad*</label>
-            <input name='cityform' ref={register} type='text' placeholder='¿De donde eres?' className={errorClassCity} id='' />
-            <p>{errors.cityform?.message}</p>
+            <input name='location' ref={register} type='text' placeholder='¿De donde eres?' className={errorClassCity} id='' />
+            <p>{errors.location?.message}</p>
           </div>
           <div className='form-input'>
             <label for=''>Contraseña*</label>
-            <input name='passwordform' ref={register} type='password' placeholder='Escribe tu contraseña' className={errorClassPassword} id='' />
+            <input name='password' ref={register} type='password' placeholder='Escribe tu contraseña' className={errorClassPassword} id='' />
             <p>{errors.password?.message}</p>
           </div>
           <div className='form-input'>
