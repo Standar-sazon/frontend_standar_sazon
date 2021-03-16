@@ -16,7 +16,6 @@ import LineaBlanca from '../public/linewhite.svg'
 import ArrowButton from '../public/dark-arrow.svg'
 
 export default function Home () {
-  const router = useRouter()
   return (
     <Layout>
 
