@@ -1,12 +1,12 @@
 import { URL_BASE } from './config'
 
-function createSubrecipe (objectSubrecipes) {
+function createSubrecipe (token, objectSubrecipes) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'POST',
     body: JSON.stringify(objectSubrecipes),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': `application/json ${token}`
     },
     mode: 'cors'
   }

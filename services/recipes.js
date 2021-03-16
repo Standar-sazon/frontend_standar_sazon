@@ -1,12 +1,12 @@
 import { URL_BASE } from './config'
 
-function createRecipe (objectRecipes) {
+function createRecipe (token, objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'POST',
     body: JSON.stringify(objectRecipes),
     headers: {
-      'content-Type': 'application/json'
+      'content-Type': `application/json ${token}`
     },
     mode: 'cors'
   }
@@ -17,7 +17,6 @@ function recipeRequest (token) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'GET',
-    body: JSON.stringify(token),
     headers: {
       'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
