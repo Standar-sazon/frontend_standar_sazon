@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { login } from '../services/users'
 
+import PacmanLoader from 'react-spinners/PacmanLoader'
+
 const schema = yup.object().shape({
   email: yup.string().email('El email no es valido').required('El campo es requerido'),
   password: yup.string().required('El campo es requerido').min(8, 'El numero de caracteres debe ser mayor a 8')
@@ -49,6 +51,12 @@ const loginForm = () => {
             <label for=''>Contraseña*</label>
             <input name='password' ref={register} type='password' className={errorClassPassword} placeholder='Escribe tu contraseña' id='' />
             {errors.password?.message}
+          </div>
+          <div className=' d-flex flex-column align-items-center w-100 mb-1'>
+            <p>{error}</p>
+          </div>
+          <div className='pacman'>
+            <PacmanLoader color='#00AF91' loading size={20} />
           </div>
         </div>
         <button type='submit' className='create-button'>Inicia sesión</button>

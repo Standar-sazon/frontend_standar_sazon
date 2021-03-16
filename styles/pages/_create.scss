@@ -86,12 +86,14 @@
     @include tablet{
       border-radius: 0rem 1.5rem 1.5rem .0rem;
       flex-direction: row;
-      padding: 0 30px;
       height: 37.5rem;
       align-items: center;
       flex-flow: wrap;
       justify-content: center;
-      padding: 140px 30px;
+      padding: 90px 30px;
+    }
+    p{
+      margin: 0;
     }
     .divider-left, .divider-right{
       width: 80%;
@@ -102,5 +104,12 @@
     @include tablet{
       margin: 0;
     }
+  }
+  .pacman{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 90px 0;
   }
 }

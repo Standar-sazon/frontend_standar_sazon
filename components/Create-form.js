@@ -5,12 +5,14 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { create } from '../services/users'
 
+import PacmanLoader from 'react-spinners/PacmanLoader'
+
 const schema = yup.object().shape({
-  name: yup.string().required('El email no es valido').required('El campo es requerido'),
+  name: yup.string().required('El campo es requerido'),
   lastName: yup.string().required('El campo es requerido'),
-  email: yup.string().email('El email no es valido'),
+  email: yup.string().required('El campo es requerido').email('El email no es valido'),
   password: yup.string().required('El campo es requerido').min(8, 'El número de caracteres debe de ser mayor a 8'),
-  confirmPasswordform: yup.string().required('El campo es requerido'),
+  confirmPassword: yup.string().required('El campo es requerido'),
   location: yup.string().required('El campo es requerido')
 })
 
@@ -31,8 +33,8 @@ export default function App () {
     const responseJSON = await response.json()
     console.log(responseJSON)
     if (!responseJSON.success) {
-      setError('Credenciales Invalidas')
-      setLoading(true)
+      setError('Usuario ya existente')
+      setLoading(false)
       return
     }
     setLoading(true)
@@ -43,6 +45,7 @@ export default function App () {
   const errorClassEmail = errors.email ? 'error' : null
   const errorClassPassword = errors.password ? 'error' : null
   const errorClassCity = errors.location ? 'error' : null
+  const errorClassConfirmPassword = errors.confirmPassword ? 'error' : null
 
   return (
     <div className='create-form-wrapper'>
@@ -77,10 +80,19 @@ export default function App () {
           </div>
           <div className='form-input'>
             <label for=''>Confirmar contraseña*</label>
-            <input name='confirmPasswordform' ref={register} type='password' placeholder='Confirma tu contraseña' id='' />
+            <input name='confirmPassword' ref={register} type='password' placeholder='Confirma tu contraseña' className={errorClassConfirmPassword} id='' />
+            <p>{errors.confirmPassword?.message}</p>
           </div>
         </div>
-        <button type='submit' className='create-button'>Crear cuenta</button>
+        <div className=' d-flex flex-column align-items-center w-100 mb-1'>
+          <p>{error}</p>
+        </div>
+        <div className=' d-flex flex-column align-items-center w-100 mr-5 mb-1'>
+          <PacmanLoader color='#00AF91' loading={loading} size={20} />
+        </div>
+        <div className=' d-flex justify-content-center mt-4'>
+          <button type='submit' className='create-button'>Crear cuenta</button>
+        </div>
       </form>
     </div>
   )
