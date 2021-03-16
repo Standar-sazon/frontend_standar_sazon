@@ -2,11 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { Button, Navbar, Form, Nav } from 'react-bootstrap'
 import Logo from '../public/logo.svg'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 const navBar = () => {
-  const router = useRouter()
   return (
     <div>
       <Navbar className='nav-style d-md-flex px-4-lg' expand='lg'>

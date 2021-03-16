@@ -65,7 +65,7 @@ export default function Home () {
               </div>
               <div className='col-12 col-md-6 p-0'><HowToLeft /></div>
               <div className='col-12 col-md-6 p-0'><HowToRight /></div>
-              <div class='green-call-to-action'>
+              <div className='green-call-to-action'>
                 <Link href='/create'>
                   <button><img src={ArrowButton} alt='' /><p>Comienza tu prueba gratuita.</p> </button>
                 </Link>
@@ -79,59 +79,63 @@ export default function Home () {
       <div id='planes' className='container-fluid section-planes'>
         <div className='row'>
           <div className='container'>
-            <div className='row'>
+            <div className='row '>
               <div className='col-12 col-md-6'>
                 <Card className='card-prices-1'>
-                  <div className='d-flex justify-content-between align-items-center'>
+                  <div className='card-plains-header'>
                     <div>
                       <h1>Básico</h1>
+                      <p className='color-subtittle'>Free</p>
                       <h2>Free</h2>
                     </div>
-                    <p className='color-subtittle'>Free</p>
                   </div>
                   <p className='margin-plan'>/Sin Limite de tiempo</p>
-                  <p>
-                    <img className='' src={BENEFICIOS} alt='approved' />
-                    Creación de receta con base de datos
-                  </p>
-                  <p>
-                    <img className='' src={BENEFICIOS} alt='approved' />
-                    + de mil ingredientes
-                  </p>
-                  <p>
-                    <img className='' src={BENEFICIOS} alt='approved' />
-                    Indicadores administrativos preestablecidos
-                  </p>
-                  <Link href='/create'>
-                    <button className='card-button'>Únete</button>
-                  </Link>
+                  <div className='info-plains-container'>
+                    <p>
+                      <img className='' src={BENEFICIOS} alt='approved' />
+                      Creación de receta con base de datos
+                    </p>
+                    <p>
+                      <img className='' src={BENEFICIOS} alt='approved' />
+                      + de mil ingredientes
+                    </p>
+                    <p>
+                      <img className='' src={BENEFICIOS} alt='approved' />
+                      Indicadores administrativos preestablecidos
+                    </p>
+                    <Link href='/create'>
+                      <button className='card-button'>Únete</button>
+                    </Link>
+                  </div>
                 </Card>
               </div>
               <div className='col-12 col-md-6'>
                 <Card className='card-prices-2'>
-                  <div className='d-flex justify-content-between align-items-center'>
+                  <div className='card-plains-header'>
                     <div>
-                      <h1>Premiun</h1>
+                      <h1>Premium</h1>
+                      <p className='color-subtittle'>$340</p>
                       <h2>$340</h2>
                     </div>
-                    <p className='color-subtittle'>$340</p>
                   </div>
                   <p className='margin-plan'>/Mensual</p>
-                  <p>
-                    <img className='' src={BENEFICIOS} alt='approved' />
-                    Descarga de recetas en formato PDF
-                  </p>
-                  <p>
-                    <img className='' src={BENEFICIOS} alt='approved' />
-                    Indicadores administrativos preestablecidos
-                  </p>
-                  <p>
-                    <img className='' src={BENEFICIOS} alt='approved' />
-                    Creación de ingredientes propios
-                  </p>
-                  <Link href='/create'>
-                    <button className='card-button'>Contrata</button>
-                  </Link>
+                  <div className='info-plains-container'>
+                    <p>
+                      <img className='' src={BENEFICIOS} alt='approved' />
+                      Descarga de recetas en formato PDF
+                    </p>
+                    <p>
+                      <img className='' src={BENEFICIOS} alt='approved' />
+                      Indicadores administrativos preestablecidos
+                    </p>
+                    <p>
+                      <img className='' src={BENEFICIOS} alt='approved' />
+                      Creación de ingredientes propios
+                    </p>
+                    <Link href='/create'>
+                      <button className='card-button'>Contrata</button>
+                    </Link>
+                  </div>
                 </Card>
               </div>
             </div>
