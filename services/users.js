@@ -1,7 +1,7 @@
 import { URL_BASE } from './config'
 
 // login
-function login(objectCredentials) {
+function login (objectCredentials) {
   const URL = `${URL_BASE}auth/login`
   const options = {
     method: 'POST',
@@ -15,8 +15,8 @@ function login(objectCredentials) {
 }
 
 // creación de cuenta//
-function create(objectUser) {
-  const URL = `${URL_BASE}user`
+function create (objectUser) {
+  const URL = `${URL_BASE}users`
   const options = {
     method: 'POST',
     body: JSON.stringify(objectUser),
@@ -29,7 +29,7 @@ function create(objectUser) {
 }
 
 // update//
-function update(id, token, objectUser) {
+function update (id, token, objectUser) {
   const URL = `${URL_BASE}user/${id}`
   const options = {
     method: 'PATCH',
@@ -44,7 +44,7 @@ function update(id, token, objectUser) {
 }
 
 // Solicitud de usuario//
-function userRequest(token) {
+function userRequest (token) {
   const URL = `${URL_BASE}user`
   const options = {
     method: 'GET',

@@ -76,6 +76,15 @@ button {
     @include tablet{
       font-size: $size-inputsplaceholder-desktop;
     }
+    &:focus {
+      outline: none;
+    }
+    &.error {
+      border: 1px red solid;
+      &::placeholder {
+        color: red;
+      }
+    }
   }
 }
 
@@ -96,7 +105,7 @@ input[type="number"]::-webkit-outer-spin-button,
   padding: 10px 20px;
   font-size: $size-footerlinks-mobile;
   font-weight: $bold;
-  margin: 20px 0px 20px 0px;
+  margin: 30px 0px 20px 0px;
   &:hover{
     color: $dark-mode;
     background-color: $light-green;
