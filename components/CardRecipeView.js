@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faDollarSign, faIndustry } from '@fortawesome/free-solid-svg-icons'
 
-const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc }) => {
+const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc, time }) => {
   return (
     <container>
       <row className='row row-cols-1 row-cols-md-3 g-4'>
@@ -20,9 +20,9 @@ const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc }) 
               <h5 className='card-title title'>{title}</h5>
               <ul className='list-unstyled text-center card-content-how'>
                 <li className='category'>{category}</li>
-                <li className='entry'>{entry}</li>
+                {/* <li className='entry'>{entry}</li> */}
                 <li className='time'>
-                  <FontAwesomeIcon icon={faClock} />1/2hr
+                  <FontAwesomeIcon icon={faClock} />{time}
                 </li>
                 <li className='price'>
                   <FontAwesomeIcon icon={faDollarSign} /> {price}

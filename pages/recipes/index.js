@@ -1,9 +1,26 @@
+import React, { useEffect, useState } from 'react'
 import LayoutUser from '../../components/LayoutUser'
-import React from 'react'
+
 import CardRecipeView from '../../components/CardRecipeView'
 import Carrusel from '../../components/Carrusel'
 
+import { recipeRequest } from '../../services/recipes'
+
 const Recipes = () => {
+  const [recipesAll, setRecipesAll] = useState([])
+  const getRecipes = async () => {
+    const response = await recipeRequest(localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  // mount componente - es cuando hacemos una peticion para mostrarla en el componente
+  useEffect(async () => {
+    const recipes = await getRecipes()
+    console.log(recipes)
+    setRecipesAll(recipes)
+  }, [])
+
   return (
     <LayoutUser>
       <div className='container-cards-recipes'>
@@ -11,14 +28,26 @@ const Recipes = () => {
           <div className='col-12 mx-auto'>
             <Carrusel />
           </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
-            <CardRecipeView
-              title='Alitas clásicas'
-              price='150.00'
-              backgroundSrc='/imagesRecipeView/CardImage1.svg'
-            />
-          </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
+          {
+            recipesAll.length !== 0
+              ? (
+                  recipesAll.map(recipe => (
+                    <div key={recipe.id} className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
+                      <CardRecipeView
+                        title={recipe.name}
+                        price={recipe.price}
+                        category={recipe.category}
+                        time='1hr'
+                        backgroundSrc='/imagesRecipeView/CardImage1.svg'
+                      />
+                    </div>
+                  ))
+                )
+              : <h2>No hay recetas</h2>
+
+          }
+
+          {/* <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
             <CardRecipeView
               title='Shots de camarónes'
               price='180.00'
@@ -130,13 +159,13 @@ const Recipes = () => {
               backgroundSrc='/imagesRecipeView/CardImage17.svg'
             />
           </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto' >
+          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
             <CardRecipeView
               title='Daikiri'
               price='150.00'
               backgroundSrc='/imagesRecipeView/CardImage19.svg'
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </LayoutUser>
