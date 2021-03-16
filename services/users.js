@@ -1,7 +1,7 @@
 import { URL_BASE } from './config'
 
 // login
-function login (objectCredentials) {
+function login(objectCredentials) {
   const URL = `${URL_BASE}auth/login`
   const options = {
     method: 'POST',
@@ -15,13 +15,13 @@ function login (objectCredentials) {
 }
 
 // creación de cuenta//
-function create (objectUser) {
+function create(objectUser) {
   const URL = `${URL_BASE}user`
   const options = {
     method: 'POST',
     body: JSON.stringify(objectUser),
     headers: {
-      'Content-Type': 'application/json'
+      'content-Type': 'application/json'
     },
     mode: 'cors'
   }
@@ -29,13 +29,14 @@ function create (objectUser) {
 }
 
 // update//
-function update (objectUser) {
-  const URL = `${URL_BASE}user`
+function update(id, token, objectUser) {
+  const URL = `${URL_BASE}user/${id}`
   const options = {
     method: 'PATCH',
     body: JSON.stringify(objectUser),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
@@ -43,13 +44,13 @@ function update (objectUser) {
 }
 
 // Solicitud de usuario//
-function userRequest (objectUser) {
+function userRequest(token) {
   const URL = `${URL_BASE}user`
   const options = {
     method: 'GET',
-    body: JSON.stringify(objectUser),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
