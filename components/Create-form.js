@@ -12,7 +12,7 @@ const schema = yup.object().shape({
   lastName: yup.string().required('El campo es requerido'),
   email: yup.string().required('El campo es requerido').email('El email no es valido'),
   password: yup.string().required('El campo es requerido').min(8, 'El número de caracteres debe de ser mayor a 8'),
-  confirmPassword: yup.string().required('El campo es requerido'),
+  confirmationPassword: yup.string().required('Requerido').oneOf([yup.ref('password')], 'La Contraseña no Coincide'),
   location: yup.string().required('El campo es requerido')
 })
 
@@ -27,11 +27,11 @@ export default function App () {
   })
   const onSubmit = async (dataForm) => {
     setLoading(true)
-    console.log('Enviando al server...')
-    console.log(dataForm)
+    // console.log('Enviando al server...')
+    // console.log(dataForm)
     const response = await create(dataForm)
     const responseJSON = await response.json()
-    console.log(responseJSON)
+    // console.log(responseJSON)
     if (!responseJSON.success) {
       setError('Usuario ya existente')
       setLoading(false)
@@ -45,7 +45,7 @@ export default function App () {
   const errorClassEmail = errors.email ? 'error' : null
   const errorClassPassword = errors.password ? 'error' : null
   const errorClassCity = errors.location ? 'error' : null
-  const errorClassConfirmPassword = errors.confirmPassword ? 'error' : null
+  const errorClassConfirmPassword = errors.confirmationPassword ? 'error' : null
 
   return (
     <div className='create-form-wrapper'>
@@ -80,8 +80,8 @@ export default function App () {
           </div>
           <div className='form-input'>
             <label for=''>Confirmar contraseña*</label>
-            <input name='confirmPassword' ref={register} type='password' placeholder='Confirma tu contraseña' className={errorClassConfirmPassword} id='' />
-            <p>{errors.confirmPassword?.message}</p>
+            <input name='confirmationPassword' ref={register} type='password' placeholder='Confirma tu contraseña' className={errorClassConfirmPassword} id='' />
+            <p>{errors.confirmationPassword?.message}</p>
           </div>
         </div>
         <div className=' d-flex flex-column align-items-center w-100 mb-1'>

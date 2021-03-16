@@ -101,7 +101,7 @@ export default function Home () {
         </div>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-4'>
-            <CtaButton message='Comienza tu prueba gratuita.' />
+            <CtaButton onClick={() => router.push('/create')} message='Comienza tu prueba gratuita.' />
           </div>
         </div>
       </div>

@@ -11,7 +11,6 @@ const CtaButton = ({ icon, message }) => (
       <span className='message'>{message}</span>
     </button>
   </Link>
-
 )
 
 CtaButton.defaultProps = {
