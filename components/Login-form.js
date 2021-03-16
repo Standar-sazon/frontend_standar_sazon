@@ -56,7 +56,7 @@ const loginForm = () => {
             <p>{error}</p>
           </div>
           <div className='pacman'>
-            <PacmanLoader color='#00AF91' loading size={20} />
+            <PacmanLoader color='#00AF91' loading={loading} size={20} />
           </div>
         </div>
         <button type='submit' className='create-button'>Inicia sesión</button>

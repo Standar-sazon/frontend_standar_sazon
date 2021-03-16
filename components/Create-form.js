@@ -87,10 +87,10 @@ export default function App () {
         <div className=' d-flex flex-column align-items-center w-100 mb-1'>
           <p>{error}</p>
         </div>
-        <div className=' d-flex flex-column align-items-center w-100 mr-5 mb-1'>
+        <div className='pacman'>
           <PacmanLoader color='#00AF91' loading={loading} size={20} />
         </div>
-        <div className=' d-flex justify-content-center mt-4'>
+        <div className=' d-flex justify-content-center'>
           <button type='submit' className='create-button'>Crear cuenta</button>
         </div>
       </form>
