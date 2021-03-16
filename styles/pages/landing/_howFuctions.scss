@@ -43,12 +43,12 @@
       justify-content: center;
       margin: 0 0 15px;
       @include tablet{
-        margin-right: 1000px;
+        margin-right: 100px;
         height: 20vh;
         margin: 0;
       }
       @include desktop{
-        margin-right: 220px;
+        margin-right: 130px;
       }
       h2{
         margin-top: 1rem;
