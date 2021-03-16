@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Navbar, Form, Nav } from 'react-bootstrap'
-import Logo from '../public/logo.svg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Button, Navbar, Form, Nav } from 'react-bootstrap'
+import Logo from '../public/logo.svg'
 
 const navBar = () => {
   const router = useRouter()
@@ -18,12 +18,12 @@ const navBar = () => {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='link-style m-auto'>
             <Nav.Link href='#section-benefits'>Beneficios</Nav.Link>
-            <Nav.Link href='#section-how-works'>¿Cómo funciona?</Nav.Link>
-            <Nav.Link href='#section-plans'>Planes</Nav.Link>
-            <Nav.Link className='link-account' Link href='/create'>Crear cuenta</Nav.Link>
+            <Nav.Link href='#como-funciona'>¿Cómo funciona?</Nav.Link>
+            <Nav.Link href='#planes'>Planes</Nav.Link>
+            <Nav.Link className='link-account' href='/create'>Crear cuenta</Nav.Link>
           </Nav>
           <Form className='form-nav' inline>
-            <Button Onclick={() => router.push('/login')}>Iniciar Sesión</Button>
+            <Button onClick={() => router.push('/login')}>Iniciar Sesión</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
