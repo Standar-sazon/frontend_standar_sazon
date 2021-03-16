@@ -8,9 +8,9 @@ const Footer = () => {
         <img className='images-footer-1' src={LOGO} alt='LOGO' />
         <nav>
           <ul className='container-footer'>
-            <li><a href=''>Beneficios</a></li>
-            <li className='my-2'><a href=''>¿Cómo funciona?</a></li>
-            <li><a href=''>Planes</a></li>
+            <li><a href='#section-benefits'>Beneficios</a></li>
+            <li className='my-2'><a href='#section-how-works'>¿Cómo funciona?</a></li>
+            <li><a href='#section-plans'>Planes</a></li>
           </ul>
         </nav>
         <div className='item-info'>
