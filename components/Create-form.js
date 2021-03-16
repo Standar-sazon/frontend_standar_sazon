@@ -27,6 +27,7 @@ export default function App () {
   })
   const onSubmit = async (dataForm) => {
     setLoading(true)
+    setError()
     // console.log('Enviando al server...')
     // console.log(dataForm)
     const response = await create(dataForm)
