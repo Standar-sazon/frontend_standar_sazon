@@ -1,10 +1,10 @@
 import { URL_BASE } from './config'
 
-function createRecipe(objectRecipen) {
+function createRecipe (objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'POST',
-    body: JSON.stringify(objectRecipen),
+    body: JSON.stringify(objectRecipes),
     headers: {
       'content-Type': 'application/json'
     },
@@ -13,7 +13,7 @@ function createRecipe(objectRecipen) {
   return window.fetch(URL, options)
 }
 
-function recipeRequest(token) {
+function recipeRequest (token) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'GET',
@@ -28,11 +28,11 @@ function recipeRequest(token) {
   return window.fetch(URL, options)
 }
 
-function recipeUpdate(id, objectRecipes, token) {
-  const URL = `${URL_BASE}recipes`
+function recipeUpdate (id, objectRecipes, token) {
+  const URL = `${(id, URL_BASE)}recipes`
   const options = {
     method: 'PATCH',
-    body: JSON.stringify(id, token, objectRecipes),
+    body: JSON.stringify(objectRecipes),
     headers: {
       'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -42,11 +42,10 @@ function recipeUpdate(id, objectRecipes, token) {
   return window.fetch(URL, options)
 }
 
-function deleteRecipe(id, token) {
-  const URL = `${URL_BASE}recipes`
+function deleteRecipe (id, token) {
+  const URL = `${(id, URL_BASE)}recipes`
   const options = {
     method: 'DELET',
-    body: JSON.stringify(id),
     headers: {
       'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
