@@ -27,9 +27,23 @@ function recipeRequest (token) {
   }
   return window.fetch(URL, options)
 }
+function recipeRequestByID (id, token) {
+  const URL = `${URL_BASE}recipes/${id}`
+  const options = {
+    method: 'GET',
+    body: JSON.stringify(token),
+    headers: {
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+
+    },
+    mode: 'cors'
+  }
+  return window.fetch(URL, options)
+}
 
 function recipeUpdate (id, objectRecipes, token) {
-  const URL = `${(id, URL_BASE)}recipes`
+  const URL = `${URL_BASE}recipes/${id}`
   const options = {
     method: 'PATCH',
     body: JSON.stringify(objectRecipes),
@@ -43,7 +57,7 @@ function recipeUpdate (id, objectRecipes, token) {
 }
 
 function deleteRecipe (id, token) {
-  const URL = `${(id, URL_BASE)}recipes`
+  const URL = `${URL_BASE}recipes/${id}`
   const options = {
     method: 'DELET',
     headers: {
@@ -59,5 +73,6 @@ export {
   createRecipe,
   recipeRequest,
   recipeUpdate,
-  deleteRecipe
+  deleteRecipe,
+  recipeRequestByID
 }
