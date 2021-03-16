@@ -13,7 +13,7 @@ const navBar = () => {
             <Nav.Link href='#beneficios'>Beneficios</Nav.Link>
             <Nav.Link href='#como-funciona'>¿Cómo funciona?</Nav.Link>
             <Nav.Link href='#planes'>Planes</Nav.Link>
-            <Nav.Link className='link-account' href='#crear-cuenta'>Crear cuenta</Nav.Link>
+            <Nav.Link className='link-account' href='/create'>Crear cuenta</Nav.Link>
           </Nav>
           <Form className='form-nav' inline>
             <Button>Iniciar Sesión</Button>
