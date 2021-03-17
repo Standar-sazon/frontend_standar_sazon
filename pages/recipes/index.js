@@ -40,13 +40,13 @@ const Recipes = () => {
         <div className='row'>
           <div className='col-12 mx-auto'>
             {
-              recipeComponents.lenght !== 0
+              recipesAll.lenght !== 0
                 ? <Carrusel />
                 : null
             }
           </div>
           {
-            recipeComponents.length !== 0
+            recipesAll.length !== 0
               ? recipeComponents
               : <FirstUserView />
           }
