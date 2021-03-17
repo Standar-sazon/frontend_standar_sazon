@@ -1,13 +1,11 @@
 import { URL_BASE } from './config'
 
-function productsRequest(token) {
+function productsRequest() {
   const URL = `${URL_BASE}products`
   const options = {
     method: 'GET',
     headers: {
       'content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-
     },
     mode: 'cors'
   }
