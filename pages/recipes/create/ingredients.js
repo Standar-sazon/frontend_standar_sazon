@@ -1,10 +1,31 @@
+import React, { useState, useEffect, useRef } from 'react'
 import LayoutUser from '../../../components/LayoutUser'
-import React from 'react'
+
 import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
 
+import { productsRequest } from '../../../services/product'
+
 const Ingredients = () => {
+  const [products, setProducts] = useState([])
+  const getProducts = async () => {
+    const response = await productsRequest()
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+  useEffect(async () => {
+    const productsAll = await getProducts()
+    console.log(productsAll)
+    setProducts(productsAll)
+  }, [])
+  const handleClickOption = (e) => {
+    console.log(e.target.value)
+  }
+  const handleChangeInput = (e) => {
+    console.log('input')
+    console.log(e.target.value)
+  }
   return (
     <LayoutUser>
       <div className='section-add-ingredients'>
@@ -14,7 +35,12 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
                 <label for=''>Ingrediente</label>
-                <input type='text' placeholder='Ingrediente' name='' id='' />
+                <input type='text' list='products' onChange={handleChangeInput} placeholder='Ingrediente' name='' id='' />
+                <datalist id='products'>
+                  {
+                    products.map(product => (<option key={product._id} value={product._id}>{product.name}</option>))
+                  }
+                </datalist>
               </div>
               <div className='d-flex flex-column'>
                 <label for=''>Peso neto</label>

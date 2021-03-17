@@ -39,10 +39,15 @@ const Recipes = () => {
       <div className='container-cards-recipes'>
         <div className='row'>
           <div className='col-12 mx-auto'>
-            <Carrusel />
+            {
+              recipeComponents.length !== 0
+                ? <Carrusel />
+                : null
+            }
+
           </div>
           {
-            recipeComponents.length
+            recipeComponents.length !== 0
               ? recipeComponents
               : <FirstUserView />
           }
