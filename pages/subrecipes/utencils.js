@@ -8,14 +8,14 @@ import AddUtencil from '../../components/AddUtencil'
 const Utencilios = () => {
   return (
     <LayoutUser>
-      <div className='allUtencils'>
+      <form className='allUtencils'>
         <p>Utensilios</p>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons message='Sarten' color='orange' />
-          <UtencilsButtons message='Olla' color='green' />
-          <UtencilsButtons message='Cuchillo' color='orange' />
-          <UtencilsButtons message='Budinera' color='green' />
-          <UtencilsButtons message='Tabla' color='orange' />
+          <UtencilsButtons id='sarten' message='Sarten' color='orange' />
+          <UtencilsButtons id='' message='Olla' color='green' />
+          <UtencilsButtons id='' message='Cuchillo' color='orange' />
+          <UtencilsButtons id='' message='Budinera' color='green' />
+          <UtencilsButtons id='' message='Tabla' color='orange' />
         </div>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
           <UtencilsButtons message='Licuadora' color='orange' />
@@ -67,7 +67,7 @@ const Utencilios = () => {
             <NextButton message='Siguiente' />
           </div>
         </div>
-      </div>
+      </form>
 
     </LayoutUser>
   )
