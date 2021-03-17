@@ -1,20 +1,23 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome//free-solid-svg-icons'
 import Link from 'next/link'
 
-const CtaButton = ({ icon, message }) => (
-  <Link href='/create'>
-    <button className='containerButton'>
-      <span className='iconWrapper'>
-        <FontAwesomeIcon icon={icon} />
-      </span>
-      <span className='message'>{message}</span>
-    </button>
-  </Link>
+import arrowIcon from '../public/dark-arrow.svg'
+
+const CtaButton = ({ href, color, alt, icon, message }) => (
+  <div className='call-to-action'>
+    <Link href={href}>
+      <button className={color}>
+        <img src={icon} alt={alt} />
+        <p>{message}</p>
+      </button>
+    </Link>
+  </div>
 )
 
 CtaButton.defaultProps = {
-  icon: faChevronRight,
+  href: '#',
+  color: 'orange',
+  icon: arrowIcon,
+  alt: 'Right arrow icon',
   message: 'Aceptar'
 }
 
