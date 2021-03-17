@@ -1,4 +1,4 @@
-import { URL_BASE } from './config'
+import { URL_BASE, URL_BASE_LOCAL } from './config'
 
 // login
 function login (objectCredentials) {
@@ -45,7 +45,8 @@ function update (id, token, objectUser) {
 
 // Solicitud de usuario//
 function userRequest (token) {
-  const URL = `${URL_BASE}user`
+  console.log('token', token)
+  const URL = `${URL_BASE_LOCAL}users`
   const options = {
     method: 'GET',
     headers: {
