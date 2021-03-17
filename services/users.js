@@ -46,7 +46,7 @@ function update (id, token, objectUser) {
 // Solicitud de usuario//
 function userRequest (token) {
   console.log('token', token)
-  const URL = `${URL_BASE_LOCAL}users`
+  const URL = `${URL_BASE}users`
   const options = {
     method: 'GET',
     headers: {
