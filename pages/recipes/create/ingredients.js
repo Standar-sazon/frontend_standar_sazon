@@ -1,10 +1,24 @@
+import React, { useEffect, useState } from 'react'
 import LayoutUser from '../../../components/LayoutUser'
-import React from 'react'
 import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
+import { ingredientRequest } from '../../../services/ingredients'
+import Onion from '../../../public/onion.png'
 
 const Ingredients = () => {
+  const [ingredients, setIngredients] = useState([])
+  const getIngredients = async () => {
+    const response = await ingredientRequest(localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  useEffect(async () => {
+    const ingredients = await getIngredients()
+    setIngredients(ingredients)
+    console.log(ingredients)
+  }, [])
   return (
     <LayoutUser>
       <div className='section-add-ingredients'>
@@ -13,15 +27,15 @@ const Ingredients = () => {
             <p>Agregar ingrediente</p>
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
-                <label for=''>Ingrediente</label>
+                <label>Ingrediente</label>
                 <input type='text' placeholder='Ingrediente' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
-                <label for=''>Peso neto</label>
+                <label>Peso neto</label>
                 <input type='text' placeholder='Peso neto' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
-                <label for=''>Peso Bruto</label>
+                <label>Peso Bruto</label>
                 <input type='text' placeholder='Peso bruto' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
@@ -42,15 +56,15 @@ const Ingredients = () => {
             <p>Agregar Subreceta</p>
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
-                <label for=''>Subreceta</label>
+                <label>Subreceta</label>
                 <input type='text' placeholder='Ingrediente' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
-                <label for=''>Peso neto</label>
+                <label>Peso neto</label>
                 <input type='text' placeholder='Peso neto' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
-                <label for=''>Peso bruto</label>
+                <label>Peso bruto</label>
                 <input type='text' placeholder='Peso bruto' name='' id='' />
               </div>
               <div className='d-flex flex-column'>
@@ -78,6 +92,36 @@ const Ingredients = () => {
           </Table>
         </div>
         <div>
+          {
+            ingredients.length !== 0
+              ? (
+                  ingredients.map((ingredient) => {
+                    <ShowIngredient
+                      name={ingredient.name}
+                      priceUnit={ingredient.priceUnit}
+                      category={ingredient.category}
+                      measureByBuy={ingredient.measureByBuy}
+                      description={ingredient.description}
+                      image={ingredient.image}
+                    />
+                    // <Table borderless key={ingredient.id} className='tittleResume'>
+                    //   <img src={Onion} alt='imagen ingrediente' />
+                    //   <td></td>
+                    //   <td>Peso Bruto</td>
+                    //   <td>Peso neto</td>
+                    //   <td>Costo unitario</td>
+                    //   <td>U. M.</td>
+                    //   <td>Importe</td>
+                    //   <div>
+                    //     <button className='deletebutton'>X</button>
+                    //   </div>
+                    // </Table>
+                  })
+                )
+              : <h2>No hay ingredeintes</h2>
+          }
+        </div>
+        {/* <div>
           <ShowIngredient />
         </div>
         <div>
@@ -97,10 +141,7 @@ const Ingredients = () => {
         </div>
         <div>
           <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
+        </div> */}
 
         <div className='importStyle d-flex justify-content-between align-items-end'>
           <p>Importe</p>

@@ -1,10 +1,11 @@
 import { URL_BASE } from './config'
 
-function createRecipe (token, objectRecipes) {
-  const URL = `${URL_BASE}recipes`
+// Crear Ingrediente
+function createIngredient (token, objectIngredient) {
+  const URL = `${URL_BASE}products`
   const options = {
     method: 'POST',
-    body: JSON.stringify(objectRecipes),
+    body: JSON.stringify(objectIngredient),
     headers: {
       'content-Type': `application/json ${token}`
     },
@@ -12,9 +13,9 @@ function createRecipe (token, objectRecipes) {
   }
   return window.fetch(URL, options)
 }
-
-function recipeRequest (token) {
-  const URL = `${URL_BASE}recipes`
+// Traer Ingredientes
+function ingredientRequest (token) {
+  const URL = `${URL_BASE}products`
   const options = {
     method: 'GET',
     headers: {
@@ -26,8 +27,9 @@ function recipeRequest (token) {
   }
   return window.fetch(URL, options)
 }
-function recipeRequestByID (id, token) {
-  const URL = `${URL_BASE}recipes/${id}`
+// Traer Ingrediente por ID
+function ingredientRequestByID (id, token) {
+  const URL = `${URL_BASE}products/${id}`
   const options = {
     method: 'GET',
     body: JSON.stringify(token),
@@ -40,12 +42,12 @@ function recipeRequestByID (id, token) {
   }
   return window.fetch(URL, options)
 }
-
-function recipeUpdate (id, objectRecipes, token) {
-  const URL = `${URL_BASE}recipes/${id}`
+// Actualizar Ingredientes
+function ingredientUpdate (id, objectIngredient, token) {
+  const URL = `${URL_BASE}products/${id}`
   const options = {
     method: 'PATCH',
-    body: JSON.stringify(objectRecipes),
+    body: JSON.stringify(objectIngredient),
     headers: {
       'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -54,9 +56,9 @@ function recipeUpdate (id, objectRecipes, token) {
   }
   return window.fetch(URL, options)
 }
-
-function deleteRecipe (id, token) {
-  const URL = `${URL_BASE}recipes/${id}`
+// Eliminar Ingredientes
+function deleteIngredient (id, token) {
+  const URL = `${URL_BASE}products/${id}`
   const options = {
     method: 'DELETE',
     headers: {
@@ -69,9 +71,9 @@ function deleteRecipe (id, token) {
 }
 
 export {
-  createRecipe,
-  recipeRequest,
-  recipeUpdate,
-  deleteRecipe,
-  recipeRequestByID
+  createIngredient,
+  ingredientRequest,
+  ingredientUpdate,
+  deleteIngredient,
+  ingredientRequestByID
 }
