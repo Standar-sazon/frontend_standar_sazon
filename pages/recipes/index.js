@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import CardRecipeView from '../../components/CardRecipeView'
 import Carrusel from '../../components/Carrusel'
+import FirstUserView from '../../components/FirstUserView'
 
 import { recipeRequest } from '../../services/recipes'
 
@@ -21,6 +22,18 @@ const Recipes = () => {
     setRecipesAll(recipes)
   }, [])
 
+  const recipeComponents = recipesAll.map(recipe =>
+    <div key={recipe.id} className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
+      <CardRecipeView
+        title={recipe.name}
+        price={recipe.price}
+        category={recipe.category}
+        time='1hr'
+        backgroundSrc='/imagesRecipeView/CardImage1.svg'
+      />
+    </div>
+  )
+
   return (
     <LayoutUser>
       <div className='container-cards-recipes'>
@@ -29,20 +42,9 @@ const Recipes = () => {
             <Carrusel />
           </div>
           {
-            recipesAll.lenght !== 0
-              ? recipesAll.map(recipe => (
-                <div key={recipe.id} className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
-                  <CardRecipeView
-                    title={recipe.name}
-                    price={recipe.price}
-                    category={recipe.category}
-                    time='1hr'
-                    backgroundSrc='/imagesRecipeView/CardImage1.svg'
-                  />
-                </div>
-                ))
-
-              : <h2>No hay recetas</h2>
+            recipeComponents.length
+              ? recipeComponents
+              : <FirstUserView />
           }
 
           {/* <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>

@@ -13,9 +13,9 @@ import ImageBackOrange from '../components/HowToBkg'
 import HowToRight from '../components/HowItWork'
 import HowToLeft from '../components/HowItWorkLeft'
 import LineaBlanca from '../public/linewhite.svg'
-import ArrowButton from '../public/dark-arrow.svg'
+import CtaButton from '../components/CtaButton'
 
-export default function Home () {
+export default function Home() {
   return (
     <Layout>
 
@@ -65,11 +65,10 @@ export default function Home () {
               </div>
               <div className='col-12 col-md-6 p-0'><HowToLeft /></div>
               <div className='col-12 col-md-6 p-0'><HowToRight /></div>
-              <div className='green-call-to-action'>
-                <Link href='/create'>
-                  <button><img src={ArrowButton} alt='' /><p>Comienza tu prueba gratuita.</p> </button>
-                </Link>
-              </div>
+              <CtaButton
+                href='/create'
+                message='Comienza tu prueba gratuita'
+              />
             </div>
           </div>
         </div>
