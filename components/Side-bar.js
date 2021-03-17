@@ -6,7 +6,7 @@ import Book from '../public/glosaryicon.svg'
 import Add from '../public/addicon.svg'
 import Saved from '../public/rectetasicon.svg'
 
-const sideBarDashboard = () => {
+const sideBarDashboard = ({ name, lastName, membership }) => {
   return (
     <div className='side-container d-none d-lg-block'>
       <Accordion defaultActiveKey='0'>
@@ -23,8 +23,8 @@ const sideBarDashboard = () => {
                 <span><img src={ProfilePic} alt='' /></span>
                 <span className='color-divider-aside' />
                 <span className='orange-card-footer-aside'>
-                  <p className='user-name-aside'>Nombre de usuario</p>
-                  <p className='account-footer-aside'>Tipo de cuenta</p>
+                  <p className='user-name-aside'> {name} {lastName} </p>
+                  <p className='account-footer-aside'> {membership} </p>
                 </span>
               </div>
               <a className='nav-link-aside' href='#Recetas'>Mis recetas <span className='nav-icon-aside'><img src={Saved} alt='' /></span></a>

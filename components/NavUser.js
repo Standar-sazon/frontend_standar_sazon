@@ -7,7 +7,7 @@ import Book from '../public/glosaryicon.svg'
 import Add from '../public/addicon.svg'
 import Saved from '../public/rectetasicon.svg'
 
-const navProfile = () => {
+const navProfile = ({ name, lastName, membership }) => {
   const router = useRouter()
   return (
     <div>
@@ -21,8 +21,8 @@ const navProfile = () => {
               <span><img src={ProfilePic} alt='' /></span>
               <span className='color-divider' />
               <span className='orange-card-footer'>
-                <p className='user-name'>Nombre de usuario</p>
-                <p className='account-footer'>Tipo de cuenta</p>
+                <p className='user-name'>{name} {lastName} </p>
+                <p className='account-footer'>{membership}</p>
               </span>
             </div>
             <Nav.Link className='d-lg-none' href='#Recetas'>Mis recetas <span className='nav-icon'><img src={Saved} alt='' /></span> </Nav.Link>
