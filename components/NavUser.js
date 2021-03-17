@@ -25,9 +25,9 @@ const navProfile = ({ name, lastName, membership }) => {
                 <p className='account-footer'>{membership}</p>
               </span>
             </div>
-            <Nav.Link className='d-lg-none' href='#Recetas'>Mis recetas <span className='nav-icon'><img src={Saved} alt='' /></span> </Nav.Link>
-            <Nav.Link className='d-lg-none' href='#Agregar'>Crear receta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
-            <Nav.Link className='d-lg-none' href='#Subreceta'>Crear subreceta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='/recipes'>Mis recetas <span className='nav-icon'><img src={Saved} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='/recipes/create'>Crear receta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
+            <Nav.Link className='d-lg-none' href='/subrecipes'>Crear subreceta <span className='nav-icon'><img src={Add} alt='' /></span> </Nav.Link>
             <Nav.Link className='d-lg-none' href='#Glosario'>Glosario <span className='nav-icon'><img src={Book} alt='' /></span> </Nav.Link>
           </Nav>
           <Form className='form-nav' inline>

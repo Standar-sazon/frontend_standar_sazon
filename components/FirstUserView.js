@@ -13,7 +13,7 @@ const FirstUserView = (icon, message) => {
       <br />
       <h2 className='text-user'>Vamos a crear algo juntos</h2>
       <CtaButton
-        href='/create'
+        href='recipes/create'
         message='Crea una receta'
       />
     </div>

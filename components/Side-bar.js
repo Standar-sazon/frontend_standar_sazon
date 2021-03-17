@@ -27,9 +27,9 @@ const sideBarDashboard = ({ name, lastName, membership }) => {
                   <p className='account-footer-aside'> {membership} </p>
                 </span>
               </div>
-              <a className='nav-link-aside' href='#Recetas'>Mis recetas <span className='nav-icon-aside'><img src={Saved} alt='' /></span></a>
-              <a className='nav-link-aside' href='#Agregar'>Crear receta <span className='nav-icon-aside'><img src={Add} alt='' /></span> </a>
-              <a className='nav-link-aside' href='#Subreceta'>Crear subreceta <span className='nav-icon-aside'><img src={Add} alt='' /></span></a>
+              <a className='nav-link-aside' href='/recipes'>Mis recetas <span className='nav-icon-aside'><img src={Saved} alt='' /></span></a>
+              <a className='nav-link-aside' href='/recipes/create'>Crear receta <span className='nav-icon-aside'><img src={Add} alt='' /></span> </a>
+              <a className='nav-link-aside' href='/subrecipes'>Crear subreceta <span className='nav-icon-aside'><img src={Add} alt='' /></span></a>
               <a className='nav-link-aside' href='#Glosario'>Glosario <span className='nav-icon-aside'><img src={Book} alt='' /></span></a>
             </Card.Body>
           </Accordion.Collapse>
