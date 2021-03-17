@@ -14,13 +14,12 @@ function createIngredient (token, objectIngredient) {
   return window.fetch(URL, options)
 }
 // Traer Ingredientes
-function ingredientRequest (token) {
+function ingredientRequest () {
   const URL = `${URL_BASE}products`
   const options = {
     method: 'GET',
     headers: {
-      'content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      'content-Type': 'application/json'
 
     },
     mode: 'cors'

@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
 import { ingredientRequest } from '../../../services/ingredients'
-import Onion from '../../../public/onion.png'
+// import Onion from '../../../public/onion.png'
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
@@ -17,8 +17,12 @@ const Ingredients = () => {
   useEffect(async () => {
     const ingredients = await getIngredients()
     setIngredients(ingredients)
-    console.log(ingredients)
+    for (const key in ingredients) {
+      const names = [ingredients[key].name]
+      console.log(names)
+    }
   }, [])
+
   return (
     <LayoutUser>
       <div className='section-add-ingredients'>
@@ -28,15 +32,18 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
                 <label>Ingrediente</label>
-                <input type='text' placeholder='Ingrediente' name='' id='' />
+                <input type='search' list='ingredients' placeholder='Ingrediente' name='' />
+                <datalist id='ingredients'>
+                  <option value='PHP' />
+                </datalist>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso neto</label>
-                <input type='text' placeholder='Peso neto' name='' id='' />
+                <input type='text' placeholder='Peso neto' name='' />
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso Bruto</label>
-                <input type='text' placeholder='Peso bruto' name='' id='' />
+                <input type='text' placeholder='Peso bruto' name='' />
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
@@ -57,15 +64,15 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
                 <label>Subreceta</label>
-                <input type='text' placeholder='Ingrediente' name='' id='' />
+                <input type='text' placeholder='Ingrediente' name='' />
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso neto</label>
-                <input type='text' placeholder='Peso neto' name='' id='' />
+                <input type='text' placeholder='Peso neto' name='' />
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso bruto</label>
-                <input type='text' placeholder='Peso bruto' name='' id='' />
+                <input type='text' placeholder='Peso bruto' name='' />
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
@@ -92,57 +99,8 @@ const Ingredients = () => {
           </Table>
         </div>
         <div>
-          {
-            ingredients.length !== 0
-              ? (
-                  ingredients.map((ingredient) => {
-                    <ShowIngredient
-                      name={ingredient.name}
-                      priceUnit={ingredient.priceUnit}
-                      category={ingredient.category}
-                      measureByBuy={ingredient.measureByBuy}
-                      description={ingredient.description}
-                      image={ingredient.image}
-                    />
-                    // <Table borderless key={ingredient.id} className='tittleResume'>
-                    //   <img src={Onion} alt='imagen ingrediente' />
-                    //   <td></td>
-                    //   <td>Peso Bruto</td>
-                    //   <td>Peso neto</td>
-                    //   <td>Costo unitario</td>
-                    //   <td>U. M.</td>
-                    //   <td>Importe</td>
-                    //   <div>
-                    //     <button className='deletebutton'>X</button>
-                    //   </div>
-                    // </Table>
-                  })
-                )
-              : <h2>No hay ingredeintes</h2>
-          }
-        </div>
-        {/* <div>
           <ShowIngredient />
         </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div> */}
-
         <div className='importStyle d-flex justify-content-between align-items-end'>
           <p>Importe</p>
           <p href=''>$ 45</p>
