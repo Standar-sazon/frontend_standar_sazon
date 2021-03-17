@@ -1,24 +1,57 @@
 import LayoutUser from '../../components/LayoutUser'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import CardRecipeView from '../../components/CardRecipeView'
 import Carrusel from '../../components/Carrusel'
+import FirstUserView from '../../components/FirstUserView'
+
+import { recipeRequest } from '../../services/recipes'
 
 const Recipes = () => {
+  const [recipesAll, setRecipesAll] = useState([])
+
+  const getRecipes = async () => {
+    const response = await recipeRequest(localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  useEffect(async () => {
+    const recipes = await getRecipes()
+    console.log(recipes)
+    setRecipesAll(recipes)
+  }, [])
+
+  const recipeComponents = recipesAll.map(recipe =>
+    <div key={recipe.id} className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
+      <CardRecipeView
+        title={recipe.name}
+        price={recipe.price}
+        category={recipe.category}
+        time='1hr'
+        backgroundSrc='/imagesRecipeView/CardImage1.svg'
+      />
+    </div>
+  )
+
   return (
     <LayoutUser>
       <div className='container-cards-recipes'>
         <div className='row'>
           <div className='col-12 mx-auto'>
-            <Carrusel />
+            {
+              recipesAll.lenght !== 0
+                ? <Carrusel />
+                : null
+            }
           </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
-            <CardRecipeView
-              title='Alitas clásicas'
-              price='150.00'
-              backgroundSrc='/imagesRecipeView/CardImage1.svg'
-            />
-          </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
+          {
+            recipesAll.length !== 0
+              ? recipeComponents
+              : <FirstUserView />
+          }
+
+          {/* <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
             <CardRecipeView
               title='Shots de camarónes'
               price='180.00'
@@ -130,13 +163,13 @@ const Recipes = () => {
               backgroundSrc='/imagesRecipeView/CardImage17.svg'
             />
           </div>
-          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto' >
+          <div className='col-12 col-md-6 col-xl-4 mt-3 mx-auto'>
             <CardRecipeView
               title='Daikiri'
               price='150.00'
               backgroundSrc='/imagesRecipeView/CardImage19.svg'
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </LayoutUser>

@@ -1,6 +1,6 @@
 import { URL_BASE } from './config'
 
-function createSubrecipe(token, objectSubrecipes) {
+function createSubrecipe (token, objectSubrecipes) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'POST',
@@ -14,7 +14,7 @@ function createSubrecipe(token, objectSubrecipes) {
   return window.fetch(URL, options)
 }
 
-function subRecipeRequest(token) {
+function subRecipeRequest (token) {
   const URL = `${URL_BASE}subRecipes`
   const options = {
     method: 'GET',
@@ -27,7 +27,7 @@ function subRecipeRequest(token) {
   return window.fetch(URL, options)
 }
 
-function subRecipeUpdate(id, objectSubrecipes, token) {
+function subRecipeUpdate (id, objectSubrecipes, token) {
   const URL = `${URL_BASE}subRecipes/${id}`
   const options = {
     method: 'PATCH',
@@ -41,7 +41,7 @@ function subRecipeUpdate(id, objectSubrecipes, token) {
   return window.fetch(URL, options)
 }
 
-function deleteSubrecipe(id, token) {
+function deleteSubrecipe (id, token) {
   const URL = `${URL_BASE}subRecipes/${id}`
   const options = {
     method: 'DELETE',
