@@ -22,6 +22,7 @@ const loginForm = () => {
   })
   const onSubmit = async (dataForm) => {
     setLoading(true)
+    setError()
     // console.log('Enviando al server...')
     // console.log(dataForm)
     const response = await login(dataForm)
@@ -29,7 +30,7 @@ const loginForm = () => {
     // console.log(responseJSON)
     if (!responseJSON.success) {
       setError('Credenciales Invalidas')
-      setLoading(true)
+      setLoading(false)
       return
     }
     setLoading(true)
