@@ -1,6 +1,6 @@
 import { URL_BASE } from './config'
 
-function createRecipe (token, objectRecipes) {
+function createRecipe(token, objectRecipes) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'POST',
@@ -15,7 +15,7 @@ function createRecipe (token, objectRecipes) {
   return window.fetch(URL, options)
 }
 
-function recipeRequest (token) {
+function recipeRequest(token) {
   const URL = `${URL_BASE}recipes`
   const options = {
     method: 'GET',
@@ -28,7 +28,7 @@ function recipeRequest (token) {
   }
   return window.fetch(URL, options)
 }
-function recipeRequestByID (id, token) {
+function recipeRequestByID(id, token) {
   const URL = `${URL_BASE}recipes/${id}`
   const options = {
     method: 'GET',
@@ -43,7 +43,7 @@ function recipeRequestByID (id, token) {
   return window.fetch(URL, options)
 }
 
-function recipeUpdate (id, objectRecipes, token) {
+function recipeUpdate(id, objectRecipes, token) {
   const URL = `${URL_BASE}recipes/${id}`
   const options = {
     method: 'PATCH',
@@ -57,10 +57,10 @@ function recipeUpdate (id, objectRecipes, token) {
   return window.fetch(URL, options)
 }
 
-function deleteRecipe (id, token) {
+function deleteRecipe(id, token) {
   const URL = `${URL_BASE}recipes/${id}`
   const options = {
-    method: 'DELET',
+    method: 'DELETE',
     headers: {
       'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
