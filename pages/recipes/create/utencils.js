@@ -1,3 +1,7 @@
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+
 import LayoutUser from '../../../components/LayoutUser'
 import React, { useState, useEffect } from 'react'
 import NextButton from '../../../components/NextButton'
@@ -86,6 +90,9 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
     }
   </div>)
 }
+const schema = yup.object().shape({
+  textbox: yup.string().required('campo requerido')
+})
 
 const Utencilios = () => {
   const [utencils, setUtencils] = useState([])
@@ -96,6 +103,7 @@ const Utencilios = () => {
       ...checkedUtencils,
       [event.target.name]: event.target.checked
     }
+
     const arrayOfCheckedUtencils = Object
       .entries(newCheckedUtencils)
       .filter(([, checked]) => checked)
@@ -113,49 +121,65 @@ const Utencilios = () => {
     setUtencils(response)
   }, [utencils])
 
-  return (
-    <LayoutUser>
-      <div className='allUtencils'>
-        <p>Utensilios</p>
-        {utencilComponents}
-        <div>
-          <AddUtencil />
-        </div>
-        <div>
-          <p>Escribe tus instrucciones</p>
-          <form className='card-table'>
-            <div>
+  const [stepFollow, setStepFollow] = useState('')
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
+  })
+
+  const onSubmit = async (dataForm) => {
+    setStepFollow(true)
+    setError()
+    // console.log('Enviando al server...')
+    // console.log(dataForm)
+    const response = await create(dataForm)
+    const responseJSON = await response.json()
+    // console.log(responseJSON)
+
+    return (
+      <LayoutUser>
+        <div className='allUtencils'>
+          <p>Utensilios</p>
+          {utencilComponents}
+          <div>
+            <AddUtencil />
+          </div>
+          <div>
+            <p>Escribe tus instrucciones</p>
+            <form className='card-table'>
               <div>
-                <div className='form-input d-flex flex-row'>
-                  <input className='inputStep' type='textbox' placeholder='Pasos a seguir' name='' id='' />
-                  <div className=''>
-                    <button className='plusbutton'>+</button>
-                  </div>
-                </div>
                 <div>
-                  <div>
-                    <TableStepsRecipe message='Paso1' />
+                  <div className='form-input d-flex flex-row' onSubmit={handleSubmit(onSubmit)} >
+                    <input className='inputStep' type='textbox' ref={register} placeholder='Pasos a seguir' name='' id='' />
+                    <div className=''>
+                      <button className='plusbutton'>+</button>
+                    </div>
                   </div>
                   <div>
-                    <TableStepsRecipe message='Paso2' />
-                  </div>
-                  <div>
-                    <TableStepsRecipe message='Paso 3' />
+                    <div>
+                      <TableStepsRecipe message='Paso1' />
+                    </div>
+                    <div>
+                      <TableStepsRecipe message='Paso2' />
+                    </div>
+                    <div>
+                      <TableStepsRecipe message='Paso 3' />
+                    </div>
                   </div>
                 </div>
               </div>
+            </form>
+          </div>
+          <div className='row justify-content-center'>
+            <div className='col-12 col-lg-4'>
+              <NextButton message='Siguiente' />
             </div>
-          </form>
-        </div>
-        <div className='row justify-content-center'>
-          <div className='col-12 col-lg-4'>
-            <NextButton message='Siguiente' />
           </div>
         </div>
-      </div>
+      </LayoutUser >
+    )
+  }
 
-    </LayoutUser>
-  )
-}
 
-export default Utencilios
+  export default Utencilios
