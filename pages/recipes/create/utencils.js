@@ -137,6 +137,7 @@ const Utencilios = () => {
     const responseJSON = await response.json()
     // console.log(responseJSON)
 
+
     return (
       <LayoutUser>
         <div className='allUtencils'>
