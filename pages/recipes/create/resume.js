@@ -1,34 +1,66 @@
 import LayoutUser from '../../../components/LayoutUser'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/img/logo.svg'
 import NextButton from '../../../components/NextButton'
+import { recipeRequest } from '../../../services/recipes'
+import { useRouter } from 'next/router'
+// import { useForm } from 'react-hook-form'
+// import { yupResolver } from '@hookform/resolvers/yup'
+// import * as yup from 'yup'
 
-const Resume = () => {
+// const schema = yup.object().shape({
+//   production: yup.string().required('El valor es requerido'),
+//   portionSize: yup.string().required('El valor es requerido'),
+//   preparationTime: yup.string().required('El valor es requerido'),
+//   cookingTime: yup.string().required('El valor es requerido'),
+//   operatingTemperature: yup.string().required('El valor es requerido')
+// })
+
+const Admin = () => {
+  const [resume, setResume] = useState([])
+
+  const getAdmin = async () => {
+    const response = await recipeRequest(localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  useEffect(async () => {
+    const resume = await getAdmin()
+    setResume(resume)
+  }, [])
+
+  const handleChange = (event) => {
+    const resumeData = event.target.value
+    console.log(resumeData)
+  }
+
   return (
+
     <LayoutUser>
-      <from className='resume-data d-flex'>
+      <form className='resume-data d-flex' onChange={handleChange}>
         <div className='kgs-number d-flex flex-column text-left form-input'>
           <lable className='inp-letters'>Peso de la preparación:</lable>
           <lable className='inp-letters'>(kgs)</lable>
-          <input className='inp-summar' type='number' placeholder='Peso' />
+          <input className='inp-summar' type='number' placeholder='Peso' name='production' />
           <lable className='inp-letters letters'>Número de porciones:</lable>
           <lable className='inp-letters'>(Unidades)</lable>
-          <input className='inp-summary' type='number' placeholder='# de porciones' />
+          <input className='inp-summary' type='number' placeholder='# de porciones' name='portionSize' />
         </div>
         <div className='data-time d-flex flex-column text-left form-input'>
           <lable className='inp-letters'>Tiempo de preparación:</lable>
-          <lable className='inp-letters'>(Munutos)</lable>
-          <input className='inp-summary' type='number' placeholder='Tiempo' />
+          <lable className='inp-letters'>(Minutos)</lable>
+          <input className='inp-summary' type='number' placeholder='Tiempo' name='preparationTime' />
           <lable className='inp-letters letters'>Tiempo de cocción:</lable>
           <lable className='inp-letters'>(Unidades)</lable>
-          <input className='inp-summary' type='number' placeholder='Cocción' />
+          <input className='inp-summary' type='number' placeholder='Cocción' name='cookingTime' />
         </div>
         <div className='data-temperature d-flex flex-column text-left form-input'>
           <lable className='inp-letters'>Temperatura de servicio:</lable>
           <lable className='inp-letters'>(ºC)</lable>
-          <input className='inp-summary' type='number' placeholder='Grados' />
+          <input className='inp-summary' type='number' placeholder='Grados' name='operatingTemperature' />
         </div>
-      </from>
+      </form>
 
       <div className='summary d-flex justify-content-center'>
         <div className='technical-section'>
@@ -128,7 +160,8 @@ const Resume = () => {
       </div>
 
     </LayoutUser>
+
   )
 }
 
-export default Resume
+export default Admin
