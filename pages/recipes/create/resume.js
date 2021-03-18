@@ -2,7 +2,7 @@ import LayoutUser from '../../../components/LayoutUser'
 import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/img/logo.svg'
 import NextButton from '../../../components/NextButton'
-import { recipeRequest } from '../../../services/recipes'
+import { recipeRequestByID } from '../../../services/recipes'
 import { useRouter } from 'next/router'
 // import { useForm } from 'react-hook-form'
 // import { yupResolver } from '@hookform/resolvers/yup'
@@ -16,22 +16,32 @@ import { useRouter } from 'next/router'
 //   operatingTemperature: yup.string().required('El valor es requerido')
 // })
 
-const Admin = () => {
-  const [resume, setResume] = useState([])
+const Resumes = () => {
+  const router = useRouter()
+  const [resumes, setResumes] = useState({})
+  const {
+    recipe
+  } = router.query
+  console.log(recipe)
 
   const getAdmin = async () => {
-    const response = await recipeRequest(localStorage.getItem('token'))
+    const response = await recipeRequestByID(recipe, localStorage.getItem('token'))
     const responseJSON = await response.json()
+    console.log(responseJSON.data)
     return responseJSON.data
   }
 
   useEffect(async () => {
-    const resume = await getAdmin()
-    setResume(resume)
+    const resumes = await getAdmin()
+    setResumes(resumes)
   }, [])
 
   const handleChange = (event) => {
     const resumeData = event.target.value
+    console.log(resumeData)
+    console.log(event.target.value)
+    // const filteredResume = resume.filter(resume => resume.name === resumeData)
+    // console.log(filteredResume)
     console.log(resumeData)
   }
 
@@ -164,4 +174,4 @@ const Admin = () => {
   )
 }
 
-export default Admin
+export default Resumes
