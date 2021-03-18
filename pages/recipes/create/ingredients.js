@@ -17,10 +17,23 @@ const schema = yup.object().shape({
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
   const [product, setProduct] = useState({})
-  const { register, handleSubmit, errors } = useForm({
+  const [ingredientSelected, setIngredientSelected] = useState([])
+  const { register, handleSubmit, errors, watch, setValue } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onBlur',
     reValidateMode: 'onChange'
   })
+
+  const getAmount = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
+  const getPerformancePercent = (netWeight, grossWeight) => (netWeight / grossWeight) * 100
+
+  const watchAllFields = watch()
+
+  useEffect(() => {
+    const performancePercent = getPerformancePercent(parseFloat(watchAllFields.netWeight), parseFloat(watchAllFields.grossWeight))
+    const amount = parseFloat(getAmount(parseFloat(watchAllFields.netWeight), product.priceUnit))
+    setProduct({ ...product, netWeight: parseFloat(watchAllFields.netWeight), grossWeight: parseFloat(watchAllFields.grossWeight), performancePercent, amount })
+  }, [watchAllFields.netWeight, watchAllFields.grossWeight])
 
   const getIngredients = async () => {
     const response = await productRequest(localStorage.getItem('token'))
@@ -39,8 +52,11 @@ const Ingredients = () => {
     setProduct(filteredProduct[0])
   }
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = ({ netWeight, grossWeight }) => {
+    setIngredientSelected([...ingredientSelected, product])
+    setValue('product', '')
+    setValue('netWeight', '')
+    setValue('grossWeight', '')
   }
 
   return (
@@ -63,14 +79,14 @@ const Ingredients = () => {
                 <p>{errors.product?.message}</p>
               </div>
               <div className='d-flex flex-column'>
-                <label>Peso neto</label>
-                <input type='text' ref={register} placeholder='Peso neto' name='netWeight' />
-                <p>{errors.netWeight?.message}</p>
-              </div>
-              <div className='d-flex flex-column'>
                 <label>Peso Bruto</label>
                 <input type='text' ref={register} placeholder='Peso bruto' name='grossWeight' />
                 <p>{errors.grossWeight?.message}</p>
+              </div>
+              <div className='d-flex flex-column'>
+                <label>Peso neto</label>
+                <input type='text' ref={register} placeholder='Peso neto' name='netWeight' />
+                <p>{errors.netWeight?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
