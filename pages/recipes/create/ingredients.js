@@ -3,13 +3,14 @@ import LayoutUser from '../../../components/LayoutUser'
 import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
-import { ingredientRequest } from '../../../services/ingredients'
+import { productRequest } from '../../../services/products'
 // import Onion from '../../../public/onion.png'
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
+  const [product, setProduct] = useState({})
   const getIngredients = async () => {
-    const response = await ingredientRequest(localStorage.getItem('token'))
+    const response = await productRequest(localStorage.getItem('token'))
     const responseJSON = await response.json()
     return responseJSON.data
   }
@@ -17,11 +18,13 @@ const Ingredients = () => {
   useEffect(async () => {
     const ingredients = await getIngredients()
     setIngredients(ingredients)
-    for (const key in ingredients) {
-      const names = [ingredients[key].name]
-      console.log(names)
-    }
   }, [])
+
+  const handleChange = (event) => {
+    const productName = event.target.value
+    const filteredProduct = ingredients.filter(product => product.name === productName)
+    setProduct(filteredProduct[0])
+  }
 
   return (
     <LayoutUser>
@@ -32,9 +35,13 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
                 <label>Ingrediente</label>
-                <input type='search' list='ingredients' placeholder='Ingrediente' name='' />
-                <datalist id='ingredients'>
-                  <option value='PHP' />
+                <input type='search' list='products' onChange={handleChange} placeholder='Ingrediente' name='' />
+                <datalist id='products'>
+                  {
+                    ingredients.map(ingredient =>
+                      <option key={ingredient._id} value={ingredient.name} />
+                    )
+                    }
                 </datalist>
               </div>
               <div className='d-flex flex-column'>
@@ -47,13 +54,13 @@ const Ingredients = () => {
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
-                <p>$ 9</p>
+                <p>$ {product?.priceUnit}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Unidad de M</p>
-                <p>- </p>
+                <p>{product?.measureByBuy} </p>
               </div>
-              <button className='plusbutton'><span>+</span></button>
+              <button type='submit' className='plusbutton'><span>+</span></button>
             </div>
           </div>
         </form>
