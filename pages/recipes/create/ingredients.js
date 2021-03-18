@@ -20,15 +20,17 @@ const schema = yup.object().shape({
 
 const Ingredients = () => {
   const [products, setProducts] = useState([])
-  const [ingredient, setIngredient] = useState('')
   const [valueProductSelected, setValueProductSelected] = useState({})
   const [ingredients, setIngredients] = useState([])
+  const [amountTotal, setAmountTotal] = useState(null)
 
-  const { register, handleSubmit, getValues, setValue, errors } = useForm({
+  const { register, handleSubmit, setValue, errors, watch } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
     reValidateMode: 'onChange'
   })
+
+  const watchAllFields = watch()
 
   const getProducts = async () => {
     const response = await productsRequest()
@@ -41,27 +43,39 @@ const Ingredients = () => {
     setProducts(productsAll)
   }, [])
 
+  const getPerformancePercent = (grossWeight, netWeight) => (netWeight * 100) / grossWeight
+  const getAmountProduct = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
+
+  useEffect(() => {
+    const performancePercent = getPerformancePercent(parseFloat(watchAllFields.grossWeight), parseFloat(watchAllFields.netWeight))
+    const amount = getAmountProduct(parseFloat(watchAllFields.netWeight), valueProductSelected.priceUnit)
+    setValueProductSelected({ ...valueProductSelected, grossWeight: parseFloat(watchAllFields.grossWeight), netWeight: parseFloat(watchAllFields.netWeight), performancePercent, amount })
+  }, [watchAllFields.grossWeight, watchAllFields.netWeight])
+
+  useEffect(() => {
+    const total = ingredients.reduce((accum, ingredient) => { return accum += parseFloat(ingredient.amount) }, 0)
+    setAmountTotal(total.toFixed(2))
+  }, [ingredients])
+
   const handleChangeInput = (e) => {
     console.log(e.target.value)
     const productFiltered = products.filter(product => product.name === e.target.value)
     console.log(productFiltered)
-    const { grossWeight, netWeight } = getValues()
     setValueProductSelected({
       product: productFiltered[0]?._id,
+      name: productFiltered[0]?.name,
       priceUnit: productFiltered[0]?.priceUnit,
       measureByBuy: productFiltered[0]?.measureByBuy,
-      image: productFiltered[0]?.image,
-      grossWeight,
-      netWeight
+      image: productFiltered[0]?.image
     })
     console.log(valueProductSelected)
   }
+
   const handleAddIngredient = ({ grossWeight, netWeight }) => {
-    setValueProductSelected({ ...valueProductSelected, grossWeight, netWeight })
+    setValueProductSelected({ ...valueProductSelected })
     console.log(valueProductSelected)
     setIngredients([...ingredients, valueProductSelected])
-    // setValueProductSelected({})
-    // setIngredient('')
+    setValueProductSelected({})
     setValue('ingredient', '')
     setValue('grossWeight', '')
     setValue('netWeight', '')
@@ -135,46 +149,42 @@ const Ingredients = () => {
           </div>
         </form>
         <div>
-          <Table borderless className='tittleTable'>
-            <div className='resumeIngredientSteps'>
-              <td>Ingrediente</td>
-              <td>Peso Bruto</td>
-              <td>Peso neto</td>
-              <td>Costo unitario</td>
-              <td>U. M.</td>
-              <td>Importe</td>
-            </div>
-          </Table>
+          <div>
+            <Table borderless className='tittleTable'>
+              <div className='resumeIngredientSteps'>
+                <td>Ingrediente</td>
+                <td>Peso Bruto</td>
+                <td>Peso neto</td>
+                <td>Porcentaje</td>
+                <td>Costo unitario</td>
+                <td>U. M.</td>
+                <td>Importe</td>
+              </div>
+            </Table>
+          </div>
+          {
+          ingredients.length !== 0
+            ? (
+                ingredients.map((ingredient, index) => (
+                  <div key={index}>
+                    <ShowIngredient image={ingredient.image} name={ingredient.name} grossWeight={ingredient.grossWeight} netWeight={ingredient.netWeight} priceUnit={ingredient.priceUnit} measureByBuy={ingredient.measureByBuy} amount={ingredient.amount} performancePercent={ingredient.performancePercent} />
+                  </div>
+                ))
+              )
+            : null
+        }
         </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
-        <div>
-          <ShowIngredient />
-        </div>
+        {
+          amountTotal
+            ? (
+              <div className='importStyle d-flex justify-content-between align-items-end'>
+                <p>Importe</p>
+                <p href=''>$ {amountTotal}</p>
+              </div>
+              )
+            : null
+        }
 
-        <div className='importStyle d-flex justify-content-between align-items-end'>
-          <p>Importe</p>
-          <p href=''>$ 45</p>
-        </div>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-4'>
             <NextButton message='Siguiente' />

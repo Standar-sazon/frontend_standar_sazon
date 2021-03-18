@@ -2,17 +2,23 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Onion from '../public/onion.png'
 
-const ShowIngredient = () => {
+const ShowIngredient = ({ image, name, grossWeight, netWeight, priceUnit, measureByBuy, amount, performancePercent }) => {
   return (
     <div>
       <Table borderless className='tittleResume'>
-        <img src={Onion} alt='imagen ingrediente' />
-        <td>Ingrediente</td>
-        <td>Peso Bruto</td>
-        <td>Peso neto</td>
-        <td>Costo unitario</td>
-        <td>U. M.</td>
-        <td>Importe</td>
+        {
+          image
+            ? <img className='img-ingredient' src={image} alt='imagen ingrediente' />
+            : <div className='img-box' />
+        }
+
+        <td>{name}</td>
+        <td>{grossWeight}</td>
+        <td>{netWeight}</td>
+        <td>{performancePercent}%</td>
+        <td>{priceUnit}</td>
+        <td>{measureByBuy}</td>
+        <td>{amount}</td>
         <div>
           <button className='deletebutton'>X</button>
         </div>
