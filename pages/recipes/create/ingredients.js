@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react'
+import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import LayoutUser from '../../../components/LayoutUser'
 import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
 import { productRequest } from '../../../services/products'
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-// import Onion from '../../../public/onion.png'
+import faker from 'faker'
 
 const schema = yup.object().shape({
+  product: yup.string().required('El campo es requerido'),
+  netWeight: yup.number().typeError('Debe ser un valor numerico').positive('Debe ser un valor mayor a cero').required('El campo es requerido'),
+  grossWeight: yup.number().typeError('Debe ser un valor numerico').positive('Debe ser un valor mayor a cero').required('El campo es requerido')
+})
+
+/* const schema = yup.object().shape({
   ingrediente: yup.string().required('Campo requerido'),
   pesoBruto: yup.number().required('Campo requerido'),
   pesoNeto: yup.number().required('Campo requerido')
-})
+}) */
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
   const [product, setProduct] = useState({})
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+    reValidateMode: 'onChange'
+  })
+
   const getIngredients = async () => {
     const response = await productRequest(localStorage.getItem('token'))
     const responseJSON = await response.json()
@@ -35,23 +46,20 @@ const Ingredients = () => {
     setProduct(filteredProduct[0])
   }
 
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-    mode: 'onBlur',
-    reValidateMode: 'onChange'
-  })
+  const onSubmit = (data) => {
+    console.log(data)
+  }
 
   return (
     <LayoutUser>
       <div className='section-add-ingredients'>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form-input'>
             <p>Agregar ingrediente</p>
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column'>
                 <label>Ingrediente</label>
-                <input type='search' list='products' onChange={handleChange} placeholder='Ingrediente' name='ingrediente' ref={register} />
-                <p>{errors.ingrediente?.message}</p>
+                <input type='search' list='products' ref={register} onChange={handleChange} placeholder='Ingrediente' name='product' />
                 <datalist id='products'>
                   {
                     ingredients.map(ingredient =>
@@ -59,16 +67,17 @@ const Ingredients = () => {
                     )
                   }
                 </datalist>
+                <p>{errors.product?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso neto</label>
-                <input type='text' placeholder='Peso neto' name='pesoNeto' ref={register} />
-                <p>{errors.pesoNeto?.message}</p>
+                <input type='text' ref={register} placeholder='Peso neto' name='netWeight' />
+                <p>{errors.netWeight?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso Bruto</label>
-                <input type='text' placeholder='Peso bruto' name='pesoBruto' ref={register} />
-                <p>{errors.pesoBruto?.message}</p>
+                <input type='text' ref={register} placeholder='Peso bruto' name='grossWeight' />
+                <p>{errors.grossWeight?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
