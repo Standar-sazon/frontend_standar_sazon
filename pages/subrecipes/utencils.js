@@ -88,9 +88,9 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
         message={utencil.name}
         checked={checkedUtencils[utencil.id]}
         onChange={handleUtencilCheck}
-      />)
+                                />)
     }
-  </div>)
+                                  </div>)
 }
 
 const Utencilios = () => {
@@ -156,33 +156,37 @@ const Utencilios = () => {
                     text=''
                     name='tehnical'
                     ref={register}
+
                   />
                   <p>{errorInstructions}</p>
                   <div className=''>
-                    <button type='sumit' className='plusbutton'>+</button>
+                    <button type='submit' className='plusbutton'>+</button>
                   </div>
                 </form>
                 <div>
                   {
                     instructions.length !== 0
                       ? (
-                        instructions.map((instruction, index) => (
+                          instructions.map((instruction, index) => (
                           <div key={index}>
                             <TableStepsRecipe message={instruction} />
                           </div>
 
-                        ))
-                      )
+                          ))
+                        )
                       : null
                   }
                 </div>
               </div>
-              <div className='row justify-content-center'>
-                <div className='col-12 col-lg-4'>
-                  <NextButton message='Siguiente' />
-                </div>
-              </div>
             </div>
+          </div>
+        </div>
+        <div className='row justify-content-center'>
+          <div className='col-12 col-lg-4'>
+            <NextButton message='Siguiente' />
+          </div>
+        </div>
+      </div>
     </LayoutUser>
   )
 }
