@@ -44,7 +44,6 @@ const Ingredients = () => {
   })
 
   const getAmount = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
-  const getAmountSubRecipe = (netWeight, unitCost) => (netWeight * unitCost).toFixed(2)
   const getPerformancePercent = (netWeight, grossWeight) => (netWeight / grossWeight) * 100
 
   const watchAllFields = watch()
@@ -90,8 +89,7 @@ const Ingredients = () => {
 
   useEffect(() => {
     const performancePercent = getPerformancePercent(parseFloat(watchAllFieldsSubRecipe.netWeight), parseFloat(watchAllFieldsSubRecipe.grossWeight))
-    const amount = parseFloat(getAmountSubRecipe(parseFloat(watchAllFieldsSubRecipe.netWeight), subRecipe.unitCost))
-    console.log(amount)
+    const amount = parseFloat(getAmount(parseFloat(watchAllFieldsSubRecipe.netWeight), subRecipe.priceUnit))
     setSubRecipe({ ...subRecipe, netWeight: parseFloat(watchAllFieldsSubRecipe.netWeight), grossWeight: parseFloat(watchAllFieldsSubRecipe.grossWeight), performancePercent, amount })
   }, [watchAllFieldsSubRecipe.netWeight, watchAllFieldsSubRecipe.grossWeight])
 
@@ -108,8 +106,8 @@ const Ingredients = () => {
   }
 
   const onSubmitSubRecipes = ({ netWeight, grossWeight }) => {
-    setSubRecipeSelected([...subRecipeSelected, subRecipe])
-    setValueSubRecipe('subrecipe', '')
+    setSubRecipeSelected([...subRecipeSelected, product])
+    setValueSubRecipe('product', '')
     setValueSubRecipe('netWeight', '')
     setValueSubRecipe('grossWeight', '')
   }
@@ -174,25 +172,25 @@ const Ingredients = () => {
                       : <option value='No hay Sub recetas creadas' />
                     }
                 </datalist>
-                <p>{errorsSubRecipe.subRecipe?.message}</p>
+                <p>{errorsSubRecipe.subreceta?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso neto</label>
                 <input type='text' placeholder='Peso neto' name='netWeight' ref={registerSubRecipe} className={errorClassPesoNeto} />
-                <p>{errorsSubRecipe.netWeight?.message}</p>
+                <p>{errorsSubRecipe.pesoNeto?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso bruto</label>
                 <input type='text' placeholder='Peso bruto' name='grossWeight' ref={registerSubRecipe} className={errorClassPesoBruto} />
-                <p>{errorsSubRecipe.grossWeight?.message}</p>
+                <p>{errorsSubRecipe.pesoBruto?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
-                <p>$ {subRecipe?.unitCost}</p>
+                <p>$ {subRecipe?.priceUnit}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Unidad de M</p>
-                <p>Kg/Lg </p>
+                <p>{subRecipe?.measureByBuy} </p>
               </div>
               <button type='submit' className='plusbutton'><span>+</span></button>
             </div>
