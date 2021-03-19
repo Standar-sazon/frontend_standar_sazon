@@ -32,7 +32,7 @@ const CardRecipeView = ({ id, title, icon, category, entry, price, backgroundSrc
                 </li>
               </ul>
               <div className='containerButtonRecipeView'>
-                <button className='iconWrapperRecipe justify-content-left' onclick={() => router.push({ pathname: 'recipes/create/detail', query: { recipe: id } })}>
+                <button className='iconWrapperRecipe justify-content-left' onClick={() => router.push({ pathname: 'recipes/detail', query: { recipe: id } })}>
                   <FontAwesomeIcon icon={icon} /><h3 className='buttonText'> Cocinar</h3>
                 </button>
               </div>
