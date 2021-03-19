@@ -78,12 +78,12 @@ export default function App () {
 
   useEffect(() => {
     const sinIva = parseFloat(utility) + parseFloat(expenses)
-    setSiva(sinIva)
+    setSiva(sinIva.toFixed(2))
   }, [watchAllFields.portionSize, utility, expenses])
 
   useEffect(() => {
     const bigTotal = parseFloat(siva) * 1.16
-    setTotal(bigTotal)
+    setTotal(bigTotal.toFixed(2))
   }, [watchAllFields.portionSize, siva])
 
   const errorClassProduction = errors.production ? 'error' : null
