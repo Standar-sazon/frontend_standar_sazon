@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/img/logo.svg'
 import NextButton from '../../../components/NextButton'
 import { recipeRequestByID } from '../../../services/recipes'
-import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -16,7 +15,6 @@ const schema = yup.object().shape({
   operatingTemperature: yup.number().positive('Invalido').required('Requerido').typeError('Invalido')
 })
 export default function App () {
-  const router = useRouter()
   const [resume, setResume] = useState({})
   const [performance, setPerformance] = useState(0)
   const [portion, setPortion] = useState(0)

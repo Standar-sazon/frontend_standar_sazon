@@ -54,10 +54,24 @@ function deleteSubrecipe (id, token) {
   return window.fetch(URL, options)
 }
 
+function subRecipeRequestByID (id, token) {
+  const URL = `${URL_BASE}subrecipes/${id}`
+  const options = {
+    method: 'GET',
+    headers: {
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+
+    },
+    mode: 'cors'
+  }
+  return fetch(URL, options)
+}
 export {
   createSubrecipe,
   subRecipeRequest,
   subRecipeUpdate,
-  deleteSubrecipe
+  deleteSubrecipe,
+  subRecipeRequestByID
 
 }
