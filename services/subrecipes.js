@@ -6,7 +6,6 @@ function createSubrecipe (token, objectSubrecipes) {
     method: 'POST',
     body: JSON.stringify(objectSubrecipes),
     headers: {
-      'content-Type': `application/json ${token}`,
       Authorization: `Bearer ${token}`
     },
     mode: 'cors'
