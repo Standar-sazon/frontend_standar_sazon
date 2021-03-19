@@ -30,12 +30,12 @@ const Ingredients = () => {
   const [subRecipesAll, setSubRecipes] = useState([])
   const [subRecipe, setSubRecipe] = useState({})
   const [subRecipeSelected, setSubRecipeSelected] = useState([])
-  // const { register, handleSubmit, errors, watch, setValue } = useForm({
-  //     resolver: yupResolver(schema),
-  //     mode: 'onBlur',
-  //     reValidateMode: 'onChange'
+  const { register: registerSubRecipe, handleSubmit: handleSubmitSubRecipe, errors: errorsSubRecipe, watch: watchSubRecipe, setValue: setValueSubRecipe } = useForm({
+    resolver: yupResolver(schemaSubRecipe),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
 
-  //   })
+  })
 
   const getAmount = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
   const getPerformancePercent = (netWeight, grossWeight) => (netWeight / grossWeight) * 100
@@ -146,13 +146,13 @@ const Ingredients = () => {
           </div>
         </form>
 
-        <form onSubmit={handleSubmit(onSubmitSubRecipes)}>
+        <form onSubmit={handleSubmitSubRecipe(onSubmitSubRecipes)}>
           <div className='form-input'>
             <p>Agregar Subreceta</p>
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column '>
                 <label>Subreceta</label>
-                <input type='search' list='subRecipes' placeholder='Subreceta' name='subRecipes' onChange={subRecipeHandleChange} ref={register} className={errorClassSubReceta} />
+                <input type='search' list='subRecipes' placeholder='Subreceta' name='subRecipes' onChange={subRecipeHandleChange} ref={registerSubRecipe} className={errorClassSubReceta} />
                 <datalist id='subRecipes'>
                   {
                     subRecipesAll.lenght !== 0
@@ -168,12 +168,12 @@ const Ingredients = () => {
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso bruto</label>
-                <input type='text' placeholder='Peso bruto' name='pesoBruto' ref={register} className={errorClassPesoBruto} />
+                <input type='text' placeholder='Peso bruto' name='pesoBruto' ref={registerSubRecipe} className={errorClassPesoBruto} />
                 <p>{errors.pesoBruto?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso neto</label>
-                <input type='text' placeholder='Peso neto' name='pesoNeto' ref={register} className={errorClassPesoNeto} />
+                <input type='text' placeholder='Peso neto' name='pesoNeto' ref={registerSubRecipe} className={errorClassPesoNeto} />
                 <p>{errors.pesoNeto?.message}</p>
               </div>
               <div className='d-flex flex-column'>
