@@ -82,9 +82,9 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
         message={utencil.name}
         checked={checkedUtencils[utencil.id]}
         onChange={handleUtencilCheck}
-                                />)
+      />)
     }
-                                  </div>)
+  </div>)
 }
 
 const Utencilios = () => {
@@ -153,7 +153,7 @@ const Utencilios = () => {
                     type='textbox'
                     placeholder='Pasos a seguir'
                     text=''
-                    onChange={handleInputChange}
+
                   />
                   <div className=''>
                     <button className='plusbutton'>+</button>

@@ -4,6 +4,13 @@ import NextButton from '../../../components/NextButton'
 import UtencilsButtons from '../../../components/UtencilsButton'
 import TableStepsRecipe from '../../../components/TableStepsRecipe'
 import AddUtencil from '../../../components/AddUtencil'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  tehnical: yup.string().required('El campo es requerido')
+})
 
 const utencilsMock = [
   {
@@ -91,96 +98,101 @@ const Utencilios = () => {
   const [utencils, setUtencils] = useState([])
   const [checkedUtencils, setCheckedUtencils] = useState({})
   const [utencilsSelected, setUtencilsSelected] = useState([])
-  const handleUtencilCheck = event => {
-    const newCheckedUtencils = {
-      ...checkedUtencils,
-      [event.target.name]: event.target.checked
-    }
-
-    const arrayOfCheckedUtencils = Object
-      .entries(newCheckedUtencils)
-      .filter(([, checked]) => checked)
-      .map(([id]) => id)
-
-    setCheckedUtencils(newCheckedUtencils)
-    console.log(newCheckedUtencils)
-    console.log(arrayOfCheckedUtencils)
-    setUtencilsSelected(arrayOfCheckedUtencils)
-  }
-  const utencilComponents = getUtencilComponents(utencils, checkedUtencils, handleUtencilCheck)
-
-  useEffect(async () => {
-    const response = utencilsMock // TODO: Call API.
-    setUtencils(response)
-  }, [utencils])
-
-  const [instructions, setInstructions] = useState({
-    text: ''
+  const [instructions, setInstructions] = useState([])
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
   })
-  //
-  const handleInputChange = event => {
-    const newInstructions = {
-      ...instructions,
-      [event.target.text]: event.target.value
-    }
 
-    const arrayOfInstructions = Object
-      .entries(newInstructions)
+  const arrayOfInstructions = Object
+    .entries(newInstructions)
 
-    setInstructions(newInstructions)
-    console.log(newInstructions)
-    console.log(arrayOfInstructions)
+  setInstructions(newInstructions)
+  console.log(newInstructions)
+  console.log(arrayOfInstructions)
+}
+
+const onSubmit = async (dataForm) => {
+  setInstructions(true)
+}
+const handleUtencilCheck = event => {
+  const newCheckedUtencils = {
+    ...checkedUtencils,
+    [event.target.name]: event.target.checked
   }
 
+  const arrayOfCheckedUtencils = Object
+    .entries(newCheckedUtencils)
+    .filter(([, checked]) => checked)
+    .map(([id]) => id)
 
-  return (
-    <LayoutUser>
-      <div className='allUtencils'>
-        <p>Utensilios</p>
-        {utencilComponents}
-        <div>
-          <AddUtencil />
-        </div>
-        <div>
-          <p>Escribe tus instrucciones</p>
-          <form className='card-table'>
+  setCheckedUtencils(newCheckedUtencils)
+  console.log(newCheckedUtencils)
+  console.log(arrayOfCheckedUtencils)
+  setUtencilsSelected(arrayOfCheckedUtencils)
+}
+const utencilComponents = getUtencilComponents(utencils, checkedUtencils, handleUtencilCheck)
+
+useEffect(async () => {
+  const response = utencilsMock // TODO: Call API.
+  setUtencils(response)
+}, [utencils])
+
+//
+
+const errorInstructions = errors.tehnical ? 'error' : null
+
+return (
+  <LayoutUser>
+    <div className='allUtencils'>
+      <p>Utensilios</p>
+      {utencilComponents}
+      <div>
+        <AddUtencil />
+      </div>
+      <div>
+        <p>Escribe tus instrucciones</p>
+        <div className='card-table'>
+          <div>
             <div>
+              <form className='form-input d-flex flex-row' onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  className='inputStep'
+                  type='textbox'
+                  placeholder='Pasos a seguir'
+                  text=''
+                  name='tehnical'
+                  ref={register}
+
+                />
+                <p>{errorInstructions}</p>
+                <div className=''>
+                  <button type='submit' className='plusbutton'>+</button>
+                </div>
+              </form>
               <div>
-                <div className='form-input d-flex flex-row'>
-                  <input
-                    className='inputStep'
-                    type='textbox'
-                    placeholder='Pasos a seguir'
-                    text=''
-                    onChange={handleInputChange}
-                  />
-                  <div className=''>
-                    <button className='plusbutton'>+</button>
-                  </div>
+                <div>
+                  <TableStepsRecipe message='Paso1' />
                 </div>
                 <div>
-                  <div>
-                    <TableStepsRecipe message='Paso1' />
-                  </div>
-                  <div>
-                    <TableStepsRecipe message='Paso2' />
-                  </div>
-                  <div>
-                    <TableStepsRecipe message='Paso 3' />
-                  </div>
+                  <TableStepsRecipe message='Paso2' />
+                </div>
+                <div>
+                  <TableStepsRecipe message='Paso 3' />
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div className='row justify-content-center'>
-          <div className='col-12 col-lg-4'>
-            <NextButton message='Siguiente' />
           </div>
         </div>
       </div>
-    </LayoutUser>
-  )
+      <div className='row justify-content-center'>
+        <div className='col-12 col-lg-4'>
+          <NextButton message='Siguiente' />
+        </div>
+      </div>
+    </div>
+  </LayoutUser>
+)
 }
-
 export default Utencilios
