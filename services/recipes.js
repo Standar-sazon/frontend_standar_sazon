@@ -6,7 +6,9 @@ function createRecipe(token, objectRecipes) {
     method: 'POST',
     body: JSON.stringify(objectRecipes),
     headers: {
-      'content-Type': `application/json ${token}`
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+
     },
     mode: 'cors'
   }
