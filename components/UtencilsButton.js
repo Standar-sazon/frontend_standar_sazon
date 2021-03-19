@@ -1,13 +1,16 @@
 import React from 'react'
 
-const UtencilsButtonsOrange = ({ message, color = 'orange' }) => (
-  <div className={`button-utencils d-flex ${color}`}>
-    <input className='checkmark' type='checkbox' />
-    <label className=' '>{message}
-    </label>
-  </div>
+const UtencilsButtonsOrange = ({ id, message, checked, onChange }) => {
+  const color = checked ? 'green' : 'orange'
 
-)
+  return (
+    <div className={`button-utencils d-flex ${color}`}>
+      <input className='checkmark' name={id} type='checkbox' checked={checked} onChange={onChange} />
+      <label className=' '>{message}
+      </label>
+    </div>
+  )
+}
 
 UtencilsButtonsOrange.defaultProps = {
   message: 'Aceptar'
