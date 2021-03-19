@@ -58,18 +58,6 @@ export default function App () {
             <p>{errors.name?.message}</p>
           </div>
           <div className='form-input'>
-            <label for=''>Apellidos*</label>
-            <input name='lastName' ref={register} type='text' placeholder='Escribe tu(s) apellido(s)' className={errorClasslastName} id='' />
-            <p>{errors.lastName?.message}</p>
-          </div>
-          <div className='form-input'>
-            <label for=''>Email*</label>
-            <input name='email' ref={register} type='email' placeholder='Correo electronico' className={errorClassEmail} id='' />
-            <p>{errors.email?.message}</p>
-          </div>
-        </div>
-        <div className='divider-right'>
-          <div className='form-input'>
             <label for=''>Ciudad*</label>
             <input name='location' ref={register} type='text' placeholder='¿De donde eres?' className={errorClassCity} id='' />
             <p>{errors.location?.message}</p>
@@ -78,6 +66,18 @@ export default function App () {
             <label for=''>Contraseña*</label>
             <input name='password' ref={register} type='password' placeholder='Escribe tu contraseña' className={errorClassPassword} id='' />
             <p>{errors.password?.message}</p>
+          </div>
+        </div>
+        <div className='divider-right'>
+          <div className='form-input'>
+            <label for=''>Apellidos*</label>
+            <input name='lastName' ref={register} type='text' placeholder='Escribe tu(s) apellido(s)' className={errorClasslastName} id='' />
+            <p>{errors.lastName?.message}</p>
+          </div>
+          <div className='form-input'>
+            <label for=''>Email*</label>
+            <input name='email' ref={register} type='email' placeholder='Correo electronico' className={errorClassEmail} id='' />
+            <p>{errors.email?.message}</p>
           </div>
           <div className='form-input'>
             <label for=''>Confirmar contraseña*</label>

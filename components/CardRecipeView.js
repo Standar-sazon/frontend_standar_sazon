@@ -1,8 +1,11 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faDollarSign, faIndustry } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
 
-const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc, time }) => {
+const CardRecipeView = ({ id, title, icon, category, entry, price, backgroundSrc, time }) => {
+  const router = useRouter()
+
   return (
     <container>
       <row className='row row-cols-1 row-cols-md-3 g-4'>
@@ -29,9 +32,9 @@ const CardRecipeView = ({ title, icon, category, entry, price, backgroundSrc, ti
                 </li>
               </ul>
               <div className='containerButtonRecipeView'>
-                <div className='iconWrapperRecipe justify-content-left'>
+                <button className='iconWrapperRecipe justify-content-left' onClick={() => router.push({ pathname: 'recipes/detail', query: { recipe: id } })}>
                   <FontAwesomeIcon icon={icon} /><h3 className='buttonText'> Cocinar</h3>
-                </div>
+                </button>
               </div>
             </div>
           </div>
