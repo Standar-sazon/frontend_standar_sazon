@@ -33,7 +33,7 @@ const Ingredients = () => {
 
   })
 
-  const [subRecipes, setSubRecipes] = useState([])
+  const [subRecipesAll, setSubRecipes] = useState([])
   const [subRecipe, setSubRecipe] = useState({})
   const [subRecipeSelected, setSubRecipeSelected] = useState([])
   /* const { register, handleSubmit, errors, watch, setValue } = useForm({
@@ -63,6 +63,8 @@ const Ingredients = () => {
   useEffect(async () => {
     const ingredients = await getIngredients()
     setIngredients(ingredients)
+    const subRecipesFull = await getSubRecipe()
+    setSubRecipes(subRecipesFull)
   }, [])
 
   const handleChange = (event) => {
@@ -85,8 +87,8 @@ const Ingredients = () => {
 
   useEffect(() => {
     const performancePercent = getPerformancePercent(parseFloat(watchAllFields.netWeight), parseFloat(watchAllFields.grossWeight))
-    const amount = parseFloat(getAmount(parseFloat(watchAllFields.netWeight), subRecipes.priceUnit))
-    setSubRecipe({ ...subRecipes, netWeight: parseFloat(watchAllFields.netWeight), grossWeight: parseFloat(watchAllFields.grossWeight), performancePercent, amount })
+    const amount = parseFloat(getAmount(parseFloat(watchAllFields.netWeight), subRecipe.priceUnit))
+    setSubRecipe({ ...subRecipe, netWeight: parseFloat(watchAllFields.netWeight), grossWeight: parseFloat(watchAllFields.grossWeight), performancePercent, amount })
   }, [watchAllFields.netWeight, watchAllFields.grossWeight])
 
   const getSubRecipe = async () => {
@@ -95,14 +97,9 @@ const Ingredients = () => {
     return responseJSON.data
   }
 
-  useEffect(async () => {
-    const subRecipes = await getSubRecipe()
-    setSubRecipes(subRecipes)
-  }, [])
-
   const subRecipeHandleChange = (event) => {
     const subRecipesName = event.target.value
-    const filteredSubRecipe = subRecipes.filter(subRecipe => subRecipe.name === subRecipesName)
+    const filteredSubRecipe = subRecipesAll.filter(subRecipe => subRecipe.name === subRecipesName)
     setSubRecipe(filteredSubRecipe[0])
   }
 
@@ -162,13 +159,13 @@ const Ingredients = () => {
               <div className='d-flex flex-column '>
                 <label>Subreceta</label>
                 <input className='error' type='text' placeholder='Ingrediente' name='subRecipes' onChange={subRecipeHandleChange} ref={register} />
-                <datalist id='subRecipes'>
+                {/* <datalist id='subRecipes'>
                   {
-                      subRecipes.map(subRecipe =>
+                      subRecipesAll.map(subRecipe =>
                         <option key={subRecipe._id} value={subRecipe.name} />
                       )
                     }
-                </datalist>
+                </datalist> */}
                 <p>{errors.subreceta?.message}</p>
               </div>
               <div className='d-flex flex-column'>
