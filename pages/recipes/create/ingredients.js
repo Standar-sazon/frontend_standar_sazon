@@ -8,6 +8,10 @@ import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
 import { productRequest } from '../../../services/products'
 import { subRecipeRequest } from '../../../services/subrecipes'
+import { recipeUpdate, recipeRequestByID } from '../../../services/recipes'
+import { useRouter } from 'next/router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 /* import faker from 'faker' */
 
@@ -24,17 +28,20 @@ const schemaSubRecipe = yup.object().shape({
 })
 
 const Ingredients = () => {
+  const router = useRouter()
   const [ingredients, setIngredients] = useState([])
   const [product, setProduct] = useState({})
   const [ingredientSelected, setIngredientSelected] = useState([])
   const [grossWeightTotal, setgrossWeightTotal] = useState(0)
   const [totalAmount, setTotalAmount] = useState(0)
+  const [recipeToSend, setRecipeToSend] = useState({})
   const { register, handleSubmit, errors, watch, setValue } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
     reValidateMode: 'onChange'
 
   })
+  const { recipe } = router.query
 
   const [subRecipesAll, setSubRecipes] = useState([])
   const [subRecipe, setSubRecipe] = useState({})
@@ -67,6 +74,18 @@ const Ingredients = () => {
     setgrossWeightTotal(TotalgrossWeight)
   }, [ingredientSelected])
 
+  const getRecipe = async () => {
+    const response = await recipeRequestByID(recipe, localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  const updateRecipe = async (objectrecipe) => {
+    const response = await recipeUpdate(recipe, objectrecipe, localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON
+  }
+
   const getIngredients = async () => {
     const response = await productRequest(localStorage.getItem('token'))
     const responseJSON = await response.json()
@@ -78,6 +97,8 @@ const Ingredients = () => {
     setIngredients(ingredients)
     const subRecipesFull = await getSubRecipe()
     setSubRecipes(subRecipesFull)
+    const recipe = await getRecipe()
+    setRecipeToSend(recipe)
   }, [])
 
   const handleChange = (event) => {
@@ -96,11 +117,24 @@ const Ingredients = () => {
     })
   }
 
-  const onSubmit = ({ netWeight, grossWeight }) => {
+  const onSubmit = async ({ netWeight, grossWeight, id }) => {
     setIngredientSelected([...ingredientSelected, product])
     setValue('product', '')
     setValue('netWeight', '')
     setValue('grossWeight', '')
+  }
+
+  const handleClickSaveIngredients = async () => {
+    console.log('Enviando datos')
+    const recipeUpdated = await updateRecipe({ ...recipeToSend, ingredients: ingredientSelected, grossWeightTotal, directIndirectCosts: { totalAmount } })
+    if (recipeUpdated.success) {
+      router.push({
+        pathname: '/recipes/create/utencils',
+        query: { recipe: recipeUpdated.data._id }
+      })
+      return
+    }
+    router.reload()
   }
 
   const errorClassIngrediente = errors.ingrediente ? 'error' : null
@@ -144,7 +178,6 @@ const Ingredients = () => {
     setValueSubRecipe('netWeight', '')
     setValueSubRecipe('grossWeight', '')
   }
-
   return (
     <LayoutUser>
       <div className='section-add-ingredients'>
@@ -157,9 +190,14 @@ const Ingredients = () => {
                 <input type='search' list='products' ref={register} onChange={handleChange} placeholder='Ingrediente' name='product' className={errorClassIngrediente} />
                 <datalist id='products'>
                   {
-                      ingredients.map(ingredient =>
-                        <option key={ingredient._id} value={ingredient.name} />
-                      )
+                    ingredients.length !== 0
+                      ? (
+                          ingredients.map(ingredients =>
+                            <option key={ingredients._id} value={ingredients.name} />
+                          )
+
+                        )
+                      : <option value='No hay ingredientes ' />
                     }
                 </datalist>
                 <p>{errors.product?.message}</p>
@@ -261,7 +299,12 @@ const Ingredients = () => {
         </div>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-4'>
-            <NextButton message='Siguiente' />
+            <button type='button' onClick={handleClickSaveIngredients} className='createButton'>
+              <p className='textButton'>Siguiente</p>
+              <span className='createIconButton'>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </span>
+            </button>
           </div>
         </div>
       </div>
