@@ -81,7 +81,7 @@ const Ingredients = () => {
   }
 
   const errorClassIngrediente = errors.ingrediente ? 'error' : null
-  const errorClassSubRecipe = errors.ingrediente ? 'error' : null
+  const errorClassSubRecipe = errors.subreceta ? 'error' : null
   const errorClassPesoBruto = errors.pesoBruto ? 'error' : null
   const errorClassPesoNeto = errors.pesoNeto ? 'error' : null
 
@@ -158,14 +158,14 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column '>
                 <label>Subreceta</label>
-                <input className='error' type='text' placeholder='Ingrediente' name='subRecipes' onChange={subRecipeHandleChange} ref={register} />
-                {/* <datalist id='subRecipes'>
+                <input className='error' type='text' placeholder='Ingrediente' name='subRecipes' onChange={subRecipeHandleChange} ref={register} className={errorClassSubRecipe} />
+                <datalist id='subRecipes'>
                   {
                       subRecipesAll.map(subRecipe =>
                         <option key={subRecipe._id} value={subRecipe.name} />
                       )
                     }
-                </datalist> */}
+                </datalist>
                 <p>{errors.subreceta?.message}</p>
               </div>
               <div className='d-flex flex-column'>
