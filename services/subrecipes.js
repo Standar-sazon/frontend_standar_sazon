@@ -1,16 +1,17 @@
 import { URL_BASE } from './config'
 
 function createSubrecipe (token, objectSubrecipes) {
-  const URL = `${URL_BASE}subRecipes`
+  const URL = `${URL_BASE}subrecipes`
   const options = {
     method: 'POST',
     body: JSON.stringify(objectSubrecipes),
     headers: {
+      'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     },
     mode: 'cors'
   }
-  return window.fetch(URL, options)
+  return fetch(URL, options)
 }
 
 function subRecipeRequest (token) {
@@ -72,5 +73,4 @@ export {
   subRecipeUpdate,
   deleteSubrecipe,
   subRecipeRequestByID
-
 }

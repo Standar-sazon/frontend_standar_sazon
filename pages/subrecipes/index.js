@@ -56,7 +56,6 @@ export default function App () {
               </div>
             </div>
           </div>
-
           <div className='derecha'>
             <div className='form-input'>
               <label for=''>Clasificación*</label>
