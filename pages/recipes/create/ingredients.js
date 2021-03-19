@@ -7,7 +7,6 @@ import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
 import { productRequest } from '../../../services/products'
-import ShowSubRecipe from '../../../components/showSubRecipe'
 import { subRecipeRequest } from '../../../services/subrecipes'
 
 /* import faker from 'faker' */
@@ -204,6 +203,7 @@ const Ingredients = () => {
               <td>Ingrediente</td>
               <td>Peso Bruto</td>
               <td>Peso neto</td>
+              <td>Porcentaje %</td>
               <td>Costo unitario</td>
               <td>U. M.</td>
               <td>Importe</td>
@@ -211,8 +211,17 @@ const Ingredients = () => {
           </Table>
         </div>
         <div>
-          <ShowIngredient />
-          <ShowSubRecipe />
+          {
+          ingredientSelected.length !== 0
+            ? (
+                ingredientSelected.map((ingredientSelected, index) => (
+                  <div key={index}>
+                    <ShowIngredient image={ingredientSelected.image} name={ingredientSelected.name} grossWeight={ingredientSelected.grossWeight} netWeight={ingredientSelected.netWeight} priceUnit={ingredientSelected.priceUnit} measureByBuy={ingredientSelected.measureByBuy} amount={ingredientSelected.amount} performancePercent={ingredientSelected.performancePercent} />
+                  </div>
+                ))
+              )
+            : null
+        }
         </div>
         <div className='importStyle d-flex justify-content-between align-items-end'>
           <p>Importe</p>
