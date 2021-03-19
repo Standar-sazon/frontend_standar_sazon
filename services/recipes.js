@@ -32,7 +32,6 @@ function recipeRequestByID(id, token) {
   const URL = `${URL_BASE}recipes/${id}`
   const options = {
     method: 'GET',
-    body: JSON.stringify(token),
     headers: {
       'content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -40,7 +39,7 @@ function recipeRequestByID(id, token) {
     },
     mode: 'cors'
   }
-  return window.fetch(URL, options)
+  return fetch(URL, options)
 }
 
 function recipeUpdate(id, objectRecipes, token) {
