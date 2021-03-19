@@ -82,9 +82,9 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
         message={utencil.name}
         checked={checkedUtencils[utencil.id]}
         onChange={handleUtencilCheck}
-      />)
+                                />)
     }
-  </div>)
+                                  </div>)
 }
 
 const Utencilios = () => {
@@ -116,6 +116,24 @@ const Utencilios = () => {
     setUtencils(response)
   }, [utencils])
 
+  const [instructions, setInstructions] = useState({
+    text: ''
+  })
+  //
+  const handleInputChange = event => {
+    const newInstructions = {
+      ...instructions,
+      [event.target.text]: event.target.value
+    }
+
+    const arrayOfInstructions = Object
+      .entries(newInstructions)
+
+    setInstructions(newInstructions)
+    console.log(newInstructions)
+    console.log(arrayOfInstructions)
+  }
+
   return (
     <LayoutUser>
       <div className='allUtencils'>
@@ -130,7 +148,13 @@ const Utencilios = () => {
             <div>
               <div>
                 <div className='form-input d-flex flex-row'>
-                  <input className='inputStep' type='textbox' placeholder='Pasos a seguir' name='' id='' />
+                  <input
+                    className='inputStep'
+                    type='textbox'
+                    placeholder='Pasos a seguir'
+                    text=''
+                    onChange={handleInputChange}
+                  />
                   <div className=''>
                     <button className='plusbutton'>+</button>
                   </div>

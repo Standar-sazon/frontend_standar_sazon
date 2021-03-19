@@ -82,9 +82,9 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
         message={utencil.name}
         checked={checkedUtencils[utencil.id]}
         onChange={handleUtencilCheck}
-                                />)
+      />)
     }
-                                  </div>)
+  </div>)
 }
 
 const Utencilios = () => {
@@ -114,16 +114,24 @@ const Utencilios = () => {
     setUtencils(response)
   }, [utencils])
 
-  const [instructions, Setinstructions] = useState({
+  const [instructions, setInstructions] = useState({
     text: ''
   })
-  const handleInputChange = (event) => {
-    console.log(event.target.value)
-    Setinstructions({
+  //
+  const handleInputChange = event => {
+    const newInstructions = {
       ...instructions,
       [event.target.text]: event.target.value
-    })
+    }
+
+    const arrayOfInstructions = Object
+      .entries(newInstructions)
+
+    setInstructions(newInstructions)
+    console.log(newInstructions)
+    console.log(arrayOfInstructions)
   }
+
 
   return (
     <LayoutUser>
