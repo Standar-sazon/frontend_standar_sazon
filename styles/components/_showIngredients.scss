@@ -15,6 +15,23 @@
     
 }
 
+.img-ingredient{
+    vertical-align: middle;
+    border-style: none;
+    width: 5%;
+    height: 84%;
+    border-radius: 50%;
+}
+
+.img-box{
+    vertical-align: middle;
+    border-style: none;
+    width: 5%;
+    height: 84%;
+    border-radius: 50%;
+    background-color: $yellow;
+}
+
 .deletebutton{
     background-color: $dark-green;
     border-radius: 50%;

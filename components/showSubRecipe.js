@@ -1,7 +1,7 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 
-const ShowIngredient = ({ image, name, grossWeight, netWeight, priceUnit, measureByBuy, amount, performancePercent }) => {
+const ShowSubRecipe = ({ image, name, grossWeight, netWeight, unitCost, measureByBuy, amount, performancepercent }) => {
   return (
     <div>
       <Table borderless className='tittleResume'>
@@ -14,8 +14,8 @@ const ShowIngredient = ({ image, name, grossWeight, netWeight, priceUnit, measur
         <td>{name}</td>
         <td>{grossWeight}</td>
         <td>{netWeight}</td>
-        <td>{performancePercent} %</td>
-        <td>{priceUnit}</td>
+        <td>{performancepercent}</td>
+        <td>{unitCost}</td>
         <td>{measureByBuy}</td>
         <td>{amount}</td>
         <div>
@@ -27,4 +27,4 @@ const ShowIngredient = ({ image, name, grossWeight, netWeight, priceUnit, measur
   )
 }
 
-export default ShowIngredient
+export default ShowSubRecipe
