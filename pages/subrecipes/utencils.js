@@ -10,26 +10,53 @@ const Utencilios = () => {
     <LayoutUser>
       <form className='allUtencils'>
         <p>Utensilios</p>
-        <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons id='sarten' message='Sarten' color='orange' />
-          <UtencilsButtons id='' message='Olla' color='green' />
-          <UtencilsButtons id='' message='Cuchillo' color='orange' />
-          <UtencilsButtons id='' message='Budinera' color='green' />
-          <UtencilsButtons id='' message='Tabla' color='orange' />
+        <div className='d-flex flex-row justify-content-between'>
+          <input type='checkbox' id='olla02' value='olla_check'>
+            <UtencilsButtons message='olla' color='green' />
+          </input>
+          <input type='checkbox' id='cuchillo03' value='cuchillo_check'>
+            <UtencilsButtons message='cuchillo' color='orange' />
+          </input>
+          <input type='checkbox' id='budinera04' value='budinera_check'>
+            <UtencilsButtons message='budinera' color='green' />
+          </input>
+          <input type='checkbox' id='tabla05' value='tabla_check'>
+            <UtencilsButtons message='tabla' color='orange' />
+          </input>
         </div>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons message='Licuadora' color='orange' />
-          <UtencilsButtons message='Freidora' color='green' />
-          <UtencilsButtons message='Pala' color='orange' />
-          <UtencilsButtons message='Soplete' color='green' />
-          <UtencilsButtons message='Cucharón' color='orange' />
+          <input type='checkbox' id='licuadora06' value='licuadora_check'>
+            <UtencilsButtons message='licuadora' color='orange' />
+          </input>
+          <input type='checkbox' id='freidora07' value='freidora_check'>
+            <UtencilsButtons message='freidora' color='green' />
+          </input>
+          <input type='checkbox' id='pala08' value='pala_check'>
+            <UtencilsButtons message='pala' color='orange' />
+          </input>
+          <input type='checkbox' id='soplete09' value='soplete_check'>
+            <UtencilsButtons message='soplete' color='green' />
+          </input>
+          <input type='checkbox' id='cucharon10' value='cucharon_check'>
+            <UtencilsButtons message='cucharón' color='orange' />
+          </input>
         </div>
         <div className='labelUtencils d-flex flex-row justify-content-between'>
-          <UtencilsButtons message='Atomizador' color='orange' />
-          <UtencilsButtons message='Bowl' color='green' />
-          <UtencilsButtons message='Rallador' color='orange' />
-          <UtencilsButtons message='Espatula' color='green' />
-          <UtencilsButtons message='Colador' color='orange' />
+          <input type='checkbox' id='atomizador11' value='atomizador_check'>
+            <UtencilsButtons message='atomizador' color='orange' />
+          </input>
+          <input type='checkbox' id='bowl12' value='bowl_check'>
+            <UtencilsButtons message='bowl' color='green' />
+          </input>
+          <input type='checkbox' id='rallador13' value='rallador_check'>
+            <UtencilsButtons message='rallador' color='orange' />
+          </input>
+          <input type='checkbox' id='espatula14' value='espatula_check'>
+            <UtencilsButtons message='espatula' color='green' />
+          </input>
+          <input type='checkbox' id='colador15' value='colador_check'>
+            <UtencilsButtons message='colador' color='orange' />
+          </input>
         </div>
         <div>
           <AddUtencil />
@@ -68,7 +95,6 @@ const Utencilios = () => {
           </div>
         </div>
       </form>
-
     </LayoutUser>
   )
 }
