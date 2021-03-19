@@ -7,7 +7,9 @@ import Table from 'react-bootstrap/Table'
 import NextButton from '../../../components/NextButton'
 import ShowIngredient from '../../../components/ShowIngredient'
 import { productRequest } from '../../../services/products'
+import ShowSubRecipe from '../../../components/showSubRecipe'
 import { subRecipeRequest } from '../../../services/subrecipes'
+
 /* import faker from 'faker' */
 
 const schema = yup.object().shape({
@@ -35,7 +37,6 @@ const Ingredients = () => {
 
   const [subRecipesAll, setSubRecipes] = useState([])
   const [subRecipe, setSubRecipe] = useState({})
-  const [subRecipeSelected, setSubRecipeSelected] = useState([])
   const { register: registerSubRecipe, handleSubmit: handleSubmitSubRecipe, errors: errorsSubRecipe, watch: watchSubRecipe, setValue: setValueSubRecipe } = useForm({
     resolver: yupResolver(schemaSubRecipe),
     mode: 'onBlur',
@@ -107,8 +108,8 @@ const Ingredients = () => {
   }
 
   const onSubmitSubRecipes = ({ netWeight, grossWeight }) => {
-    setSubRecipeSelected([...subRecipeSelected, product])
-    setValueSubRecipe('subRecipe', '')
+    setIngredientSelected([...ingredientSelected, subRecipe])
+    setValueSubRecipe('subRecipes', '')
     setValueSubRecipe('netWeight', '')
     setValueSubRecipe('grossWeight', '')
   }
@@ -161,7 +162,7 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column '>
                 <label>Subreceta</label>
-                <input type='search' list='subRecipes' placeholder='Subreceta' name='subRecipes' onChange={subRecipeHandleChange} ref={registerSubRecipe} className={errorClassSubReceta} />
+                <input type='search' list='subRecipes' placeholder='Subreceta' name='subRecipe' onChange={subRecipeHandleChange} ref={registerSubRecipe} className={errorClassSubReceta} />
                 <datalist id='subRecipes'>
                   {
                     subRecipesAll.lenght !== 0
@@ -211,6 +212,7 @@ const Ingredients = () => {
         </div>
         <div>
           <ShowIngredient />
+          <ShowSubRecipe />
         </div>
         <div className='importStyle d-flex justify-content-between align-items-end'>
           <p>Importe</p>
