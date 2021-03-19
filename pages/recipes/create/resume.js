@@ -20,6 +20,12 @@ export default function App () {
   const [resume, setResume] = useState({})
   const [performance, setPerformance] = useState(0)
   const [portion, setPortion] = useState(0)
+  const [labor, setLabor] = useState(0)
+  const [indirect, setIndirect] = useState(0)
+  const [expenses, setExpenses] = useState(0)
+  const [utility, setUtility] = useState(0)
+  const [siva, setSiva] = useState(0)
+  const [total, setTotal] = useState(0)
   const { register, errors, watch } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
@@ -54,6 +60,36 @@ export default function App () {
     const portionTotal = (parseFloat(watchAllFields.production) / watchAllFields.portionSize)
     setPortion(portionTotal)
   }, [watchAllFields.portionSize])
+
+  useEffect(() => {
+    const laborTotal = (parseFloat(watchAllFields.preparationTime) / 0.46).toFixed(2)
+    setLabor(laborTotal)
+  }, [watchAllFields.preparationTime])
+
+  useEffect(() => {
+    const indirectTotal = (parseFloat(resume.directIndirectCosts?.totalAmount) * 0.30).toFixed(2)
+    setIndirect(indirectTotal)
+  }, [watchAllFields.preparationTime])
+
+  useEffect(() => {
+    const expensesTotal = (resume.directIndirectCosts?.totalAmount + parseFloat(labor) + parseFloat(indirect)) / parseFloat(portion)
+    setExpenses(expensesTotal.toFixed(2))
+  }, [watchAllFields.portionSize, labor, indirect])
+
+  useEffect(() => {
+    const utilityTotal = ((parseFloat(expenses) * 0.30) / 0.70).toFixed(2)
+    setUtility(utilityTotal)
+  }, [watchAllFields.portionSize, expenses])
+
+  useEffect(() => {
+    const sinIva = parseFloat(utility) + parseFloat(expenses)
+    setSiva(sinIva)
+  }, [watchAllFields.portionSize, utility, expenses])
+
+  useEffect(() => {
+    const bigTotal = parseFloat(siva) * 1.16
+    setTotal(bigTotal)
+  }, [watchAllFields.portionSize, siva])
 
   const errorClassProduction = errors.production ? 'error' : null
   const errorClassPortion = errors.portionSize ? 'error' : null
@@ -140,27 +176,27 @@ export default function App () {
             <img src={Logo} alt='logo' className='logo' />
           </div>
           <div className='technical d-flex'>
-            <p className='technical-concepts'>costo total de insumos</p>
+            <p className='technical-concepts'>Costo total de insumos</p>
             <p className='unit-measurement orange'>$  {resume.directIndirectCosts?.totalAmount} </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Costo de la mano de obra</p>
-            <p className='unit-measurement orange'>$ - </p>
+            <p className='unit-measurement orange'>$ {labor} </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Costo y gastos indirectos</p>
-            <p className='unit-measurement orange'>$ - </p>
+            <p className='unit-measurement orange'>$ {indirect} </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Costos y gastos por porción</p>
-            <p className='unit-measurement orange'>$ - </p>
+            <p className='unit-measurement orange'>$ {expenses} </p>
           </div>
           <div className='totals d-flex justify-content-between'>
             <div className='technical totals'>
               <p className='technical-concepts totals-resume'>Precio de venta</p>
               <p className='technical-concepts iva totals-resume'>por porción (S/IVA)</p>
             </div>
-            <p className='totals unit-measurement iva green'> - </p>
+            <p className='totals unit-measurement iva green'> {siva} </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>% del costo y gastos por porción</p>
@@ -172,14 +208,14 @@ export default function App () {
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Utilidad por porción</p>
-            <p className='unit-measurement orange'>$ - </p>
+            <p className='unit-measurement orange'>$ {utility} </p>
           </div>
           <div className='totals d-flex justify-content-between'>
             <div className='technical'>
               <p className='technical-concepts totals-resume'>Precio de venta</p>
               <p className='technical-concepts iva totals-resume'>por porción (C/IVA)</p>
             </div>
-            <p className='unit-measurement green'> - </p>
+            <p className='unit-measurement green'> {total} </p>
           </div>
         </div>
       </div>
