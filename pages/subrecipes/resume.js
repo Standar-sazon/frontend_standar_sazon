@@ -15,6 +15,7 @@ const schema = yup.object().shape({
 })
 export default function App () {
   const [resume, setResume] = useState({})
+  const [performance, setPerformance] = useState(0)
   const [portion, setPortion] = useState(0)
   const [unit, setUnit] = useState(0)
   const { register, errors, watch } = useForm({
@@ -45,8 +46,13 @@ export default function App () {
   }, [watchAllFields.portionSize])
 
   useEffect(() => {
+    const performanceResult = ((parseFloat(watchAllFields.production) / resume.grossWeightTotal) * 100).toFixed(0)
+    setPerformance(performanceResult)
+  }, [watchAllFields.production])
+
+  useEffect(() => {
     const unitCost = resume.SubRecipeSchema?.totalAmount / portion
-    setUnit(unitCost)
+    setUnit(unitCost.toFixed(2))
   }, [watchAllFields.portionSize, portion])
 
   const errorClassProduction = errors.production ? 'error' : null
@@ -64,10 +70,10 @@ export default function App () {
         <div className='data-time d-flex text-left form-input'>
           <lable className='inp-letters letters letters2'>Tamaño de la porciòn:</lable>
           <lable className='inp-letters'>(Kgs)</lable>
-          <input className={`inp-summary time ${errorClassPortion}`} type='number' placeholder='Tiempo' name='portionSize' ref={register} />
+          <input className={`inp-summary time ${errorClassPortion}`} type='number' placeholder='Peso' name='portionSize' ref={register} />
         </div>
         <div className='data-temperature d-flex text-left form-input'>
-          <lable className='inp-letters'>Tiempo de cocciòn:</lable>
+          <lable className='inp-letters'>Tiempo de cocción:</lable>
           <lable className='inp-letters'>(Minutos)</lable>
           <input className={`inp-summar ${errorClassCooking}`} type='number' placeholder='Grados' name='cookingTime' ref={register} />
         </div>
@@ -88,7 +94,7 @@ export default function App () {
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Rendimiento</p>
-            <p className='unit-measurement orange unit'>73 %</p>
+            <p className='unit-measurement orange unit'>{performance} %</p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Tamaño de la porción</p>

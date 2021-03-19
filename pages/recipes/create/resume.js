@@ -34,19 +34,16 @@ export default function App () {
   // } = router.query
   // console.log(recipe)
   const recipe = '6052c353b97aa7007f7051ff'
-  console.log(recipe)
 
   const getAdmin = async () => {
     const response = await recipeRequestByID(recipe, localStorage.getItem('token'))
     const responseJSON = await response.json()
-    console.log(responseJSON.data)
     return responseJSON.data
   }
 
   useEffect(async () => {
     const resumeGet = await getAdmin()
     setResume(resumeGet)
-    console.log(resumeGet)
   }, [])
 
   useEffect(() => {

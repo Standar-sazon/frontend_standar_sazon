@@ -1,8 +1,42 @@
 import LayoutUser from '../../components/LayoutUser'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 import NextButton from '../../components/NextButton'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import { createRecipe } from '../../../services/recipes'
 
-const SubRecipes = () => {
+const schema = yup.object().shape({
+  name: yup.string().required('El nombre es requerido'),
+  category: yup.string().required('Categoria es requerida')
+})
+export default function App () {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState()
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
+  })
+  const onSubmit = async (dataForm) => {
+    setLoading(true)
+    const response = await createRecipe(localStorage.getItem('token'), dataForm)
+    const responseJSON = await response.json()
+    if (!responseJSON.success) {
+      setError('')
+      setLoading(false)
+      return
+    }
+    setLoading(true)
+    router.push({
+      pathname: '/recipes/create/ingredients',
+      query: { recipe: responseJSON.data._id }
+    })
+  }
+  const errorClassName = errors.name ? 'error' : null
+  const errorClassCategory = errors.category ? 'error' : null
   return (
     <LayoutUser>
       <form className='create-form-init'>
@@ -49,4 +83,3 @@ const SubRecipes = () => {
     </LayoutUser>
   )
 }
-export default SubRecipes
