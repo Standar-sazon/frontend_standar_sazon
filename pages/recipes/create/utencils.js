@@ -1,13 +1,16 @@
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-
 import LayoutUser from '../../../components/LayoutUser'
 import React, { useState, useEffect } from 'react'
 import NextButton from '../../../components/NextButton'
 import UtencilsButtons from '../../../components/UtencilsButton'
 import TableStepsRecipe from '../../../components/TableStepsRecipe'
 import AddUtencil from '../../../components/AddUtencil'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  tehnical: yup.string().required('El campo es requerido')
+})
 
 const utencilsMock = [
   {
@@ -90,14 +93,22 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
     }
   </div>)
 }
-const schema = yup.object().shape({
-  textbox: yup.string().required('campo requerido')
-})
 
 const Utencilios = () => {
   const [utencils, setUtencils] = useState([])
   const [checkedUtencils, setCheckedUtencils] = useState({})
   const [utencilsSelected, setUtencilsSelected] = useState([])
+  const [instructions, setInstructions] = useState([])
+  const { register, handleSubmit, errors, setValue } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
+  })
+
+  const addInstructions = (dataForm) => {
+    setInstructions([...instructions, dataForm.tehnical])
+    setValue('tehnical')
+  }
   const handleUtencilCheck = event => {
     const newCheckedUtencils = {
       ...checkedUtencils,
@@ -121,65 +132,61 @@ const Utencilios = () => {
     setUtencils(response)
   }, [utencils])
 
-  const [stepFollow, setStepFollow] = useState('')
-  const { register, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-    mode: 'onBlur',
-    reValidateMode: 'onChange'
-  })
+  const errorInstructions = errors.tehnical ? 'error' : null
 
-  const onSubmit = async (dataForm) => {
-    setStepFollow(true)
-    setError()
-    // console.log('Enviando al server...')
-    // console.log(dataForm)
-    const response = await create(dataForm)
-    const responseJSON = await response.json()
-    // console.log(responseJSON)
-
-    return (
-      <LayoutUser>
-        <div className='allUtencils'>
-          <p>Utensilios</p>
-          {utencilComponents}
-          <div>
-            <AddUtencil />
-          </div>
-          <div>
-            <p>Escribe tus instrucciones</p>
-            <form className='card-table'>
+  return (
+    <LayoutUser>
+      <div className='allUtencils'>
+        <p>Utensilios</p>
+        {utencilComponents}
+        <div>
+          <AddUtencil />
+        </div>
+        <div>
+          <p>Escribe tus instrucciones</p>
+          <div className='card-table'>
+            <div>
               <div>
+                <form className='form-input d-flex flex-row' onSubmit={handleSubmit(addInstructions)}>
+                  <input
+                    className='inputStep'
+                    type='textbox'
+                    placeholder='Pasos a seguir'
+                    text=''
+                    name='tehnical'
+                    ref={register}
+
+                  />
+                  <p>{errorInstructions}</p>
+                  <div className=''>
+                    <button type='submit' className='plusbutton'>+</button>
+                  </div>
+                </form>
                 <div>
-                  <div className='form-input d-flex flex-row' onSubmit={handleSubmit(onSubmit)} >
-                    <input className='inputStep' type='textbox' ref={register} placeholder='Pasos a seguir' name='' id='' />
-                    <div className=''>
-                      <button className='plusbutton'>+</button>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <TableStepsRecipe message='Paso1' />
-                    </div>
-                    <div>
-                      <TableStepsRecipe message='Paso2' />
-                    </div>
-                    <div>
-                      <TableStepsRecipe message='Paso 3' />
-                    </div>
-                  </div>
+                  {
+                    instructions.length !== 0
+                      ? (
+                        instructions.map((instruction, index) => (
+                          <div key={index}>
+                            <TableStepsRecipe message={instruction} />
+                          </div>
+
+                        ))
+                      )
+                      : null
+                  }
                 </div>
               </div>
-            </form>
-          </div>
-          <div className='row justify-content-center'>
-            <div className='col-12 col-lg-4'>
-              <NextButton message='Siguiente' />
             </div>
           </div>
         </div>
-      </LayoutUser >
-    )
-  }
-
-
-  export default Utencilios
+        <div className='row justify-content-center'>
+          <div className='col-12 col-lg-4'>
+            <NextButton message='Siguiente' />
+          </div>
+        </div>
+      </div>
+    </LayoutUser>
+  )
+}
+export default Utencilios

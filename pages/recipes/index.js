@@ -29,6 +29,7 @@ const Recipes = () => {
         price={recipe.price}
         category={recipe.category}
         time='1hr'
+        id={recipe._id}
         backgroundSrc='/imagesRecipeView/CardImage1.svg'
       />
     </div>
