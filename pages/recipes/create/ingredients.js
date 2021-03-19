@@ -44,7 +44,6 @@ const Ingredients = () => {
   })
 
   const getAmount = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
-  const getAmountSubRecipe = (netWeight, unitCost) => (netWeight * unitCost).toFixed(2)
   const getPerformancePercent = (netWeight, grossWeight) => (netWeight / grossWeight) * 100
 
   const watchAllFields = watch()
@@ -71,7 +70,17 @@ const Ingredients = () => {
   const handleChange = (event) => {
     const productName = event.target.value
     const filteredProduct = ingredients.filter(product => product.name === productName)
-    setProduct(filteredProduct[0])
+    /* setProduct(filteredProduct[0]) */
+    setProduct({
+      product: filteredProduct[0]?.id,
+      name: filteredProduct[0]?.name,
+      measureByBuy: filteredProduct[0]?.measureByBuy,
+      image: filteredProduct[0]?.image,
+      netWeight: filteredProduct[0]?.netWeight,
+      grossWeight: filteredProduct[0]?.grossWeight,
+      performancePercent: filteredProduct[0]?.performancePercent,
+      priceUnit: filteredProduct[0]?.priceUnit
+    })
   }
 
   const onSubmit = ({ netWeight, grossWeight }) => {
@@ -89,8 +98,8 @@ const Ingredients = () => {
   const watchAllFieldsSubRecipe = watchSubRecipe()
 
   useEffect(() => {
-    const performancePercent = getPerformancePercent(parseFloat(watchAllFieldsSubRecipe.netWeight), parseFloat(watchAllFieldsSubRecipe.grossWeight))
-    const amount = parseFloat(getAmountSubRecipe(parseFloat(watchAllFieldsSubRecipe.netWeight), subRecipe.unitCost))
+    const performancePercent = (getPerformancePercent(parseFloat(watchAllFieldsSubRecipe.netWeight), parseFloat(watchAllFieldsSubRecipe.grossWeight))).toFixed(0)
+    const amount = parseFloat(getAmount(parseFloat(watchAllFieldsSubRecipe.netWeight), subRecipe.priceUnit))
     setSubRecipe({ ...subRecipe, netWeight: parseFloat(watchAllFieldsSubRecipe.netWeight), grossWeight: parseFloat(watchAllFieldsSubRecipe.grossWeight), performancePercent, amount })
   }, [watchAllFieldsSubRecipe.netWeight, watchAllFieldsSubRecipe.grossWeight])
 
@@ -103,12 +112,22 @@ const Ingredients = () => {
   const subRecipeHandleChange = (event) => {
     const subRecipesName = event.target.value
     const filteredSubRecipe = subRecipesAll.filter(subRecipe => subRecipe.name === subRecipesName)
-    setSubRecipe(filteredSubRecipe[0])
+    /* setSubRecipe(filteredSubRecipe[0]) */
+    setSubRecipe({
+      product: filteredSubRecipe[0]?.id,
+      name: filteredSubRecipe[0]?.name,
+      measureByBuy: 'Kg/Lt',
+      image: filteredSubRecipe[0]?.image,
+      netWeight: filteredSubRecipe[0]?.netWeight,
+      grossWeight: filteredSubRecipe[0]?.grossWeight,
+      performancePercent: filteredSubRecipe[0]?.performancePercent,
+      priceUnit: filteredSubRecipe[0]?.unitCost
+    })
   }
 
   const onSubmitSubRecipes = ({ netWeight, grossWeight }) => {
     setIngredientSelected([...ingredientSelected, subRecipe])
-    setValueSubRecipe('subRecipes', '')
+    setValueSubRecipe('subRecipe', '')
     setValueSubRecipe('netWeight', '')
     setValueSubRecipe('grossWeight', '')
   }
@@ -187,7 +206,7 @@ const Ingredients = () => {
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
-                <p>$ {subRecipe?.unitCost}</p>
+                <p>$ {subRecipe?.priceUnit}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Unidad de M</p>
