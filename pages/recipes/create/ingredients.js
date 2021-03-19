@@ -16,6 +16,12 @@ const schema = yup.object().shape({
   grossWeight: yup.number().typeError('Debe ser un valor numerico').positive('Debe ser un valor mayor a cero').required('El campo es requerido')
 })
 
+const schemaSubRecipe = yup.object().shape({
+  subRecipe: yup.string().required('Campo requerido'),
+  netWeight: yup.number().typeError('Debe ser un valor numerico').positive('Debe ser un valor mayor a cero').required('El campo es requerido'),
+  grossWeight: yup.number().typeError('Debe ser un valor numerico').positive('Debe ser un valor mayor a cero').required('El campo es requerido')
+})
+
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
   const [product, setProduct] = useState({})
@@ -30,12 +36,12 @@ const Ingredients = () => {
   const [subRecipesAll, setSubRecipes] = useState([])
   const [subRecipe, setSubRecipe] = useState({})
   const [subRecipeSelected, setSubRecipeSelected] = useState([])
-  // const { register, handleSubmit, errors, watch, setValue } = useForm({
-  //     resolver: yupResolver(schema),
-  //     mode: 'onBlur',
-  //     reValidateMode: 'onChange'
+  const { register: registerSubRecipe, handleSubmit: handleSubmitSubRecipe, errors: errorsSubRecipe, watch: watchSubRecipe, setValue: setValueSubRecipe } = useForm({
+    resolver: yupResolver(schemaSubRecipe),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
 
-  //   })
+  })
 
   const getAmount = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
   const getPerformancePercent = (netWeight, grossWeight) => (netWeight / grossWeight) * 100
@@ -74,16 +80,18 @@ const Ingredients = () => {
     setValue('grossWeight', '')
   }
 
-  const errorClassIngrediente = errors.ingrediente ? 'error' : null
-  const errorClassSubReceta = errors.subreceta ? 'error' : null
-  const errorClassPesoBruto = errors.pesoBruto ? 'error' : null
-  const errorClassPesoNeto = errors.pesoNeto ? 'error' : null
+  const errorClassIngrediente = errorsSubRecipe.ingrediente ? 'error' : null
+  const errorClassSubRecipe = errorsSubRecipe.ingrediente ? 'error' : null
+  const errorClassPesoBruto = errorsSubRecipe.pesoBruto ? 'error' : null
+  const errorClassPesoNeto = errorsSubRecipe.pesoNeto ? 'error' : null
+
+  const watchAllFieldsSubRecipe = watchSubRecipe()
 
   useEffect(() => {
-    const performancePercent = getPerformancePercent(parseFloat(watchAllFields.netWeight), parseFloat(watchAllFields.grossWeight))
-    const amount = parseFloat(getAmount(parseFloat(watchAllFields.netWeight), subRecipe.priceUnit))
-    setSubRecipe({ ...subRecipe, netWeight: parseFloat(watchAllFields.netWeight), grossWeight: parseFloat(watchAllFields.grossWeight), performancePercent, amount })
-  }, [watchAllFields.netWeight, watchAllFields.grossWeight])
+    const performancePercent = getPerformancePercent(parseFloat(watchAllFieldsSubRecipe.netWeight), parseFloat(watchAllFieldsSubRecipe.grossWeight))
+    const amount = parseFloat(getAmount(parseFloat(watchAllFieldsSubRecipe.netWeight), subRecipe.priceUnit))
+    setSubRecipe({ ...subRecipe, netWeight: parseFloat(watchAllFieldsSubRecipe.netWeight), grossWeight: parseFloat(watchAllFieldsSubRecipe.grossWeight), performancePercent, amount })
+  }, [watchAllFieldsSubRecipe.netWeight, watchAllFieldsSubRecipe.grossWeight])
 
   const getSubRecipe = async () => {
     const response = await subRecipeRequest(localStorage.getItem('token'))
@@ -99,9 +107,9 @@ const Ingredients = () => {
 
   const onSubmitSubRecipes = ({ netWeight, grossWeight }) => {
     setSubRecipeSelected([...subRecipeSelected, product])
-    setValue('product', '')
-    setValue('netWeight', '')
-    setValue('grossWeight', '')
+    setValueSubRecipe('product', '')
+    setValueSubRecipe('netWeight', '')
+    setValueSubRecipe('grossWeight', '')
   }
 
   return (
@@ -146,13 +154,13 @@ const Ingredients = () => {
           </div>
         </form>
 
-        <form onSubmit={handleSubmit(onSubmitSubRecipes)}>
+        <form onSubmit={handleSubmitSubRecipe(onSubmitSubRecipes)}>
           <div className='form-input'>
             <p>Agregar Subreceta</p>
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column '>
                 <label>Subreceta</label>
-                <input type='search' list='subRecipes' placeholder='Subreceta' name='subRecipes' onChange={subRecipeHandleChange} ref={register} className={errorClassSubReceta} />
+                <input className={errorClassSubRecipe} type='search' placeholder='Ingrediente' name='subRecipes' onChange={subRecipeHandleChange} ref={registerSubRecipe} />
                 <datalist id='subRecipes'>
                   {
                     subRecipesAll.lenght !== 0
@@ -164,17 +172,17 @@ const Ingredients = () => {
                       : <option value='No hay Sub recetas creadas' />
                     }
                 </datalist>
-                <p>{errors.subreceta?.message}</p>
-              </div>
-              <div className='d-flex flex-column'>
-                <label>Peso bruto</label>
-                <input type='text' placeholder='Peso bruto' name='pesoBruto' ref={register} className={errorClassPesoBruto} />
-                <p>{errors.pesoBruto?.message}</p>
+                <p>{errorsSubRecipe.subreceta?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <label>Peso neto</label>
-                <input type='text' placeholder='Peso neto' name='pesoNeto' ref={register} className={errorClassPesoNeto} />
-                <p>{errors.pesoNeto?.message}</p>
+                <input type='text' placeholder='Peso neto' name='netWeight' ref={registerSubRecipe} className={errorClassPesoNeto} />
+                <p>{errorsSubRecipe.pesoNeto?.message}</p>
+              </div>
+              <div className='d-flex flex-column'>
+                <label>Peso bruto</label>
+                <input type='text' placeholder='Peso bruto' name='grossWeight' ref={registerSubRecipe} className={errorClassPesoBruto} />
+                <p>{errorsSubRecipe.pesoBruto?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
