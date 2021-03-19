@@ -156,7 +156,7 @@ const Ingredients = () => {
           </div>
         </form>
 
-        <form onSubmit={handleSubmitSubRecipe(onSubmitSubRecipes)}>
+        <form onSubmitSubRecipes={handleSubmitSubRecipe(onSubmitSubRecipes)}>
           <div className='form-input'>
             <p>Agregar Subreceta</p>
             <div className='d-flex justify-content-between align-items-center'>
