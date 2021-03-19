@@ -16,12 +16,6 @@ const schema = yup.object().shape({
   grossWeight: yup.number().typeError('Debe ser un valor numerico').positive('Debe ser un valor mayor a cero').required('El campo es requerido')
 })
 
-/* const schema = yup.object().shape({
-  ingrediente: yup.string().required('Campo requerido'),
-  pesoBruto: yup.number().required('Campo requerido'),
-  pesoNeto: yup.number().required('Campo requerido')
-}) */
-
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
   const [product, setProduct] = useState({})
@@ -36,12 +30,12 @@ const Ingredients = () => {
   const [subRecipesAll, setSubRecipes] = useState([])
   const [subRecipe, setSubRecipe] = useState({})
   const [subRecipeSelected, setSubRecipeSelected] = useState([])
-  /* const { register, handleSubmit, errors, watch, setValue } = useForm({
-      resolver: yupResolver(schema),
-      mode: 'onBlur',
-      reValidateMode: 'onChange'
+  // const { register, handleSubmit, errors, watch, setValue } = useForm({
+  //     resolver: yupResolver(schema),
+  //     mode: 'onBlur',
+  //     reValidateMode: 'onChange'
 
-    }) */
+  //   })
 
   const getAmount = (netWeight, priceUnit) => (netWeight * priceUnit).toFixed(2)
   const getPerformancePercent = (netWeight, grossWeight) => (netWeight / grossWeight) * 100
@@ -81,7 +75,7 @@ const Ingredients = () => {
   }
 
   const errorClassIngrediente = errors.ingrediente ? 'error' : null
-  const errorClassSubRecipe = errors.subreceta ? 'error' : null
+  const errorClassSubReceta = errors.subreceta ? 'error' : null
   const errorClassPesoBruto = errors.pesoBruto ? 'error' : null
   const errorClassPesoNeto = errors.pesoNeto ? 'error' : null
 
@@ -158,25 +152,29 @@ const Ingredients = () => {
             <div className='d-flex justify-content-between align-items-center'>
               <div className='d-flex flex-column '>
                 <label>Subreceta</label>
-                <input className='error' type='text' placeholder='Ingrediente' name='subRecipes' onChange={subRecipeHandleChange} ref={register} className={errorClassSubRecipe} />
+                <input type='search' list='subRecipes' placeholder='Subreceta' name='subRecipes' onChange={subRecipeHandleChange} ref={register} className={errorClassSubReceta} />
                 <datalist id='subRecipes'>
                   {
-                      subRecipesAll.map(subRecipe =>
-                        <option key={subRecipe._id} value={subRecipe.name} />
-                      )
+                    subRecipesAll.lenght !== 0
+                      ? (
+                          subRecipesAll.map(subRecipe =>
+                            <option key={subRecipe._id} value={subRecipe.name} />
+                          )
+                        )
+                      : <option value='No hay Sub recetas creadas' />
                     }
                 </datalist>
                 <p>{errors.subreceta?.message}</p>
               </div>
               <div className='d-flex flex-column'>
-                <label>Peso neto</label>
-                <input type='text' placeholder='Peso neto' name='pesoNeto' ref={register} className={errorClassPesoNeto} />
-                <p>{errors.pesoNeto?.message}</p>
-              </div>
-              <div className='d-flex flex-column'>
                 <label>Peso bruto</label>
                 <input type='text' placeholder='Peso bruto' name='pesoBruto' ref={register} className={errorClassPesoBruto} />
                 <p>{errors.pesoBruto?.message}</p>
+              </div>
+              <div className='d-flex flex-column'>
+                <label>Peso neto</label>
+                <input type='text' placeholder='Peso neto' name='pesoNeto' ref={register} className={errorClassPesoNeto} />
+                <p>{errors.pesoNeto?.message}</p>
               </div>
               <div className='d-flex flex-column'>
                 <p>Importe</p>
