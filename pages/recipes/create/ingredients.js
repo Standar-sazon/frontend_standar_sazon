@@ -27,6 +27,8 @@ const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
   const [product, setProduct] = useState({})
   const [ingredientSelected, setIngredientSelected] = useState([])
+  const [grossWeightTotal, setgrossWeightTotal] = useState(0)
+  const [totalAmount, setTotalAmount] = useState(0)
   const { register, handleSubmit, errors, watch, setValue } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
@@ -49,10 +51,21 @@ const Ingredients = () => {
   const watchAllFields = watch()
 
   useEffect(() => {
-    const performancePercent = getPerformancePercent(parseFloat(watchAllFields.netWeight), parseFloat(watchAllFields.grossWeight))
+    const performancePercent = (getPerformancePercent(parseFloat(watchAllFields.netWeight), parseFloat(watchAllFields.grossWeight))).toFixed(0)
     const amount = parseFloat(getAmount(parseFloat(watchAllFields.netWeight), product.priceUnit))
     setProduct({ ...product, netWeight: parseFloat(watchAllFields.netWeight), grossWeight: parseFloat(watchAllFields.grossWeight), performancePercent, amount })
   }, [watchAllFields.netWeight, watchAllFields.grossWeight])
+
+  useEffect(() => {
+    const totalIngredientAmount = ingredientSelected.reduce((accum, ingredient) => {
+      return accum += ingredient.amount
+    }, 0)
+    setTotalAmount(totalIngredientAmount)
+    const TotalgrossWeight = ingredientSelected.reduce((accum, ingredient) => {
+      return accum += ingredient.grossWeight
+    }, 0)
+    setgrossWeightTotal(TotalgrossWeight)
+  }, [ingredientSelected])
 
   const getIngredients = async () => {
     const response = await productRequest(localStorage.getItem('token'))
@@ -152,12 +165,12 @@ const Ingredients = () => {
                 <p>{errors.product?.message}</p>
               </div>
               <div className='d-flex flex-column'>
-                <label>Peso Bruto</label>
+                <label>Peso Bruto(kg)</label>
                 <input type='text' ref={register} placeholder='Peso bruto' name='grossWeight' className={errorClassPesoBruto} />
                 <p>{errors.grossWeight?.message}</p>
               </div>
               <div className='d-flex flex-column '>
-                <label>Peso neto</label>
+                <label>Peso neto(kg)</label>
                 <input type='text' ref={register} placeholder='Peso neto' name='netWeight' className={errorClassPesoNeto} />
                 <p>{errors.netWeight?.message}</p>
               </div>
@@ -195,12 +208,12 @@ const Ingredients = () => {
                 <p>{errorsSubRecipe.subRecipe?.message}</p>
               </div>
               <div className='d-flex flex-column'>
-                <label>Peso bruto</label>
+                <label>Peso bruto(kg)</label>
                 <input type='text' placeholder='Peso bruto' name='grossWeight' ref={registerSubRecipe} className={errorClassPesoBruto} />
                 <p>{errorsSubRecipe.grossWeight?.message}</p>
               </div>
               <div className='d-flex flex-column'>
-                <label>Peso neto</label>
+                <label>Peso neto(kg)</label>
                 <input type='text' placeholder='Peso neto' name='netWeight' ref={registerSubRecipe} className={errorClassPesoNeto} />
                 <p>{errorsSubRecipe.netWeight?.message}</p>
               </div>
@@ -244,7 +257,7 @@ const Ingredients = () => {
         </div>
         <div className='importStyle d-flex justify-content-between align-items-end'>
           <p>Importe</p>
-          <p href=''>$ 45</p>
+          <p>$ {totalAmount}</p>
         </div>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-4'>
