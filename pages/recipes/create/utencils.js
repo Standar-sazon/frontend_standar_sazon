@@ -99,100 +99,94 @@ const Utencilios = () => {
   const [checkedUtencils, setCheckedUtencils] = useState({})
   const [utencilsSelected, setUtencilsSelected] = useState([])
   const [instructions, setInstructions] = useState([])
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, setValue } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
     reValidateMode: 'onChange'
   })
 
-  const arrayOfInstructions = Object
-    .entries(newInstructions)
-
-  setInstructions(newInstructions)
-  console.log(newInstructions)
-  console.log(arrayOfInstructions)
-}
-
-const onSubmit = async (dataForm) => {
-  setInstructions(true)
-}
-const handleUtencilCheck = event => {
-  const newCheckedUtencils = {
-    ...checkedUtencils,
-    [event.target.name]: event.target.checked
+  const addInstructions = (dataForm) => {
+    setInstructions([...instructions, dataForm.tehnical])
+    setValue('tehnical')
   }
+  const handleUtencilCheck = event => {
+    const newCheckedUtencils = {
+      ...checkedUtencils,
+      [event.target.name]: event.target.checked
+    }
 
-  const arrayOfCheckedUtencils = Object
-    .entries(newCheckedUtencils)
-    .filter(([, checked]) => checked)
-    .map(([id]) => id)
+    const arrayOfCheckedUtencils = Object
+      .entries(newCheckedUtencils)
+      .filter(([, checked]) => checked)
+      .map(([id]) => id)
 
-  setCheckedUtencils(newCheckedUtencils)
-  console.log(newCheckedUtencils)
-  console.log(arrayOfCheckedUtencils)
-  setUtencilsSelected(arrayOfCheckedUtencils)
-}
-const utencilComponents = getUtencilComponents(utencils, checkedUtencils, handleUtencilCheck)
+    setCheckedUtencils(newCheckedUtencils)
+    console.log(newCheckedUtencils)
+    console.log(arrayOfCheckedUtencils)
+    setUtencilsSelected(arrayOfCheckedUtencils)
+  }
+  const utencilComponents = getUtencilComponents(utencils, checkedUtencils, handleUtencilCheck)
 
-useEffect(async () => {
-  const response = utencilsMock // TODO: Call API.
-  setUtencils(response)
-}, [utencils])
+  useEffect(async () => {
+    const response = utencilsMock // TODO: Call API.
+    setUtencils(response)
+  }, [utencils])
 
-//
+  const errorInstructions = errors.tehnical ? 'error' : null
 
-const errorInstructions = errors.tehnical ? 'error' : null
-
-return (
-  <LayoutUser>
-    <div className='allUtencils'>
-      <p>Utensilios</p>
-      {utencilComponents}
-      <div>
-        <AddUtencil />
-      </div>
-      <div>
-        <p>Escribe tus instrucciones</p>
-        <div className='card-table'>
-          <div>
+  return (
+    <LayoutUser>
+      <div className='allUtencils'>
+        <p>Utensilios</p>
+        {utencilComponents}
+        <div>
+          <AddUtencil />
+        </div>
+        <div>
+          <p>Escribe tus instrucciones</p>
+          <div className='card-table'>
             <div>
-              <form className='form-input d-flex flex-row' onSubmit={handleSubmit(onSubmit)}>
-                <input
-                  className='inputStep'
-                  type='textbox'
-                  placeholder='Pasos a seguir'
-                  text=''
-                  name='tehnical'
-                  ref={register}
-
-                />
-                <p>{errorInstructions}</p>
-                <div className=''>
-                  <button type='submit' className='plusbutton'>+</button>
-                </div>
-              </form>
               <div>
+                <form className='form-input d-flex flex-row' onSubmit={handleSubmit(addInstructions)}>
+                  <input
+                    className='inputStep'
+                    type='textbox'
+                    placeholder='Pasos a seguir'
+                    text=''
+                    name='tehnical'
+                    ref={register}
+
+                  />
+                  <p>{errorInstructions}</p>
+                  <div className=''>
+                    <button type='submit' className='plusbutton'>+</button>
+                  </div>
+                </form>
                 <div>
-                  <TableStepsRecipe message='Paso1' />
-                </div>
-                <div>
-                  <TableStepsRecipe message='Paso2' />
-                </div>
-                <div>
-                  <TableStepsRecipe message='Paso 3' />
+                  {
+                    instructions.length !== 0
+                      ? (
+                        instructions.map((instruction, index) => (
+                          <div key={index}>
+                            <TableStepsRecipe message={instruction} />
+                          </div>
+
+                        ))
+                      )
+                      : null
+                  }
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className='row justify-content-center'>
-        <div className='col-12 col-lg-4'>
-          <NextButton message='Siguiente' />
+        <div className='row justify-content-center'>
+          <div className='col-12 col-lg-4'>
+            <NextButton message='Siguiente' />
+          </div>
         </div>
       </div>
-    </div>
-  </LayoutUser>
-)
+    </LayoutUser>
+  )
 }
 export default Utencilios

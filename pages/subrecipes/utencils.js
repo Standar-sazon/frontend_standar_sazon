@@ -4,7 +4,13 @@ import NextButton from '../../components/NextButton'
 import UtencilsButtons from '../../components/UtencilsButton'
 import TableStepsRecipe from '../../components/TableStepsRecipe'
 import AddUtencil from '../../components/AddUtencil'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
+const schema = yup.object().shape({
+  tehnical: yup.string().required('El campo es requerido')
+})
 const utencilsMock = [
   {
     name: 'sarten',
@@ -91,6 +97,17 @@ const Utencilios = () => {
   const [utencils, setUtencils] = useState([])
   const [checkedUtencils, setCheckedUtencils] = useState({})
   const [utencilsSelected, setUtencilsSelected] = useState([])
+  const [instructions, setInstructions] = useState([])
+  const { register, handleSubmit, errors, setValue } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
+  })
+
+  const addInstructions = (dataForm) => {
+    setInstructions([...instructions, dataForm.tehnical])
+    setValue('tehnical')
+  }
 
   const handleUtencilCheck = event => {
     const newCheckedUtencils = {
@@ -116,23 +133,7 @@ const Utencilios = () => {
     setUtencils(response)
   }, [utencils])
 
-  const [instructions, setInstructions] = useState({
-    text: ''
-  })
-  //
-  const handleInputChange = event => {
-    const newInstructions = {
-      ...instructions,
-      [event.target.text]: event.target.value
-    }
-
-    const arrayOfInstructions = Object
-      .entries(newInstructions)
-
-    setInstructions(newInstructions)
-    console.log(newInstructions)
-    console.log(arrayOfInstructions)
-  }
+  const errorInstructions = errors.tehnical ? 'error' : null
 
   return (
     <LayoutUser>
@@ -144,42 +145,44 @@ const Utencilios = () => {
         </div>
         <div>
           <p>Escribe tus instrucciones</p>
-          <form className='card-table'>
+          <div className='card-table'>
             <div>
               <div>
-                <div className='form-input d-flex flex-row'>
+                <form className='form-input d-flex flex-row' onSubmit={handleSubmit(addInstructions)}>
                   <input
                     className='inputStep'
                     type='textbox'
                     placeholder='Pasos a seguir'
                     text=''
-
+                    name='tehnical'
+                    ref={register}
                   />
+                  <p>{errorInstructions}</p>
                   <div className=''>
-                    <button className='plusbutton'>+</button>
+                    <button type='sumit' className='plusbutton'>+</button>
                   </div>
-                </div>
+                </form>
                 <div>
-                  <div>
-                    <TableStepsRecipe message='Paso1' />
-                  </div>
-                  <div>
-                    <TableStepsRecipe message='Paso2' />
-                  </div>
-                  <div>
-                    <TableStepsRecipe message='Paso 3' />
-                  </div>
+                  {
+                    instructions.length !== 0
+                      ? (
+                        instructions.map((instruction, index) => (
+                          <div key={index}>
+                            <TableStepsRecipe message={instruction} />
+                          </div>
+
+                        ))
+                      )
+                      : null
+                  }
+                </div>
+              </div>
+              <div className='row justify-content-center'>
+                <div className='col-12 col-lg-4'>
+                  <NextButton message='Siguiente' />
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div className='row justify-content-center'>
-          <div className='col-12 col-lg-4'>
-            <NextButton message='Siguiente' />
-          </div>
-        </div>
-      </div>
     </LayoutUser>
   )
 }
