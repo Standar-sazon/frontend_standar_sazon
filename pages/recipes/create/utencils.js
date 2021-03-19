@@ -1,7 +1,3 @@
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-
 import LayoutUser from '../../../components/LayoutUser'
 import React, { useState, useEffect } from 'react'
 import NextButton from '../../../components/NextButton'
@@ -86,13 +82,10 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
         message={utencil.name}
         checked={checkedUtencils[utencil.id]}
         onChange={handleUtencilCheck}
-      />)
+                                />)
     }
-  </div>)
+                                  </div>)
 }
-const schema = yup.object().shape({
-  textbox: yup.string().required('campo requerido')
-})
 
 const Utencilios = () => {
   const [utencils, setUtencils] = useState([])
@@ -121,66 +114,65 @@ const Utencilios = () => {
     setUtencils(response)
   }, [utencils])
 
-  const [stepFollow, setStepFollow] = useState('')
-  const { register, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-    mode: 'onBlur',
-    reValidateMode: 'onChange'
+  const [instructions, Setinstructions] = useState({
+    text: ''
   })
+  const handleInputChange = (event) => {
+    console.log(event.target.value)
+    Setinstructions({
+      ...instructions,
+      [event.target.text]: event.target.value
+    })
+  }
 
-  const onSubmit = async (dataForm) => {
-    setStepFollow(true)
-    setError()
-    // console.log('Enviando al server...')
-    // console.log(dataForm)
-    const response = await create(dataForm)
-    const responseJSON = await response.json()
-    // console.log(responseJSON)
-
-
-    return (
-      <LayoutUser>
-        <div className='allUtencils'>
-          <p>Utensilios</p>
-          {utencilComponents}
-          <div>
-            <AddUtencil />
-          </div>
-          <div>
-            <p>Escribe tus instrucciones</p>
-            <form className='card-table'>
+  return (
+    <LayoutUser>
+      <div className='allUtencils'>
+        <p>Utensilios</p>
+        {utencilComponents}
+        <div>
+          <AddUtencil />
+        </div>
+        <div>
+          <p>Escribe tus instrucciones</p>
+          <form className='card-table'>
+            <div>
               <div>
+                <div className='form-input d-flex flex-row'>
+                  <input
+                    className='inputStep'
+                    type='textbox'
+                    placeholder='Pasos a seguir'
+                    text=''
+                    onChange={handleInputChange}
+                  />
+                  <div className=''>
+                    <button className='plusbutton'>+</button>
+                  </div>
+                </div>
                 <div>
-                  <div className='form-input d-flex flex-row' onSubmit={handleSubmit(onSubmit)} >
-                    <input className='inputStep' type='textbox' ref={register} placeholder='Pasos a seguir' name='' id='' />
-                    <div className=''>
-                      <button className='plusbutton'>+</button>
-                    </div>
+                  <div>
+                    <TableStepsRecipe message='Paso1' />
                   </div>
                   <div>
-                    <div>
-                      <TableStepsRecipe message='Paso1' />
-                    </div>
-                    <div>
-                      <TableStepsRecipe message='Paso2' />
-                    </div>
-                    <div>
-                      <TableStepsRecipe message='Paso 3' />
-                    </div>
+                    <TableStepsRecipe message='Paso2' />
+                  </div>
+                  <div>
+                    <TableStepsRecipe message='Paso 3' />
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
-          <div className='row justify-content-center'>
-            <div className='col-12 col-lg-4'>
-              <NextButton message='Siguiente' />
             </div>
+          </form>
+        </div>
+        <div className='row justify-content-center'>
+          <div className='col-12 col-lg-4'>
+            <NextButton message='Siguiente' />
           </div>
         </div>
-      </LayoutUser >
-    )
-  }
+      </div>
+    </LayoutUser>
+  )
+}
 
-
-  export default Utencilios
+export default Utencilios
