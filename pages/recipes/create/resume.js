@@ -4,24 +4,32 @@ import Logo from '../../../public/img/logo.svg'
 import NextButton from '../../../components/NextButton'
 import { recipeRequestByID } from '../../../services/recipes'
 import { useRouter } from 'next/router'
-// import { useForm } from 'react-hook-form'
-// import { yupResolver } from '@hookform/resolvers/yup'
-// import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
-// const schema = yup.object().shape({
-//   production: yup.string().required('El valor es requerido'),
-//   portionSize: yup.string().required('El valor es requerido'),
-//   preparationTime: yup.string().required('El valor es requerido'),
-//   cookingTime: yup.string().required('El valor es requerido'),
-//   operatingTemperature: yup.string().required('El valor es requerido')
-// })
-
-const Resumes = () => {
+const schema = yup.object().shape({
+  production: yup.number().positive('Invalido').required('Requerido').typeError('Invalido'),
+  portionSize: yup.number().positive('Invalido').required('Requerido').typeError('Invalido'),
+  preparationTime: yup.number().positive('Invalido').required('Requerido').typeError('Invalido'),
+  cookingTime: yup.number().positive('Invalido').required('Requerido').typeError('Invalido'),
+  operatingTemperature: yup.number().positive('Invalido').required('Requerido').typeError('Invalido')
+})
+export default function App () {
   const router = useRouter()
-  const [resumes, setResumes] = useState({})
-  const {
-    recipe
-  } = router.query
+  const [resume, setResume] = useState({})
+  const [performance, setPerformance] = useState(0)
+  const [portion, setPortion] = useState(0)
+  const { register, errors, watch } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
+  })
+  const watchAllFields = watch()
+  //   recipe
+  // } = router.query
+  // console.log(recipe)
+  const recipe = '6052c353b97aa7007f7051ff'
   console.log(recipe)
 
   const getAdmin = async () => {
@@ -32,43 +40,55 @@ const Resumes = () => {
   }
 
   useEffect(async () => {
-    const resumes = await getAdmin()
-    setResumes(resumes)
+    const resumeGet = await getAdmin()
+    setResume(resumeGet)
+    console.log(resumeGet)
   }, [])
 
-  const handleChange = (event) => {
-    const resumeData = event.target.value
-    console.log(resumeData)
-    console.log(event.target.value)
-    // const filteredResume = resume.filter(resume => resume.name === resumeData)
-    // console.log(filteredResume)
-    console.log(resumeData)
-  }
+  useEffect(() => {
+    const performanceResult = ((parseFloat(watchAllFields.production) / resume.grossWeightTotal) * 100).toFixed(0)
+    setPerformance(performanceResult)
+  }, [watchAllFields.production])
+
+  useEffect(() => {
+    const portionTotal = (parseFloat(watchAllFields.production) / watchAllFields.portionSize)
+    setPortion(portionTotal)
+  }, [watchAllFields.portionSize])
+
+  const errorClassProduction = errors.production ? 'error' : null
+  const errorClassPortion = errors.portionSize ? 'error' : null
+  const errorClassPreparation = errors.preparationTime ? 'error' : null
+  const errorClassCooking = errors.cookingTime ? 'error' : null
+  const errorClassTemperature = errors.operatingTemperature ? 'error' : null
 
   return (
-
     <LayoutUser>
-      <form className='resume-data d-flex' onChange={handleChange}>
+      <form className='resume-data d-flex'>
         <div className='kgs-number d-flex flex-column text-left form-input'>
-          <lable className='inp-letters'>Peso de la preparación:</lable>
+          <lable className='inp-letters'>Producción (Peso total de tu receta):</lable>
           <lable className='inp-letters'>(kgs)</lable>
-          <input className='inp-summar' type='number' placeholder='Peso' name='production' />
-          <lable className='inp-letters letters'>Número de porciones:</lable>
-          <lable className='inp-letters'>(Unidades)</lable>
-          <input className='inp-summary' type='number' placeholder='# de porciones' name='portionSize' />
+          <input className={`inp-summar ${errorClassProduction}`} type='number' placeholder='Peso' name='production' ref={register} />
+          <p>{errors.production?.message}</p>
+          <lable className='inp-letters letters'>Tamaño de la porción:</lable>
+          <lable className='inp-letters'>KG</lable>
+          <input className={`inp-summar ${errorClassPortion}`} type='number' placeholder='Tamaño de porciones' name='portionSize' ref={register} />
+          <p>{errors.portionSize?.message}</p>
         </div>
         <div className='data-time d-flex flex-column text-left form-input'>
           <lable className='inp-letters'>Tiempo de preparación:</lable>
           <lable className='inp-letters'>(Minutos)</lable>
-          <input className='inp-summary' type='number' placeholder='Tiempo' name='preparationTime' />
+          <input className={`inp-summar ${errorClassPreparation}`} type='number' placeholder='Tiempo' name='preparationTime' ref={register} />
+          <p>{errors.preparationTime?.message}</p>
           <lable className='inp-letters letters'>Tiempo de cocción:</lable>
           <lable className='inp-letters'>(Unidades)</lable>
-          <input className='inp-summary' type='number' placeholder='Cocción' name='cookingTime' />
+          <input className={`inp-summar ${errorClassCooking}`} type='number' placeholder='Cocción' name='cookingTime' ref={register} />
+          <p>{errors.cookingTime?.message}</p>
         </div>
         <div className='data-temperature d-flex flex-column text-left form-input'>
           <lable className='inp-letters'>Temperatura de servicio:</lable>
           <lable className='inp-letters'>(ºC)</lable>
-          <input className='inp-summary' type='number' placeholder='Grados' name='operatingTemperature' />
+          <input className={`inp-summar ${errorClassTemperature}`} type='number' placeholder='Grados' name='operatingTemperature' ref={register} />
+          <p>{errors.operatingTemperature?.message}</p>
         </div>
       </form>
 
@@ -83,31 +103,31 @@ const Resumes = () => {
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Producción</p>
-            <p className='unit-measurement green'>0.800 kgs</p>
+            <p className='unit-measurement green'> {watchAllFields.production} </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Rendimiento</p>
-            <p className='unit-measurement orange unit'>60 %</p>
+            <p className='unit-measurement orange unit'> {performance} %</p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Tamaño de la porción</p>
-            <p className='unit-measurement orange unit'>400 Kgrs</p>
+            <p className='unit-measurement orange unit'> {watchAllFields.portionSize} Kgrs</p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Número de porciones</p>
-            <p className='unit-measurement green'>2 Unidades</p>
+            <p className='unit-measurement green'> {portion} Unidades</p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Tiempo de preparación</p>
-            <p className='unit-measurement green'>20 Minutos</p>
+            <p className='unit-measurement green'> {watchAllFields.preparationTime} Minutos</p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Tiempo de cocción</p>
-            <p className='unit-measurement green'>15 Minutos</p>
+            <p className='unit-measurement green'> {watchAllFields.cookingTime} Minutos</p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Temperatura de servicio</p>
-            <p className='unit-measurement green'>63 ºC</p>
+            <p className='unit-measurement green'> {watchAllFields.operatingTemperature} ºC</p>
           </div>
         </div>
 
@@ -121,26 +141,26 @@ const Resumes = () => {
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>costo total de insumos</p>
-            <p className='unit-measurement orange'>$ 75.70</p>
+            <p className='unit-measurement orange'>$  {resume.directIndirectCosts?.totalAmount} </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Costo de la mano de obra</p>
-            <p className='unit-measurement orange'>$ 9.12</p>
+            <p className='unit-measurement orange'>$ - </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Costo y gastos indirectos</p>
-            <p className='unit-measurement orange'>$ 22.71</p>
+            <p className='unit-measurement orange'>$ - </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Costos y gastos por porción</p>
-            <p className='unit-measurement orange'>$ 53.77</p>
+            <p className='unit-measurement orange'>$ - </p>
           </div>
           <div className='totals d-flex justify-content-between'>
             <div className='technical totals'>
               <p className='technical-concepts totals-resume'>Precio de venta</p>
               <p className='technical-concepts iva totals-resume'>por porción (S/IVA)</p>
             </div>
-            <p className='totals unit-measurement iva green'>$53.77</p>
+            <p className='totals unit-measurement iva green'> - </p>
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>% del costo y gastos por porción</p>
@@ -152,14 +172,14 @@ const Resumes = () => {
           </div>
           <div className='technical d-flex'>
             <p className='technical-concepts'>Utilidad por porción</p>
-            <p className='unit-measurement orange'>$ 23.04</p>
+            <p className='unit-measurement orange'>$ - </p>
           </div>
           <div className='totals d-flex justify-content-between'>
             <div className='technical'>
               <p className='technical-concepts totals-resume'>Precio de venta</p>
               <p className='technical-concepts iva totals-resume'>por porción (C/IVA)</p>
             </div>
-            <p className='unit-measurement green'>$89.10</p>
+            <p className='unit-measurement green'> - </p>
           </div>
         </div>
       </div>
@@ -168,10 +188,6 @@ const Resumes = () => {
           <NextButton message='Crear Receta' />
         </div>
       </div>
-
     </LayoutUser>
-
   )
 }
-
-export default Resumes
