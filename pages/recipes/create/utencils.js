@@ -7,6 +7,10 @@ import AddUtencil from '../../../components/AddUtencil'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { recipeUpdate, recipeRequestByID } from '../../../services/recipes'
+import { useRouter } from 'next/router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const schema = yup.object().shape({
   tehnical: yup.string().required('El campo es requerido')
@@ -89,21 +93,52 @@ const getUtencilComponents = (utencils, checkedUtencils, handleUtencilCheck, gro
         message={utencil.name}
         checked={checkedUtencils[utencil.id]}
         onChange={handleUtencilCheck}
-      />)
+                                />)
     }
-  </div>)
+                                  </div>)
 }
 
 const Utencilios = () => {
   const [utencils, setUtencils] = useState([])
   const [checkedUtencils, setCheckedUtencils] = useState({})
   const [utencilsSelected, setUtencilsSelected] = useState([])
+  const [recipeToSend, setRecipeToSend] = useState({})
   const [instructions, setInstructions] = useState([])
   const { register, handleSubmit, errors, setValue } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
     reValidateMode: 'onChange'
   })
+  const router = useRouter()
+  const { recipe } = router.query
+  const getRecipe = async () => {
+    const response = await recipeRequestByID(recipe, localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  const updateRecipe = async (objectrecipe) => {
+    const response = await recipeUpdate(recipe, objectrecipe, localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON
+  }
+  useEffect(async () => {
+    const recipe = await getRecipe()
+    setRecipeToSend(recipe)
+  }, [])
+
+  const handleClickSaveUtencils = async () => {
+    console.log('Enviando datos')
+    const recipeUpdated = await updateRecipe({ ...recipeToSend, technique: instructions, productionWardrobe: utencilsSelected })
+    if (recipeUpdated.success) {
+      router.push({
+        pathname: '/recipes/create/resume',
+        query: { recipe: recipeUpdated.data._id }
+      })
+      return
+    }
+    router.reload()
+  }
 
   const addInstructions = (dataForm) => {
     setInstructions([...instructions, dataForm.tehnical])
@@ -166,13 +201,13 @@ const Utencilios = () => {
                   {
                     instructions.length !== 0
                       ? (
-                        instructions.map((instruction, index) => (
+                          instructions.map((instruction, index) => (
                           <div key={index}>
                             <TableStepsRecipe message={instruction} />
                           </div>
 
-                        ))
-                      )
+                          ))
+                        )
                       : null
                   }
                 </div>
@@ -182,7 +217,12 @@ const Utencilios = () => {
         </div>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-4'>
-            <NextButton message='Siguiente' />
+            <button type='button' onClick={handleClickSaveUtencils} className='createButton'>
+              <p className='textButton'>Siguiente</p>
+              <span className='createIconButton'>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </span>
+            </button>
           </div>
         </div>
       </div>
