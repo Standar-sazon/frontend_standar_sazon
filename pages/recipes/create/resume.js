@@ -2,10 +2,13 @@ import LayoutUser from '../../../components/LayoutUser'
 import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/img/logo.svg'
 import NextButton from '../../../components/NextButton'
-import { recipeRequestByID } from '../../../services/recipes'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { recipeUpdate, recipeRequestByID } from '../../../services/recipes'
+import { useRouter } from 'next/router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const schema = yup.object().shape({
   production: yup.number().positive('Invalido').required('Requerido').typeError('Invalido'),
@@ -24,16 +27,26 @@ export default function App () {
   const [utility, setUtility] = useState(0)
   const [siva, setSiva] = useState(0)
   const [total, setTotal] = useState(0)
+  const [recipeToSend, setRecipeToSend] = useState({})
   const { register, errors, watch } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
     reValidateMode: 'onChange'
   })
   const watchAllFields = watch()
-  //   recipe
-  // } = router.query
-  // console.log(recipe)
-  const recipe = '6052c353b97aa7007f7051ff'
+  const router = useRouter()
+  const { recipe } = router.query
+  const getRecipe = async () => {
+    const response = await recipeRequestByID(recipe, localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON.data
+  }
+
+  const updateRecipe = async (objectrecipe) => {
+    const response = await recipeUpdate(recipe, objectrecipe, localStorage.getItem('token'))
+    const responseJSON = await response.json()
+    return responseJSON
+  }
 
   const getAdmin = async () => {
     const response = await recipeRequestByID(recipe, localStorage.getItem('token'))
@@ -44,7 +57,18 @@ export default function App () {
   useEffect(async () => {
     const resumeGet = await getAdmin()
     setResume(resumeGet)
+    setRecipeToSend(resumeGet)
   }, [])
+
+  const handleClickSaveRecipe = async () => {
+    console.log('Enviando datos')
+    const recipeUpdated = await updateRecipe({ ...recipeToSend, timePerformance: { production: parseFloat(watchAllFields.production) } })
+    if (recipeUpdated.success) {
+      router.push('/recipes')
+      return
+    }
+    router.reload()
+  }
 
   useEffect(() => {
     const performanceResult = ((parseFloat(watchAllFields.production) / resume.grossWeightTotal) * 100).toFixed(0)
@@ -216,7 +240,12 @@ export default function App () {
       </div>
       <div className='d-flex justify-content-center text-align-center'>
         <div className='col-12 col-lg-4'>
-          <NextButton message='Crear Receta' />
+          <button type='button' onClick={handleClickSaveRecipe} className='createButton'>
+            <p className='textButton'>Crear receta</p>
+            <span className='createIconButton'>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </span>
+          </button>
         </div>
       </div>
     </LayoutUser>
